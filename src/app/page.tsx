@@ -10,9 +10,8 @@ type JobSummary = {
 };
 
 async function fetchFeaturedJobs(): Promise<JobSummary[]> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
   try {
-    const response = await fetch(`${siteUrl}/api/jobs?limit=3`, { cache: "no-store" });
+    const response = await fetch("/api/jobs?limit=3", { next: { revalidate: 60 } });
     if (!response.ok) return [];
     return response.json();
   } catch (error) {
