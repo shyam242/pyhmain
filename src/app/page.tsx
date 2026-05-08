@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="bg-slate-900 min-h-screen">
-      <section className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 py-32 px-4 pt-56 relative overflow-hidden">
+      <section className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 py-24 px-4 pt-36 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-400 rounded-full blur-3xl"></div>
@@ -37,7 +37,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+      <section className="py-16 px-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto">
           <p className="text-center text-gray-400 text-[35px] font-semibold mb-16 tracking-wide">
             Trusted by the best companies worldwide
@@ -59,7 +59,7 @@ export default function Home() {
       <ServicesShowcase />
 
       {/* Metrics Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+      <section className="py-16 px-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-12 text-center">
             <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8">
@@ -79,7 +79,7 @@ export default function Home() {
       </section>
 
       {/* Featured Jobs Section */}
-      <section className="py-32 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+      <section className="py-24 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-16">
             <div>
@@ -96,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-4 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-white/10">
+      <section className="py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-white/10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-6xl font-bold text-white mb-8">Ready to get started?</h2>
           <p className="text-xl text-gray-400 mb-12">
