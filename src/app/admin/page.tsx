@@ -57,7 +57,6 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@pickyourhire.com"
                 className="w-full px-4 py-3 bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition"
                 required
               />
@@ -70,7 +69,6 @@ export default function AdminLoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
                 className="w-full px-4 py-3 bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition"
                 required
               />
