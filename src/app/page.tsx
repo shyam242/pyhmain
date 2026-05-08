@@ -1,34 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import ServicesShowcase from "@/components/ServicesShowcase";
-import { query } from "@/lib/db";
+import FeaturedJobs from "@/components/FeaturedJobs";
 
-type JobSummary = {
-  id: string;
-  title: string;
-  department: string;
-  salaryRange: string;
-};
-
-async function fetchFeaturedJobs(): Promise<JobSummary[]> {
-  try {
-    const result = await query(
-      "SELECT id, title, department, salary_range as \"salaryRange\" FROM jobs ORDER BY posted_date DESC LIMIT 3"
-    );
-    return result.rows.map((row) => ({
-      id: row.id.toString(),
-      title: row.title,
-      department: row.department,
-      salaryRange: row.salaryRange || "Competitive",
-    }));
-  } catch (error) {
-    console.error("Error fetching featured jobs:", error);
-    return [];
-  }
-}
-
-export default async function Home() {
-  const topJobs = await fetchFeaturedJobs();
+export default function Home() {
 
   return (
     <div className="bg-slate-900 min-h-screen">
@@ -117,26 +91,7 @@ export default async function Home() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {topJobs.length > 0 ? (
-              topJobs.map((job) => (
-                <div key={job.id} className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8 animate-fade-in hover:bg-white/10 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-white mb-2">{job.title}</h3>
-                  <p className="text-gray-400 mb-6">{job.department}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-blue-400 font-semibold">{job.salaryRange || "Competitive"}</span>
-                    <Link href={`/jobs/${job.id}`} className="bg-white text-slate-900 px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-                      View
-                    </Link>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="md:col-span-3 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8 text-center text-gray-400">
-                No featured roles available right now.
-              </div>
-            )}
-          </div>
+          <FeaturedJobs />
         </div>
       </section>
 
