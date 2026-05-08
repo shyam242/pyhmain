@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ServicesShowcase from "@/components/ServicesShowcase";
+import { query } from "@/lib/db";
 
 type JobSummary = {
   id: string;
@@ -11,9 +12,15 @@ type JobSummary = {
 
 async function fetchFeaturedJobs(): Promise<JobSummary[]> {
   try {
-    const response = await fetch("/api/jobs?limit=3", { next: { revalidate: 60 } });
-    if (!response.ok) return [];
-    return response.json();
+    const result = await query(
+      "SELECT id, title, department, salary_range as \"salaryRange\" FROM jobs ORDER BY posted_date DESC LIMIT 3"
+    );
+    return result.rows.map((row) => ({
+      id: row.id.toString(),
+      title: row.title,
+      department: row.department,
+      salaryRange: row.salaryRange || "Competitive",
+    }));
   } catch (error) {
     console.error("Error fetching featured jobs:", error);
     return [];
