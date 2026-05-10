@@ -64,19 +64,17 @@ export default function ContactPage() {
   };
 
   const glassInput =
-    "w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-white placeholder:text-gray-300 shadow-[0_8px_32px_rgba(31,38,135,0.15)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-white/40 transition-all duration-300";
+    "w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-3xl text-[#050B2C] placeholder:text-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300";
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#06142E] via-[#0B1F4D] to-[#09152B] flex items-center justify-center px-4 py-12">
-      
-      {/* Toast */}
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-gray-50 to-[#f6f1ec] flex items-center justify-center px-4 py-12">
       <Toaster
         position="top-right"
         toastOptions={{
           style: {
-            background: "#3a3a3a",
-            color: "#fff",
-            border: "1px solid rgba(255,255,255,0.1)",
+            background: "#ffffff",
+            color: "#050b2c",
+            border: "1px solid rgba(13, 41, 89, 0.08)",
             backdropFilter: "blur(12px)",
             padding: "14px 18px",
             borderRadius: "12px",
@@ -84,43 +82,59 @@ export default function ContactPage() {
         }}
       />
 
-      {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-0 right-0 w-[30rem] h-[30rem] bg-cyan-400/10 blur-3xl rounded-full"></div>
+      {/* Animated Background Elements */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-[#D9782D]/8 blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-[#7BC74D]/8 blur-3xl animate-pulse-slow" />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-[#D9782D]/5 blur-3xl animate-bounce-subtle" />
+      </div>
 
-      {/* Decorative Waves */}
-      <div className="absolute left-[-10%] top-20 h-[2px] w-[120%] rotate-6 bg-gradient-to-r from-transparent via-blue-400/40 to-transparent"></div>
-      <div className="absolute bottom-20 left-[-10%] h-[2px] w-[120%] -rotate-6 bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent"></div>
+      {/* Wave Animation SVG Background */}
+      <svg className="pointer-events-none absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1200 800">
+        <defs>
+          <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#D9782D" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#D9782D" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="waveGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#7BC74D" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#7BC74D" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M0,100 Q300,50 600,100 T1200,100 L1200,0 L0,0 Z" fill="url(#waveGradient1)" opacity="0.5">
+          <animate attributeName="d" dur="20s" repeatCount="indefinite"
+            values="M0,100 Q300,50 600,100 T1200,100 L1200,0 L0,0 Z;
+                    M0,50 Q300,100 600,50 T1200,50 L1200,0 L0,0 Z;
+                    M0,100 Q300,50 600,100 T1200,100 L1200,0 L0,0 Z" />
+        </path>
+        <path d="M0,200 Q300,150 600,200 T1200,200 L1200,800 L0,800 Z" fill="url(#waveGradient2)" opacity="0.3">
+          <animate attributeName="d" dur="25s" repeatCount="indefinite"
+            values="M0,200 Q300,150 600,200 T1200,200 L1200,800 L0,800 Z;
+                    M0,150 Q300,200 600,150 T1200,150 L1200,800 L0,800 Z;
+                    M0,200 Q300,150 600,200 T1200,200 L1200,800 L0,800 Z" />
+        </path>
+      </svg>
 
       {/* Main Card */}
       <div className="relative z-10 w-full max-w-3xl animate-fade-in">
-        <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 backdrop-blur-2xl shadow-[0_8px_32px_rgba(31,38,135,0.25)] p-8 md:p-12">
+        <div className="relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-[0_20px_80px_rgba(5,11,44,0.08)] p-8 md:p-12">
 
-          {/* Shine */}
-          <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent"></div>
+          {/* Shine Effect */}
+          <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br from-white to-transparent opacity-60" />
 
           {/* Heading */}
-          <div className="mb-10 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white">
-              Contact Us
-            </h1>
-
-            <p className="mt-3 text-gray-300">
-              Let’s build something amazing together.
-            </p>
+          <div className="mb-10 text-center relative z-10">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Contact Us</h1>
+            <p className="mt-3 text-gray-600">Let's build something amazing together.</p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
 
             {/* Name + Email */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
               <div>
-                <label className="mb-2 block font-medium text-white">
-                  Full Name
-                </label>
-
+                <label className="mb-2 block font-medium text-[#050B2C]">Full Name</label>
                 <input
                   type="text"
                   name="name"
@@ -133,10 +147,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="mb-2 block font-medium text-white">
-                  Email
-                </label>
-
+                <label className="mb-2 block font-medium text-[#050B2C]">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -151,113 +162,49 @@ export default function ContactPage() {
 
             {/* Service + Phone */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
               {/* Service */}
               <div>
-                <label className="mb-2 block font-medium text-white">
-                  Service Interested In
-                </label>
-
+                <label className="mb-2 block font-medium text-[#050B2C]">Service Interested In</label>
                 <select
-  name="subject"
-  value={formData.subject}
-  onChange={handleChange}
-  required
-  className="
-    w-full
-    px-4
-    py-3
-    rounded-xl
-    bg-white/10
-    backdrop-blur-xl
-    border
-    border-white/20
-    text-white
-    shadow-[0_8px_32px_rgba(31,38,135,0.15)]
-    focus:outline-none
-    focus:ring-2
-    focus:ring-blue-400/40
-    focus:border-white/40
-    appearance-none
-    cursor-pointer
-    transition-all
-    duration-300
-  "
->
-  <option
-    value=""
-    disabled
-    className="bg-[#2f2f2f] text-gray-300"
-  >
-    Choose a service
-  </option>
-  <option value="Talent" className="bg-[#2f2f2f] text-white">
-    Talent Pool
-  </option>
-
-  <option value="Demo" className="bg-[#2f2f2f] text-white">
-   Request Demo
-  </option>
-<option value="Partner" className="bg-[#2f2f2f] text-white">
-    Partner with Us
-  </option>
-  <option value="Other" className="bg-[#2f2f2f] text-white">
-    Other
-  </option>
-</select>
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-4 rounded-3xl bg-gray-50 border border-gray-200 text-[#050B2C] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300"
+                >
+                  <option value="" disabled>Choose a service</option>
+                  <option value="Talent">Talent Pool</option>
+                  <option value="Demo">Request Demo</option>
+                  <option value="Partner">Partner with Us</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
+
               <div>
-  <label className="mb-2 block font-medium text-white">
-    Phone Number
-  </label>
-
-  <div className="flex overflow-hidden rounded-xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(31,38,135,0.15)] focus-within:ring-2 focus-within:ring-blue-400/40 transition-all duration-300">
-
-    {/* Country Code Input */}
-    <input
-      type="text"
-      defaultValue="+91"
-      className="
-        w-14
-        border-r
-        border-white/10
-        bg-transparent
-        px-3
-        py-3
-        text-white
-        outline-none
-        placeholder:text-gray-300
-      "
-    />
-
-    {/* Phone Number */}
-    <input
-      type="tel"
-      name="phone"
-      value={formData.phone}
-      onChange={handleChange}
-      className="
-        flex-1
-        bg-transparent
-        px-4
-        py-3
-        text-white
-        placeholder:text-gray-300
-        outline-none
-      "
-      placeholder="Enter phone number"
-    />
-  </div>
-</div>
+                <label className="mb-2 block font-medium text-[#050B2C]">Phone Number</label>
+                <div className="flex overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 shadow-sm focus-within:ring-2 focus-within:ring-[#D9782D]/20 transition duration-300">
+                  <input
+                    type="text"
+                    defaultValue="+91"
+                    className="w-16 border-r border-gray-200 bg-transparent px-3 py-4 text-[#050B2C] outline-none placeholder:text-gray-400"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="flex-1 bg-transparent px-4 py-4 text-[#050B2C] placeholder:text-gray-400 outline-none"
+                    placeholder="Enter phone number"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Message */}
             <div>
-              <label className="mb-2 block font-medium text-white">
+              <label className="mb-2 block font-medium text-[#050B2C]">
                 How can we help you?
-                <span className="ml-1 text-sm text-gray-400">
-                  (optional)
-                </span>
+                <span className="ml-1 text-sm text-gray-500">(optional)</span>
               </label>
 
               <textarea
@@ -269,7 +216,7 @@ export default function ContactPage() {
                 placeholder="Enter your message here"
               />
 
-              <div className="mt-2 text-sm text-gray-400">
+              <div className="mt-2 text-sm text-gray-500">
                 {formData.message.length}/1000 characters
               </div>
             </div>
@@ -279,10 +226,10 @@ export default function ContactPage() {
               type="submit"
               loading={loading}
               loadingText="Sending..."
-              className={`group w-full rounded-xl py-4 text-lg font-semibold transition-all duration-300 ${
+              className={`group w-full rounded-full py-4 text-lg font-semibold transition-all duration-300 ${
                 loading
-                  ? "cursor-not-allowed bg-gray-500"
-                  : "bg-gradient-to-r bg-blue-400 text-white hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]"
+                  ? "cursor-not-allowed bg-gray-400"
+                  : "bg-gradient-to-r from-[#D9782D] to-[#f49d59] text-white hover:shadow-lg hover:shadow-[#D9782D]/30"
               }`}
             >
               <span className="flex items-center justify-center gap-2">

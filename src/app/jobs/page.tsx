@@ -59,19 +59,21 @@ export default function JobsPage() {
   };
 
   return (
-    <div className="bg-slate-900 min-h-screen">
+    <div className="bg-white min-h-screen text-[#050B2C]">
       {/* Header Section */}
-      <section className="bg-gradient-to-b from-slate-950 to-slate-900 py-20 px-4 pt-32">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Explore Opportunities</h1>
-          <p className="text-xl text-gray-400">
-            Discover your next career opportunity from our featured positions
-          </p>
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100 py-24 px-4 pt-32">
+        <div className="absolute inset-x-0 top-12 opacity-40">
+          <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#D9782D]/20 blur-3xl animate-pulse-slow" />
+          <div className="absolute right-0 top-16 h-96 w-96 rounded-full bg-[#7BC74D]/15 blur-3xl animate-pulse-slow" />
+        </div>
+        <div className="relative max-w-7xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#050B2C] mb-4">Explore Opportunities</h1>
+          <p className="text-xl text-gray-600 max-w-3xl">Discover your next career opportunity from our featured positions.</p>
         </div>
       </section>
 
       {/* Search and Filter Section */}
-      <section className="bg-gradient-to-b from-slate-900  to-slate-800 py-8 px-4 border-b border-white/10">
+      <section className="bg-white py-8 px-4 border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-4">
             <input
@@ -79,14 +81,14 @@ export default function JobsPage() {
               placeholder="Search jobs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="px-4 py-3 bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40"
+              className="px-4 py-3 bg-slate-50 border border-gray-200 text-[#050B2C] placeholder:text-gray-400 rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30"
             />
           </div>
         </div>
       </section>
 
       {/* Jobs Listing */}
-      <section className="py-16 px-4 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -94,7 +96,7 @@ export default function JobsPage() {
             </div>
           ) : filteredJobs.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-400">No jobs found matching your filters.</p>
+              <p className="text-gray-500">No jobs found matching your filters.</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -102,44 +104,38 @@ export default function JobsPage() {
                 <Link
                   key={job._id}
                   href={`/jobs/${job._id}`}
-                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-6 cursor-pointer group hover:bg-white/10 transition animate-fade-in"
+                  className="group rounded-[1.75rem] border border-gray-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
                   <div className="mb-4">
-                    <h2 className="text-xl font-bold text-white mb-2">
-                      {job.title}
-                    </h2>
-                    <p className="text-sm text-gray-400">{job.department}</p>
+                    <h2 className="text-xl font-semibold text-[#050B2C] mb-2">{job.title}</h2>
+                    <p className="text-sm text-gray-500">{job.department}</p>
                   </div>
 
-                  <div className="mb-4 space-y-2">
-                    <div className="flex items-center gap-2 text-gray-300">
+                  <div className="mb-4 space-y-3">
+                    <div className="flex items-center gap-2 text-[#7BC74D]">
                       <span>📍</span>
-                      <span className="text-sm">{job.location}</span>
+                      <span className="text-sm text-[#050B2C]">{job.location}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-300">
+                    <div className="flex items-center gap-2 text-[#D9782D]">
                       <span>💼</span>
-                      <span className="text-sm">{job.jobType}</span>
+                      <span className="text-sm text-[#050B2C]">{job.jobType}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-300">
+                    <div className="flex items-center gap-2 text-[#050B2D]">
                       <span>💰</span>
-                      <span className="text-sm">{job.salaryRange}</span>
+                      <span className="text-sm text-[#050B2C]">{job.salaryRange}</span>
                     </div>
                   </div>
 
-                  <div className="mb-4 pt-4 border-t border-white/10">
-                    <p className="text-gray-400 text-sm line-clamp-2">{job.description}</p>
+                  <div className="mb-4 border-t border-gray-200 pt-4">
+                    <p className="text-gray-600 text-sm line-clamp-2">{job.description}</p>
                   </div>
 
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-500/30">
-                      {job.experience}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      Posted: {new Date(job.postedDate).toLocaleDateString()}
-                    </span>
+                  <div className="flex flex-col gap-3 mb-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+                    <span className="inline-flex items-center rounded-full bg-[#D9782D]/10 px-3 py-1 text-[#D9782D]">{job.experience}</span>
+                    <span className="text-gray-500">Posted: {new Date(job.postedDate).toLocaleDateString()}</span>
                   </div>
 
-                  <button className="w-full bg-white text-slate-900 py-2 rounded-lg font-semibold text-sm hover:bg-gray-100 transition">
+                  <button className="w-full rounded-full bg-[#D9782D] py-3 text-sm font-semibold text-white transition duration-300 group-hover:bg-[#f49d59]">
                     View Details
                   </button>
                 </Link>
@@ -150,30 +146,30 @@ export default function JobsPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-950 py-12 px-4 border-t border-white/10">
+      <section className="bg-white py-12 px-4 border-t border-gray-200">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-8">Why Choose PickYourHire?</h2>
+          <h2 className="text-3xl font-bold text-[#050B2C] mb-8">Why Choose PickYourHire?</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8">
-              <div className="text-4xl font-bold text-blue-400 mb-2">{jobs.length}+</div>
-              <p className="text-gray-400">Active Job Listings</p>
+            <div className="rounded-[1.75rem] border border-gray-200 bg-gray-50 p-8 shadow-sm">
+              <div className="text-4xl font-bold text-[#D9782D] mb-2">{jobs.length}+</div>
+              <p className="text-gray-600">Active Job Listings</p>
             </div>
-            <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8">
-              <div className="text-4xl font-bold text-blue-400 mb-2">100%</div>
-              <p className="text-gray-400">Verified Companies</p>
+            <div className="rounded-[1.75rem] border border-gray-200 bg-gray-50 p-8 shadow-sm">
+              <div className="text-4xl font-bold text-[#D9782D] mb-2">100%</div>
+              <p className="text-gray-600">Verified Companies</p>
             </div>
-            <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8">
-              <div className="text-4xl font-bold text-blue-400 mb-2">100+</div>
-              <p className="text-gray-400">Successful Placements</p>
+            <div className="rounded-[1.75rem] border border-gray-200 bg-gray-50 p-8 shadow-sm">
+              <div className="text-4xl font-bold text-[#D9782D] mb-2">100+</div>
+              <p className="text-gray-600">Successful Placements</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-slate-950 to-slate-900 py-14 px-4 border-t border-white/10">
+      <section className="bg-gray-50 py-14 px-4 border-t border-gray-200">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">More Opportunities Await</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+          <h2 className="text-3xl font-bold text-[#050B2C] mb-4">More Opportunities Await</h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
             Explore even more career paths and discover the latest roles on our extended network.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -181,13 +177,13 @@ export default function JobsPage() {
               href="https://pickyourhire.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 rounded-full bg-white/10 border border-white/15 text-white font-semibold hover:bg-white/15 transition"
+              className="inline-flex items-center justify-center rounded-full bg-[#D9782D] px-8 py-3 text-white font-semibold hover:bg-[#f49d59] transition"
             >
               Visit Our Other Website
             </a>
             <Link
               href="https://www.linkedin.com/company/pickyourhire/"
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-full font-semibold inline-block transition"
+              className="inline-flex items-center justify-center rounded-full border border-[#050B2C] bg-white px-8 py-3 text-[#050B2C] font-semibold hover:bg-gray-100 transition"
             >
               Browse All Jobs
             </Link>

@@ -172,16 +172,16 @@ export default function ServicesShowcase() {
   const [activeGroup, setActiveGroup] = useState(serviceGroups[0]);
 
   return (
-    <section id="services" className="py-32 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+    <section id="services" className="py-32 px-4 bg-gradient-to-b from-white via-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-blue-400 uppercase tracking-[0.35em] text-sm font-semibold mb-4">
+          <p className="text-[#D9782D] uppercase tracking-[0.35em] text-sm font-semibold mb-4">
             PickYourHire Services
           </p>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            One ecosystem. Three service pathways.
+          <h2 className="text-5xl md:text-6xl font-bold text-[#050B2C] mb-6">
+            One ecosystem with three service pathways.
           </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Explore candidate, recruiter, and referrer experiences with a service showcase designed to keep every interaction clear, fast, and outcome-focused.
           </p>
         </div>
@@ -194,8 +194,8 @@ export default function ServicesShowcase() {
               onClick={() => setActiveGroup(group)}
               className={`px-6 py-3 rounded-full transition font-semibold ${
                 activeGroup.key === group.key
-                  ? "bg-white text-slate-950 shadow-lg"
-                  : "bg-white/10 text-gray-300 border border-white/10 hover:bg-white/15"
+                  ? "bg-[#D9782D] text-white shadow-lg shadow-[#D9782D]/20"
+                  : "bg-white text-[#050B2C] border border-gray-200 hover:bg-gray-50"
               }`}
             >
               {group.label}
@@ -204,20 +204,20 @@ export default function ServicesShowcase() {
         </div>
 
         <div className="grid lg:grid-cols-[360px_1fr] gap-8 items-start">
-          <aside className="lg:sticky top-28 rounded-[2rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-xl p-10">
-            <h3 className="text-3xl font-bold text-white mb-5">
+          <aside className="lg:sticky top-28 rounded-[2rem] border border-gray-200 bg-white shadow-lg p-10">
+            <h3 className="text-3xl font-bold text-[#050B2C] mb-5">
               {activeGroup.headline}
             </h3>
-            <p className="text-gray-300 leading-relaxed mb-6">
+            <p className="text-gray-600 leading-relaxed mb-6">
               {activeGroup.intro}
             </p>
-            <p className="text-blue-300 font-semibold mb-8">
+            <p className="text-[#D9782D] font-semibold mb-8">
               {activeGroup.highlight}
             </p>
-            <ul className="space-y-4 text-gray-400">
+            <ul className="space-y-4 text-gray-600">
               {activeGroup.bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-3 items-start">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-blue-400" />
+                  <span className="mt-1 h-2 w-2 rounded-full bg-[#D9782D]" />
                   <span>{bullet}</span>
                 </li>
               ))}
@@ -225,26 +225,26 @@ export default function ServicesShowcase() {
           </aside>
 
           <div className="relative">
-            <div className="h-[760px] overflow-y-auto hide-scrollbar rounded-[2rem] border border-white/10 bg-slate-950/70 p-6 shadow-2xl">
+            <div className="h-[760px] overflow-y-auto hide-scrollbar rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg">
               <div className="space-y-6 pr-2">
                 {activeGroup.cards.map((card) => (
                   <article
                     key={card.title}
-                    className="group backdrop-blur-xl bg-white/5 border border-white/10 rounded-[2rem] p-8 transition hover:bg-white/10 animate-fade-in"
+                    className="group bg-gray-50 border border-gray-200 rounded-[2rem] p-8 transition hover:shadow-md animate-fade-in"
                   >
                     <div className="flex items-center justify-between gap-4 mb-4">
-                      <h4 className="text-2xl font-semibold text-white">
+                      <h4 className="text-2xl font-semibold text-[#050B2C]">
                         {card.title}
                       </h4>
-                      <span className="text-sm text-blue-300">Feature</span>
+                      <span className="text-sm text-[#D9782D] font-semibold">Feature</span>
                     </div>
-                    <p className="text-gray-300 mb-6 leading-relaxed">
+                    <p className="text-gray-600 mb-6 leading-relaxed">
                       {card.description}
                     </p>
-                    <ul className="grid gap-3 text-gray-400">
+                    <ul className="grid gap-3 text-gray-600">
                       {card.bullets.map((item) => (
                         <li key={item} className="flex gap-3 items-start">
-                          <span className="mt-1 h-2 w-2 rounded-full bg-blue-400" />
+                          <span className="mt-1 h-2 w-2 rounded-full bg-[#7BC74D]" />
                           <span>{item}</span>
                         </li>
                       ))}
