@@ -39,32 +39,32 @@ export default function FeaturedJobs() {
         [1, 2, 3].map((idx) => (
           <div
             key={idx}
-            className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8 animate-pulse"
+            className="backdrop-blur-md bg-gray-100 border border-gray-200 rounded-xl p-8 animate-pulse"
           >
-            <div className="h-6 bg-slate-700 rounded mb-4" />
-            <div className="h-4 bg-slate-700 rounded mb-2 w-3/4" />
-            <div className="h-4 bg-slate-700 rounded mb-6 w-1/2" />
-            <div className="h-10 bg-slate-700 rounded" />
+            <div className="h-6 bg-gray-300 rounded mb-4" />
+            <div className="h-4 bg-gray-300 rounded mb-2 w-3/4" />
+            <div className="h-4 bg-gray-300 rounded mb-6 w-1/2" />
+            <div className="h-10 bg-gray-300 rounded" />
           </div>
         ))
       ) : jobs.length > 0 ? (
         jobs.map((job) => (
           <div
             key={job.id}
-            className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8 animate-fade-in hover:bg-white/10 transition-all duration-300"
+            className="backdrop-blur-md bg-white border border-gray-200 rounded-xl p-8 animate-fade-in hover:shadow-md transition-all duration-300"
           >
-            <h3 className="text-xl font-bold text-white mb-2">{job.title}</h3>
-            <p className="text-gray-400 mb-6">{job.department}</p>
+            <h3 className="text-xl font-bold text-[#050B2C] mb-2">{job.title}</h3>
+            <p className="text-gray-600 mb-6">{job.department}</p>
             <div className="flex justify-between items-center">
-              <span className="text-blue-400 font-semibold">{job.salaryRange || "Competitive"}</span>
-              <Link href={`/jobs/${job.id}`} className="bg-white text-slate-900 px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+              <span className="text-[#D9782D] font-semibold">{job.salaryRange || "Competitive"}</span>
+              <Link href={`/jobs/${job.id}`} className="bg-[#D9782D] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#f49d59] transition-all duration-300">
                 View
               </Link>
             </div>
           </div>
         ))
       ) : (
-        <div className="md:col-span-3 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8 text-center text-gray-400">
+        <div className="md:col-span-3 backdrop-blur-md bg-white border border-gray-200 rounded-xl p-8 text-center text-gray-600">
           No featured roles available right now.
         </div>
       )}
