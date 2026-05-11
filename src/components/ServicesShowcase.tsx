@@ -299,8 +299,6 @@ export default function ServicesShowcase() {
               ))}
             </ul>
           </aside>
-
-          {/* Cards */}
           <div className="relative">
             <div
               className="h-[760px] overflow-y-auto hide-scrollbar rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg"
