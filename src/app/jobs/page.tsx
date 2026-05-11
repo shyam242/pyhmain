@@ -17,6 +17,32 @@ interface Job {
   postedDate: string;
 }
 
+const formatTimeAgo = (dateString: string) => {
+  const now = new Date();
+  const posted = new Date(dateString);
+  const diffMs = now.getTime() - posted.getTime();
+
+  if (isNaN(posted.getTime()) || diffMs < 0) {
+    return "Just now";
+  }
+
+  const minutes = Math.floor(diffMs / (1000 * 60));
+  if (minutes < 1) return "Just now";
+  if (minutes < 60) return `${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours} hour${hours === 1 ? "" : "s"} ago`;
+
+  const days = Math.floor(hours / 24);
+  if (days < 30) return `${days} day${days === 1 ? "" : "s"} ago`;
+
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months} month${months === 1 ? "" : "s"} ago`;
+
+  const years = Math.floor(months / 12);
+  return `${years} year${years === 1 ? "" : "s"} ago`;
+};
+
 export default function JobsPage() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
@@ -132,7 +158,7 @@ export default function JobsPage() {
 
                   <div className="flex flex-col gap-3 mb-4 text-sm sm:flex-row sm:items-center sm:justify-between">
                     <span className="inline-flex items-center rounded-full bg-[#D9782D]/10 px-3 py-1 text-[#D9782D]">{job.experience}</span>
-                    <span className="text-gray-500">Posted: {new Date(job.postedDate).toLocaleDateString()}</span>
+                    <span className="text-gray-500">Posted: {formatTimeAgo(job.postedDate)}</span>
                   </div>
 
                   <button className="w-full rounded-full bg-[#D9782D] py-3 text-sm font-semibold text-white transition duration-300 group-hover:bg-[#f49d59]">
