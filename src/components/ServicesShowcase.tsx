@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import LoadingButton from "@/components/LoadingButton";
 
 type ServiceCard = {
   title: string;
@@ -25,7 +27,8 @@ const serviceGroups: ServiceGroup[] = [
     headline: "Candidate Services",
     intro:
       "From opportunity discovery to interview readiness, PickYourHire helps candidates move faster with confidence.",
-    highlight: "Career growth powered by curated job access, tailored evaluation, and expert preparation.",
+    highlight:
+      "Career growth powered by curated job access, tailored evaluation, and expert preparation.",
     bullets: [
       "Curated roles matched to your skills and goals",
       "Technical and readiness scoring for better visibility",
@@ -170,22 +173,89 @@ const serviceGroups: ServiceGroup[] = [
 
 export default function ServicesShowcase() {
   const [activeGroup, setActiveGroup] = useState(serviceGroups[0]);
+  const [showMockInterviewForm, setShowMockInterviewForm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobileNo: "",
+    experience: "",
+    primarySkill: "",
+    focusAreas: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.mobileNo,
+          subject: "Mock Interview Query",
+          message: `Experience: ${formData.experience}\nPrimary Skill: ${formData.primarySkill}\nFocus Areas: ${formData.focusAreas}`,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Mock interview request submitted successfully!");
+        setFormData({ name: "", email: "", mobileNo: "", experience: "", primarySkill: "", focusAreas: "" });
+        setShowMockInterviewForm(false);
+      } else {
+        toast.error("Failed to submit request. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <section id="services" className="py-32 px-4 bg-gradient-to-b from-white via-gray-50 to-gray-100">
+    <section
+      id="services"
+      className="py-32 px-4 bg-gradient-to-b from-white via-gray-50 to-gray-100"
+    >
       <div className="max-w-7xl mx-auto">
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: "#ffffff",
+              color: "#050b2c",
+              border: "1px solid rgba(13, 41, 89, 0.08)",
+              backdropFilter: "blur(12px)",
+              padding: "14px 18px",
+              borderRadius: "12px",
+            },
+          }}
+        />
+        {/* Header */}
         <div className="text-center mb-12">
           <p className="text-[#D9782D] uppercase tracking-[0.35em] text-sm font-semibold mb-4">
             PickYourHire Services
           </p>
+
           <h2 className="text-5xl md:text-6xl font-bold text-[#050B2C] mb-6">
             One ecosystem with three service pathways.
           </h2>
+
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore candidate, recruiter, and referrer experiences with a service showcase designed to keep every interaction clear, fast, and outcome-focused.
+            Explore candidate, recruiter, and referrer experiences with a
+            service showcase designed to keep every interaction clear, fast,
+            and outcome-focused.
           </p>
         </div>
 
+        {/* Tabs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           {serviceGroups.map((group) => (
             <button
@@ -203,17 +273,22 @@ export default function ServicesShowcase() {
           ))}
         </div>
 
+        {/* Layout */}
         <div className="grid lg:grid-cols-[360px_1fr] gap-8 items-start">
+          {/* Sidebar */}
           <aside className="lg:sticky top-28 rounded-[2rem] border border-gray-200 bg-white shadow-lg p-10">
             <h3 className="text-3xl font-bold text-[#050B2C] mb-5">
               {activeGroup.headline}
             </h3>
+
             <p className="text-gray-600 leading-relaxed mb-6">
               {activeGroup.intro}
             </p>
+
             <p className="text-[#D9782D] font-semibold mb-8">
               {activeGroup.highlight}
             </p>
+
             <ul className="space-y-4 text-gray-600">
               {activeGroup.bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-3 items-start">
@@ -224,24 +299,33 @@ export default function ServicesShowcase() {
             </ul>
           </aside>
 
+          {/* Cards */}
           <div className="relative">
             <div className="h-[760px] overflow-y-auto hide-scrollbar rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg">
               <div className="space-y-6 pr-2">
                 {activeGroup.cards.map((card) => (
                   <article
                     key={card.title}
-                    className="group bg-gray-50 border border-gray-200 rounded-[2rem] p-8 transition hover:shadow-md animate-fade-in"
+                    className="group bg-gray-50 border border-gray-200 rounded-[2rem] p-8 transition hover:shadow-md"
                   >
+                    {/* Top */}
                     <div className="flex items-center justify-between gap-4 mb-4">
                       <h4 className="text-2xl font-semibold text-[#050B2C]">
                         {card.title}
                       </h4>
-                      <span className="text-sm text-[#D9782D] font-semibold">Feature</span>
+
+                      <span className="text-sm text-[#D9782D] font-semibold">
+                        Feature
+                      </span>
                     </div>
+
+                    {/* Description */}
                     <p className="text-gray-600 mb-6 leading-relaxed">
                       {card.description}
                     </p>
-                    <ul className="grid gap-3 text-gray-600">
+
+                    {/* Bullets */}
+                    <ul className="grid gap-3 text-gray-600 mb-6">
                       {card.bullets.map((item) => (
                         <li key={item} className="flex gap-3 items-start">
                           <span className="mt-1 h-2 w-2 rounded-full bg-[#7BC74D]" />
@@ -249,6 +333,16 @@ export default function ServicesShowcase() {
                         </li>
                       ))}
                     </ul>
+
+                    {/* Mock Interview Button */}
+                    {card.title === "Interview Preparation" && (
+                      <button
+                        onClick={() => setShowMockInterviewForm(true)}
+                        className="inline-flex items-center justify-center rounded-xl bg-[#D9782D] px-6 py-3 text-white font-semibold transition hover:bg-[#c96c25] shadow-lg shadow-[#D9782D]/20"
+                      >
+                        Book Mock Interview
+                      </button>
+                    )}
                   </article>
                 ))}
               </div>
@@ -256,6 +350,127 @@ export default function ServicesShowcase() {
           </div>
         </div>
       </div>
+
+      {showMockInterviewForm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="relative bg-white rounded-[2rem] border border-gray-200 shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setShowMockInterviewForm(false)}
+              className="absolute right-6 top-6 text-gray-400 hover:text-[#050B2C] transition text-3xl font-bold"
+              aria-label="Close mock interview form"
+            >
+              ×
+            </button>
+
+            <div className="p-8 md:p-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#050B2C] mb-2">Request Mock Interview</h2>
+              <p className="text-gray-600 mb-8">Fill in your details and let our PYH panel prepare you for success.</p>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="mb-2 block font-medium text-[#050B2C]">Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-3xl text-[#050B2C] placeholder:text-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block font-medium text-[#050B2C]">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-3xl text-[#050B2C] placeholder:text-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="mb-2 block font-medium text-[#050B2C]">Mobile Number</label>
+                    <input
+                      type="tel"
+                      name="mobileNo"
+                      value={formData.mobileNo}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-3xl text-[#050B2C] placeholder:text-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300"
+                      placeholder="Enter mobile number"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block font-medium text-[#050B2C]">Experience Level</label>
+                    <select
+                      name="experience"
+                      value={formData.experience}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-3xl text-[#050B2C] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300"
+                    >
+                      <option value="" disabled>
+                        Select experience level
+                      </option>
+                      <option value="Fresher">Fresher (0 years)</option>
+                      <option value="1-2 years">1-2 years</option>
+                      <option value="2-5 years">2-5 years</option>
+                      <option value="5-10 years">5-10 years</option>
+                      <option value="10+ years">10+ years</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="mb-2 block font-medium text-[#050B2C]">Primary Skill / Role</label>
+                  <input
+                    type="text"
+                    name="primarySkill"
+                    value={formData.primarySkill}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-3xl text-[#050B2C] placeholder:text-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300"
+                    placeholder="e.g., React, Python, Product Management"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-2 block font-medium text-[#050B2C]">Areas for PYH Panel to Focus</label>
+                  <textarea
+                    name="focusAreas"
+                    value={formData.focusAreas}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-3xl text-[#050B2C] placeholder:text-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D9782D]/20 focus:border-[#D9782D]/30 transition duration-300 resize-none"
+                    placeholder="e.g., System design, behavioral questions, technical depth in algorithms, etc."
+                  />
+                </div>
+
+                <LoadingButton
+                  type="submit"
+                  loading={loading}
+                  loadingText="Submitting..."
+                  className={`w-full rounded-full py-4 text-lg font-semibold transition-all duration-300 ${
+                    loading
+                      ? "cursor-not-allowed bg-gray-400"
+                      : "bg-gradient-to-r from-[#D9782D] to-[#f49d59] text-white hover:shadow-lg hover:shadow-[#D9782D]/30"
+                  }`}
+                >
+                  Request Mock Interview
+                </LoadingButton>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -13,6 +13,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+      console.error("EMAIL_USER or EMAIL_PASSWORD not set");
+      return NextResponse.json(
+        { error: "Email configuration error" },
+        { status: 500 }
+      );
+    }
+
     // Configure Nodemailer transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -23,6 +32,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Email to admin
+    // This email is sent to shyamkumar997755@gmail.com for all contact form and mock interview submissions
     const adminMailOptions = {
       from: process.env.EMAIL_USER,
       to: "shyamkumar997755@gmail.com",
@@ -37,6 +47,8 @@ export async function POST(request: NextRequest) {
         <p>${message.replace(/\n/g, "<br>")}</p>
       `,
     };
+
+    console.log("Admin email options:", adminMailOptions);
 
     // Email to user (confirmation)
     const userMailOptions = {
@@ -58,8 +70,13 @@ export async function POST(request: NextRequest) {
     };
 
     // Send both emails
+    console.log("Sending admin email to:", adminMailOptions.to);
     await transporter.sendMail(adminMailOptions);
+    console.log("Admin email sent successfully");
+
+    console.log("Sending user confirmation email to:", userMailOptions.to);
     await transporter.sendMail(userMailOptions);
+    console.log("User email sent successfully");
 
     return NextResponse.json(
       { message: "Email sent successfully" },
@@ -67,6 +84,7 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Email sending error:", error);
+    console.error("Error details:", error.message);
     return NextResponse.json(
       { error: "Failed to send email" },
       { status: 500 }
