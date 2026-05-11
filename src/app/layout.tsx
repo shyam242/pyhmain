@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col pt-20 bg-white text-[#050B2C]">
+      <body className="min-h-full flex flex-col pt-20 bg-white text-[#050B2C] scroll-smooth">
         <PageProgressBar />
         <Navbar />
         <main className="flex-1 bg-white">{children}</main>

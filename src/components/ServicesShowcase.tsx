@@ -175,6 +175,7 @@ export default function ServicesShowcase() {
   const [activeGroup, setActiveGroup] = useState(serviceGroups[0]);
   const [showMockInterviewForm, setShowMockInterviewForm] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -301,7 +302,10 @@ export default function ServicesShowcase() {
 
           {/* Cards */}
           <div className="relative">
-            <div className="h-[760px] overflow-y-auto hide-scrollbar rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg">
+            <div
+              className="h-[760px] overflow-y-auto hide-scrollbar rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg"
+              style={{ overscrollBehavior: "auto" }}
+            >
               <div className="space-y-6 pr-2">
                 {activeGroup.cards.map((card) => (
                   <article
