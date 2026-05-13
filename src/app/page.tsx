@@ -14,7 +14,7 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h1 className="text-7xl md:text-8xl font-bold text-[#050B2C] mb-8 leading-tight">
-            Where Tech Meets <span className="text-[#D9782D]">Talent</span>
+           Because the Right Hire Changes <span className="text-[#D9782D]">Everything</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
             Connecting exceptional tech professionals with innovative companies worldwide. Discover your next opportunity or build your dream team.
