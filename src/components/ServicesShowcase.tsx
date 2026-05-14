@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, type ChangeEvent, type FormEvent } from "react";
+import { useState, Suspense, type ChangeEvent, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingButton from "@/components/LoadingButton";
@@ -172,19 +172,16 @@ const serviceGroups: ServiceGroup[] = [
   },
 ];
 
-export default function ServicesShowcase() {
-  const [activeGroup, setActiveGroup] = useState(serviceGroups[0]);
+// Reads ?tab= on first render and sets the active group immediately
+function ServicesInner() {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const initialGroup =
+    serviceGroups.find((g) => g.key === tabParam) ?? serviceGroups[0];
+
+  const [activeGroup, setActiveGroup] = useState(initialGroup);
   const [showMockInterviewForm, setShowMockInterviewForm] = useState(false);
   const [loading, setLoading] = useState(false);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const tab = searchParams.get("tab");
-    if (tab) {
-      const matched = serviceGroups.find((g) => g.key === tab);
-      if (matched) setActiveGroup(matched);
-    }
-  }, [searchParams]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -484,5 +481,13 @@ export default function ServicesShowcase() {
         </div>
       )}
     </section>
+  );
+}
+
+export default function ServicesShowcase() {
+  return (
+    <Suspense fallback={null}>
+      <ServicesInner />
+    </Suspense>
   );
 }
