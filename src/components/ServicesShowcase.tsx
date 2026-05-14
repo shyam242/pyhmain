@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, useEffect, type ChangeEvent, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingButton from "@/components/LoadingButton";
 
@@ -175,6 +176,15 @@ export default function ServicesShowcase() {
   const [activeGroup, setActiveGroup] = useState(serviceGroups[0]);
   const [showMockInterviewForm, setShowMockInterviewForm] = useState(false);
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab) {
+      const matched = serviceGroups.find((g) => g.key === tab);
+      if (matched) setActiveGroup(matched);
+    }
+  }, [searchParams]);
 
   const [formData, setFormData] = useState({
     name: "",

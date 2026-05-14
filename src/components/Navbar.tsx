@@ -11,17 +11,13 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl">
-      
-      {/* Glass Navbar */}
       <div className="backdrop-blur-xl bg-white/90 border border-gray-200 shadow-lg rounded-2xl px-6 py-4 flex items-center justify-between">
-
-        {/* Logo */}
         <Link href="/">
           <h1 className="font-bold text-xl text-[#050B2C]">PICKYOURHIRE</h1>
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-[#050B2C] font-medium relative">
-          <Link href="/referrer">Be a Referrer</Link>
+          <Link href="/?tab=referrer#services">Be a Referrer</Link>
 
           <div
             className="relative"
