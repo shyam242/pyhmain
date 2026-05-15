@@ -4,6 +4,7 @@ import { useState, Suspense, type ChangeEvent, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingButton from "@/components/LoadingButton";
+import ReferrerForm from "@/components/ReferrerForm";
 
 type ServiceCard = {
   title: string;
@@ -181,6 +182,7 @@ function ServicesInner() {
 
   const [activeGroup, setActiveGroup] = useState(initialGroup);
   const [showMockInterviewForm, setShowMockInterviewForm] = useState(false);
+  const [showReferrerForm, setShowReferrerForm] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -354,6 +356,24 @@ function ServicesInner() {
                     )}
                   </article>
                 ))}
+
+                {activeGroup.key === "referrer" && (
+                  <article className="bg-white border border-gray-200 rounded-[2rem] p-8 text-center shadow-sm">
+                    <h3 className="text-3xl font-bold text-[#050B2C] mb-4">
+                      Become a Referrer
+                    </h3>
+                    <p className="text-gray-600 mb-6">
+                      Share your details and join our referral network. We’ll reach out with the next steps.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setShowReferrerForm(true)}
+                      className="inline-flex items-center justify-center rounded-xl bg-[#D9782D] px-8 py-3 text-white font-semibold transition hover:bg-[#c96c25] shadow-lg shadow-[#D9782D]/20"
+                    >
+                      Be a Referrer
+                    </button>
+                  </article>
+                )}
               </div>
             </div>
           </div>
@@ -470,12 +490,34 @@ function ServicesInner() {
                   className={`w-full rounded-full py-4 text-lg font-semibold transition-all duration-300 ${
                     loading
                       ? "cursor-not-allowed bg-gray-400"
-                      : "bg-gradient-to-r from-[#D9782D] to-[#f49d59] text-white hover:shadow-lg hover:shadow-[#D9782D]/30"
+                      : "bg-linear-to-r from-[#D9782D] to-[#f49d59] text-white hover:shadow-lg hover:shadow-[#D9782D]/30"
                   }`}
                 >
                   Request Mock Interview
                 </LoadingButton>
               </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showReferrerForm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="relative bg-white rounded-[2rem] border border-gray-200 shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setShowReferrerForm(false)}
+              className="absolute right-6 top-6 text-gray-400 hover:text-[#050B2C] transition text-3xl font-bold"
+              aria-label="Close referrer form"
+            >
+              ×
+            </button>
+
+            <div className="p-8 md:p-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#050B2C] mb-2">Be a Referrer</h2>
+              <p className="text-gray-600 mb-8">
+                Share your details with us and join the PickYourHire referral program.
+              </p>
+              <ReferrerForm onSuccessAction={() => setShowReferrerForm(false)} />
             </div>
           </div>
         </div>

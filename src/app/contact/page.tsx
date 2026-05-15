@@ -127,8 +127,6 @@ export default function ContactPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Contact Us</h1>
             <p className="mt-3 text-gray-600">Let's build something amazing together.</p>
           </div>
-
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
 
             {/* Name + Email */}
@@ -199,8 +197,6 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-
-            {/* Message */}
             <div>
               <label className="mb-2 block font-medium text-[#050B2C]">
                 How can we help you?
