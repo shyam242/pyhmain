@@ -139,15 +139,15 @@ export default function JobsPage() {
 
                   <div className="mb-4 space-y-3">
                     <div className="flex items-center gap-2 text-[#7BC74D]">
-                      <span>📍</span>
+                      <span></span>
                       <span className="text-sm text-[#050B2C]">{job.location}</span>
                     </div>
                     <div className="flex items-center gap-2 text-[#D9782D]">
-                      <span>💼</span>
+                      <span></span>
                       <span className="text-sm text-[#050B2C]">{job.jobType}</span>
                     </div>
                     <div className="flex items-center gap-2 text-[#050B2D]">
-                      <span>💰</span>
+                      <span></span>
                       <span className="text-sm text-[#050B2C]">{job.salaryRange}</span>
                     </div>
                   </div>
@@ -200,7 +200,7 @@ export default function JobsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://pickyourhire.com"
+              href="https://portal.pickyourhire.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-[#D9782D] px-8 py-3 text-white font-semibold hover:bg-[#f49d59] transition"
