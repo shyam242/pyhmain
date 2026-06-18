@@ -17,7 +17,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-[#050B2C] font-medium relative">
-          <Link href="/referrer">Be a Referrer</Link>
+          <Link href="https://portal.pickyourhire.com">Be a Referrer</Link>
 
           <div
             className="relative"
