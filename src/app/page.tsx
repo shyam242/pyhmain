@@ -125,24 +125,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 2 — JD↔CV Match */}
-              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <div className="p-6 pb-4">
-                  <p className="text-xs font-semibold text-[#D9782D] uppercase tracking-widest mb-1">JD ↔ CV Match — AI Feature</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">Paste a JD, filter candidates, and get AI-powered scoring across 7 dimensions with matched skills, missing skills, shortlist reasoning, and concerns.</p>
-                </div>
-                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
-                  <Image
-                    src="/ss-jd-cv-results.png"
-                    alt="JD CV Match AI Results"
-                    width={900}
-                    height={480}
-                    className="w-full h-auto object-top"
-                    style={{ display: 'block' }}
-                  />
-                </div>
-              </div>
-
               {/* Card 3 — Search by Project */}
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-6 pb-4">
