@@ -9,23 +9,23 @@ function ReferrerDialog({ onClose }: { onClose: () => void }) {
       className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="relative bg-white rounded-[2rem] border border-gray-200 shadow-2xl max-w-lg w-full overflow-hidden">
+      <div className="relative bg-white rounded-2xl border border-gray-200 shadow-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto">
         {/* Orange accent top bar */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-[#D9782D] to-[#f49d59]" />
+        <div className="h-1 w-full bg-gradient-to-r from-[#D9782D] to-[#f49d59] sticky top-0 z-10" />
 
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 text-gray-400 hover:text-[#050B2C] transition text-3xl font-bold leading-none"
+          className="absolute right-4 top-4 text-gray-400 hover:text-[#050B2C] transition text-2xl font-bold leading-none z-10"
           aria-label="Close"
         >
           ×
         </button>
 
-        <div className="p-8 md:p-10">
+        <div className="p-6">
           {/* Icon + header */}
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl bg-[#D9782D]/10 flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-8 h-8 rounded-lg bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                 <circle cx="9" cy="7" r="4"/>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -35,13 +35,13 @@ function ReferrerDialog({ onClose }: { onClose: () => void }) {
             <span className="text-xs font-semibold text-[#D9782D] uppercase tracking-[0.25em]">Referrer Program</span>
           </div>
 
-          <h2 className="text-3xl font-bold text-[#050B2C] mb-2 mt-1">Become a PickYourHire Referrer</h2>
-          <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+          <h2 className="text-2xl font-bold text-[#050B2C] mb-1">Become a PickYourHire Referrer</h2>
+          <p className="text-gray-500 text-sm mb-5 leading-relaxed">
             Turn your professional network into meaningful opportunities — for candidates you believe in and for yourself.
           </p>
 
           {/* Benefits grid */}
-          <div className="grid grid-cols-1 gap-4 mb-8">
+          <div className="grid grid-cols-1 gap-3 mb-5">
             {[
               {
                 icon: (
@@ -80,13 +80,13 @@ function ReferrerDialog({ onClose }: { onClose: () => void }) {
                 desc: "Work with a dedicated team that supports you with structured workflows and clear payout milestones.",
               },
             ].map((benefit) => (
-              <div key={benefit.title} className="flex gap-4 items-start bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                <div className="mt-0.5 w-8 h-8 rounded-lg bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0">
+              <div key={benefit.title} className="flex gap-3 items-start bg-gray-50 rounded-xl p-3 border border-gray-100">
+                <div className="w-7 h-7 rounded-lg bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   {benefit.icon}
                 </div>
                 <div>
                   <p className="font-semibold text-[#050B2C] text-sm">{benefit.title}</p>
-                  <p className="text-gray-500 text-sm leading-relaxed mt-0.5">{benefit.desc}</p>
+                  <p className="text-gray-500 text-xs leading-relaxed mt-0.5">{benefit.desc}</p>
                 </div>
               </div>
             ))}
@@ -97,15 +97,15 @@ function ReferrerDialog({ onClose }: { onClose: () => void }) {
             href="https://portal.pickyourhire.com/signin"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold py-4 rounded-xl transition-colors duration-200 shadow-lg shadow-[#D9782D]/20 text-base"
+            className="flex items-center justify-center gap-2 w-full bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold py-3 rounded-xl transition-colors duration-200 shadow-md shadow-[#D9782D]/20 text-sm"
           >
             Register Here
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
 
-          <p className="text-center text-gray-400 text-xs mt-4">
+          <p className="text-center text-gray-400 text-xs mt-3">
             Already registered?{" "}
             <a href="https://portal.pickyourhire.com/signin" target="_blank" rel="noopener noreferrer" className="text-[#D9782D] hover:underline font-medium">
               Sign in to your portal
