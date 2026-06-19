@@ -81,122 +81,104 @@ export default function Home() {
       <section className="py-24 px-4 bg-[#f8f9fb] border-t border-gray-100">
         <div className="max-w-7xl mx-auto">
 
-          {/* Header */}
-          <div className="text-center mb-20">
-            <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] mb-4">Our Products & Platform</p>
-            <h2 className="text-5xl md:text-6xl font-bold text-[#050B2C]">One platform, end-to-end hiring</h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-              From AI-powered candidate matching to referral management — PickYourHire&apos;s suite covers every stage of the hiring lifecycle.
-            </p>
-          </div>
+          {/* Sticky-left + scrolling-right layout */}
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
 
-          {/* Product 1 — Recruiter Dashboard */}
-          <div className="rounded-[2rem] bg-white border border-gray-200 shadow-sm overflow-hidden mb-8">
-            <div className="grid lg:grid-cols-2">
-              <div className="p-10 md:p-14 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 bg-gray-100 rounded-full px-4 py-1.5 text-xs font-semibold text-[#050B2C] mb-6 uppercase tracking-widest w-fit">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block" />
-                  Recruiter Portal
-                </div>
-                <h3 className="text-3xl font-bold text-[#050B2C] mb-4">Recruiter Dashboard</h3>
-                <p className="text-gray-500 leading-relaxed mb-8">
-                  A complete hiring command centre. See all candidates, track shortlisted profiles, monitor on-hold and rejected statuses, and jump into recent activity — all at a glance.
-                </p>
-                <ul className="space-y-3 text-sm text-gray-600 mb-10">
-                  {["293+ candidates tracked in one view","Shortlisted, On Hold & Rejected pipeline","Recent candidate activity feed","Direct access to JD ↔ CV Match AI"].map(f => (
-                    <li key={f} className="flex items-center gap-3">
-                      <span className="w-5 h-5 rounded-full bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0"><span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" /></span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <a href="https://portal.pickyourhire.com/signin" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-6 py-3 rounded-xl transition-colors w-fit shadow-md shadow-[#D9782D]/20">
-                  Open Recruiter Portal
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-              <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden min-h-[380px]">
-                <Image src="/ss-recruiter-dashboard.png" alt="PickYourHire Recruiter Dashboard" fill className="object-cover object-left-top" />
-              </div>
-            </div>
-          </div>
-
-          {/* Product 2 — JD↔CV Match */}
-          <div className="rounded-[2rem] bg-white border border-gray-200 shadow-sm overflow-hidden mb-8">
-            <div className="grid lg:grid-cols-2">
-              <div className="relative bg-gradient-to-br from-[#050B2C] to-[#0d1f50] overflow-hidden min-h-[400px] order-last lg:order-first">
-                <Image src="/ss-jd-cv-results.png" alt="JD CV Match AI Results" fill className="object-cover object-left-top opacity-90" />
-              </div>
-              <div className="p-10 md:p-14 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 bg-[#D9782D]/10 rounded-full px-4 py-1.5 text-xs font-semibold text-[#D9782D] mb-6 uppercase tracking-widest w-fit">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block" />
-                  AI Feature
-                </div>
-                <h3 className="text-3xl font-bold text-[#050B2C] mb-4">JD ↔ CV Match</h3>
-                <p className="text-gray-500 leading-relaxed mb-8">
-                  Paste a job description, set filters, and let AI score every candidate on 7 weighted dimensions — skills match, experience relevance, project quality, company background, stability, communication, and availability.
-                </p>
-                <ul className="space-y-3 text-sm text-gray-600 mb-10">
-                  {["Weighted AI scoring across 7 dimensions","Matched & missing skills highlighted","Why shortlist + concerns for each candidate","Bulk analysis across 28+ candidates at once"].map(f => (
-                    <li key={f} className="flex items-center gap-3">
-                      <span className="w-5 h-5 rounded-full bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0"><span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" /></span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <a href="https://portal.pickyourhire.com/signin" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-6 py-3 rounded-xl transition-colors w-fit shadow-md shadow-[#D9782D]/20">
-                  Try JD ↔ CV Match
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom row — 2 cards with screenshots */}
-          <div className="grid md:grid-cols-2 gap-8">
-
-            {/* Product 3 — Search by Project */}
-            <div className="rounded-[2rem] bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col">
-              <div className="relative overflow-hidden h-56">
-                <Image src="/ss-search-by-project.png" alt="Search Candidates by Project" fill className="object-cover object-top" />
-              </div>
-              <div className="p-8 flex flex-col flex-1">
-                <div className="inline-flex items-center gap-2 bg-gray-100 rounded-full px-3 py-1 text-xs font-semibold text-[#050B2C] mb-4 uppercase tracking-widest w-fit">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" />Smart Search
-                </div>
-                <h3 className="text-2xl font-bold text-[#050B2C] mb-3">Search by Project</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1">
-                  Find candidates based on real projects in their resumes — parsed by AI. Search &quot;Next.js&quot; and surface everyone who built with it, along with their project descriptions.
-                </p>
-                <a href="https://portal.pickyourhire.com/signin" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border-2 border-[#050B2C] text-[#050B2C] font-semibold px-5 py-2.5 rounded-xl hover:bg-gray-50 transition w-fit text-sm">
-                  Search Candidates
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
+            {/* LEFT — sticky panel */}
+            <div className="lg:w-[38%] lg:sticky lg:top-28 lg:self-start">
+              <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] text-xs mb-4">Our Products & Platform</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C] leading-tight mb-5">
+                Purpose-built tools for modern hiring
+              </h2>
+              <p className="text-gray-500 leading-relaxed mb-8">
+                Our products are designed to support recruiters, candidates, and referrers — helping organisations hire faster, smarter, and more transparently.
+              </p>
+              <a
+                href="https://portal.pickyourhire.com/signin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#050B2C] hover:bg-[#0d1f50] text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-md text-sm"
+              >
+                Get In Touch
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
 
-            {/* Product 4 — Candidate Dashboard */}
-            <div className="rounded-[2rem] bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col">
-              <div className="relative overflow-hidden h-56">
-                <Image src="/ss-candidate-dashboard.png" alt="Candidate Dashboard" fill className="object-cover object-top" />
-              </div>
-              <div className="p-8 flex flex-col flex-1">
-                <div className="inline-flex items-center gap-2 bg-[#D9782D]/10 rounded-full px-3 py-1 text-xs font-semibold text-[#D9782D] mb-4 uppercase tracking-widest w-fit">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" />For Candidates
+            {/* RIGHT — scrolling product cards */}
+            <div className="lg:w-[62%] flex flex-col gap-6">
+
+              {/* Card 1 — Recruiter Dashboard */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#050B2C] uppercase tracking-widest mb-1">Recruiter Dashboard</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">A complete hiring command centre — track all candidates, shortlists, pipeline statuses, and jump into AI match tools instantly.</p>
                 </div>
-                <h3 className="text-2xl font-bold text-[#050B2C] mb-3">Candidate Dashboard</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1">
-                  Build your verified profile, track open jobs, manage your skills, and monitor profile strength. Get matched to roles that suit your background — without mass-applying.
-                </p>
-                <a href="https://portal.pickyourhire.com/signin" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-5 py-2.5 rounded-xl transition w-fit text-sm shadow-md shadow-[#D9782D]/20">
-                  Create Your Profile
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-recruiter-dashboard.png"
+                    alt="PickYourHire Recruiter Dashboard"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
               </div>
+
+              {/* Card 2 — JD↔CV Match */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#D9782D] uppercase tracking-widest mb-1">JD ↔ CV Match — AI Feature</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Paste a JD, filter candidates, and get AI-powered scoring across 7 dimensions with matched skills, missing skills, shortlist reasoning, and concerns.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-jd-cv-results.png"
+                    alt="JD CV Match AI Results"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
+              {/* Card 3 — Search by Project */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#050B2C] uppercase tracking-widest mb-1">Search by Project</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Find candidates based on AI-parsed projects from their resumes. Search any technology and surface candidates who have actually built with it.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-search-by-project.png"
+                    alt="Search Candidates by Project"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
+              {/* Card 4 — Candidate Dashboard */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#D9782D] uppercase tracking-widest mb-1">Candidate Dashboard</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Build a verified profile, browse matched job openings, track your application status, and manage skills — all without mass-applying to irrelevant roles.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-candidate-dashboard.png"
+                    alt="Candidate Dashboard"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
