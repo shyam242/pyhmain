@@ -1,168 +1,275 @@
-"use client";
 import Link from "next/link";
-import { useState } from "react";
 import Image from "next/image";
+import ServicesShowcase from "@/components/ServicesShowcase";
+import FeaturedJobs from "@/components/FeaturedJobs";
 
-function ReferrerDialog({ onClose }: { onClose: () => void }) {
+export default function Home() {
   return (
-    <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-    >
-      <div className="relative bg-white rounded-2xl border border-gray-200 shadow-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto">
-        <div className="h-1 w-full bg-gradient-to-r from-[#D9782D] to-[#f49d59] sticky top-0 z-10" />
-        <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 hover:text-[#050B2C] transition text-2xl font-bold leading-none z-10">×</button>
-        <div className="p-6">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-8 h-8 rounded-lg bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-            </div>
-            <span className="text-xs font-semibold text-[#D9782D] uppercase tracking-[0.25em]">Referrer Program</span>
+    <div className="bg-white min-h-screen">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f8f9fb] to-gray-100 pt-36 pb-0 px-4">
+        {/* Subtle gradient orbs */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#D9782D] rounded-full blur-[200px] opacity-[0.06] pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-blue-400 rounded-full blur-[180px] opacity-[0.06] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10 text-center">
+          {/* AI badge */}
+          <div className="flex justify-center mb-6">
+            <span className="inline-flex items-center gap-2 bg-[#050B2C]/5 border border-[#050B2C]/10 text-[#050B2C] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block animate-pulse" />
+              AI-Powered Smart Referral Hiring
+            </span>
           </div>
-          <h2 className="text-2xl font-bold text-[#050B2C] mb-1">Become a PickYourHire Referrer</h2>
-          <p className="text-gray-500 text-sm mb-5 leading-relaxed">Turn your professional network into meaningful opportunities — for candidates you believe in and for yourself.</p>
-          <div className="grid grid-cols-1 gap-3 mb-5">
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#050B2C] mb-6 leading-tight">
+            Because the Right Hire<br />Changes <span className="text-[#D9782D]">Everything</span>
+          </h1>
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Connecting exceptional professionals with innovative companies through trusted referrals and AI-powered candidate matching.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+            <Link href="/jobs" className="bg-[#D9782D] text-white px-8 py-3.5 rounded-xl font-semibold inline-block hover:bg-[#c96c25] transition-colors shadow-lg shadow-[#D9782D]/20">
+              Browse Jobs
+            </Link>
+            <Link href="/contact" className="bg-white text-[#050B2C] border-2 border-[#050B2C]/15 px-8 py-3.5 rounded-xl font-semibold inline-block hover:bg-gray-50 hover:border-[#050B2C]/30 transition-colors">
+              For Companies
+            </Link>
+          </div>
+
+          {/* Dashboard hero image — fades into section below */}
+          <div className="relative mx-auto max-w-5xl">
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-gray-100 to-transparent z-10 pointer-events-none" />
+            <div className="rounded-t-2xl overflow-hidden border border-gray-200 shadow-2xl shadow-black/10">
+              <Image
+                src="/ss-recruiter-dashboard.png"
+                alt="PickYourHire Recruiter Dashboard"
+                width={1200}
+                height={600}
+                className="w-full h-auto block"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted companies */}
+      <section className="py-16 px-4 bg-gradient-to-r from-white via-gray-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-center text-gray-600 text-2xl font-semibold mb-10 tracking-wide">Trusted by the best companies worldwide</p>
+          <div className="backdrop-blur-md bg-white border border-gray-200 rounded-2xl p-12 overflow-hidden shadow-sm">
+            <div className="flex overflow-hidden gap-16">
+              <div className="flex gap-16 animate-scroll">
+                {["KPMG","Satiate Solutions","Meddbot","Coflux Sciences","Superprocure","M3S Support","Steps AI","Motion Matics","SEP","Manage my Lawsuits","Speed Engineering Solutions"].map((company, idx) => (
+                  <div key={idx} className="text-gray-700 font-bold text-2xl whitespace-nowrap min-w-max">{company}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries — 10 cards */}
+      <section className="py-24 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] mb-4">Industries We Cater</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Sector expertise that helps you hire faster</h2>
+            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">From high-growth tech to healthcare and retail, PickYourHire connects candidates with companies in the industries that matter most.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>, title: "Earn Referral Incentives", desc: "Get paid fixed payouts or percentage-based rewards when your referred candidates are successfully placed." },
-              { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>, title: "Full Visibility on Every Referral", desc: "Track submission status, interview progress, selection updates, and payout history in real time." },
-              { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>, title: "Access Exclusive Roles", desc: "Refer for confidential, niche, and leadership positions that never appear on public job boards." },
-              { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title: "Trusted Partner Ecosystem", desc: "Work with a dedicated team that supports you with structured workflows and clear payout milestones." },
-            ].map((b) => (
-              <div key={b.title} className="flex gap-3 items-start bg-gray-50 rounded-xl p-3 border border-gray-100">
-                <div className="w-7 h-7 rounded-lg bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0 mt-0.5">{b.icon}</div>
-                <div>
-                  <p className="font-semibold text-[#050B2C] text-sm">{b.title}</p>
-                  <p className="text-gray-500 text-xs leading-relaxed mt-0.5">{b.desc}</p>
+              { title: "IT / ITES Industry", desc: "Trusted talent for software, cloud, digital transformation, product engineering, and technology services.", icon: <><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></> },
+              { title: "Healthcare & Pharma", desc: "Skilled professionals for clinical operations, medical devices, biotech, pharma manufacturing, and healthcare IT.", icon: <><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></> },
+              { title: "Telecom / Semiconductor", desc: "Engineering and operations specialists for telecom, semiconductor design, embedded systems, and network infrastructure.", icon: <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></> },
+              { title: "FMCG & Retail", desc: "Hiring support across merchandising, sales, supply chain, retail operations, and customer experience functions.", icon: <><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></> },
+              { title: "Distribution & Logistics", desc: "Talent for supply chain, last-mile delivery, fleet management, warehouse operations, and distribution networks.", icon: <><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></> },
+              { title: "Retail Sales", desc: "Sales associates, store managers, visual merchandisers, and retail leaders who drive revenue and customer loyalty.", icon: <><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></> },
+              { title: "Marketing & Growth", desc: "Brand strategists, digital marketers, performance specialists, and growth leaders for consumer and B2B brands.", icon: <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 5.27 5.27l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></> },
+              { title: "B2B Sales", desc: "Account executives, enterprise sales managers, pre-sales consultants, and business development professionals.", icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></> },
+              { title: "Operations & Strategy", desc: "COOs, operations managers, process improvement leads, and project management professionals across sectors.", icon: <><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></> },
+              { title: "Warehouse Management", desc: "Warehouse supervisors, inventory managers, WMS operators, and fulfillment center leads for modern supply chains.", icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></> },
+            ].map(({ title, desc, icon }) => (
+              <div key={title} className="rounded-3xl bg-gray-50 border border-gray-200 p-8 shadow-sm hover:shadow-md hover:border-[#D9782D]/30 transition group">
+                <div className="w-10 h-10 rounded-xl bg-[#D9782D]/10 flex items-center justify-center mb-5 group-hover:bg-[#D9782D]/20 transition">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
                 </div>
+                <h3 className="text-xl font-semibold text-[#050B2C] mb-3">{title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">{desc}</p>
               </div>
             ))}
           </div>
-          <a href="https://portal.pickyourhire.com/signin" target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold py-3 rounded-xl transition-colors duration-200 shadow-md shadow-[#D9782D]/20 text-sm">
-            Register Here
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <p className="text-center text-gray-400 text-xs mt-3">
-            Already registered?{" "}
-            <a href="https://portal.pickyourhire.com/signin" target="_blank" rel="noopener noreferrer" className="text-[#D9782D] hover:underline font-medium">Sign in to your portal</a>
-          </p>
         </div>
-      </div>
-    </div>
-  );
-}
+      </section>
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [referrerDialogOpen, setReferrerDialogOpen] = useState(false);
-  const closeMobile = () => setMobileOpen(false);
+      <ServicesShowcase />
 
-  return (
-    <>
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl">
-        <div className="backdrop-blur-xl bg-white/90 border border-gray-200 shadow-lg rounded-2xl px-6 py-4 flex items-center justify-between">
+      {/* ===== PRODUCTS & PLATFORM SECTION ===== */}
+      <section className="py-24 px-4 bg-[#f8f9fb] border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
 
-          {/* Logo */}
-          <Link href="/">
-            <h1 className="font-bold text-xl tracking-tight">
-              <span className="text-[#050B2C]">PICK</span>
-              <span className="text-[#D9782D]">YOUR</span>
-              <span className="text-[#050B2C]">HIRE</span>
-            </h1>
-          </Link>
+          {/* Sticky-left + scrolling-right layout */}
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
 
-          {/* Desktop nav — all links aligned flat, no vertical shift */}
-          <nav className="hidden md:flex items-center gap-8 font-medium">
-            <button
-              onClick={() => setReferrerDialogOpen(true)}
-              className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200"
-            >
-              Be a Referrer
-            </button>
-
-            {/* Recruiter dropdown — padded bridge prevents gap-jump */}
-            <div
-              className="relative"
-              onMouseEnter={() => setOpen(true)}
-              onMouseLeave={() => setOpen(false)}
-            >
-              <button className="flex items-center gap-1 text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">
-                Recruiter
-                <Image
-                  src="/caret-down.svg"
-                  width={14}
-                  height={14}
-                  alt=""
-                  className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-                />
-              </button>
-              {/* Invisible bridge so mouse can travel from button to menu */}
-              {open && (
-                <div className="absolute top-full left-0 w-48 pt-3">
-                  <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                    <Link
-                      href="/talent-pool"
-                      className="block px-5 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
-                    >
-                      Talent Pool
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <Link href="/jobs" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Jobs</Link>
-            <Link href="/contact" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Contact</Link>
-          </nav>
-
-          {/* Right CTA — only "Get In Touch", no "Explore Opportunities" */}
-          <div className="flex items-center gap-3">
-            <Link href="/contact" className="hidden md:inline-block">
-              <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
-                Get In Touch
-              </button>
-            </Link>
-
-            <button
-              type="button"
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMobileOpen((p) => !p)}
-              className="md:hidden p-2 rounded-xl bg-gray-100 border border-gray-200"
-            >
-              {mobileOpen
-                ? <span className="text-xl text-[#050B2C] leading-none">×</span>
-                : <Image src="/hamburger.svg" width={22} height={22} alt="menu" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="md:hidden mt-3 rounded-3xl border border-gray-200 bg-white/95 shadow-2xl backdrop-blur-2xl p-5">
-            <div className="flex flex-col gap-2">
-              <button
-                onClick={() => { setReferrerDialogOpen(true); closeMobile(); }}
-                className="rounded-xl px-4 py-3 text-left text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 font-medium transition-colors"
+            {/* LEFT — sticky panel */}
+            <div className="lg:w-[38%] lg:sticky lg:top-28 lg:self-start">
+              <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] text-xs mb-4">Our Products & Platform</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#050B2C] leading-tight mb-5">
+                Purpose-built tools for modern hiring
+              </h2>
+              <p className="text-gray-500 leading-relaxed mb-8">
+                Our products are designed to support recruiters, candidates, and referrers — helping organisations hire faster, smarter, and more transparently.
+              </p>
+              <a
+                href="https://portal.pickyourhire.com/signin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#050B2C] hover:bg-[#0d1f50] text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-md text-sm"
               >
-                Be a Referrer
-              </button>
-              <Link href="/talent-pool" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Talent Pool</Link>
-              <Link href="/jobs" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Jobs</Link>
-              <Link href="/contact" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Contact</Link>
-              <Link href="/contact" onClick={closeMobile}
-                className="mt-1 inline-flex items-center justify-center rounded-xl bg-[#D9782D] px-4 py-2.5 text-white text-sm font-semibold hover:bg-[#c96c25] transition-colors">
                 Get In Touch
-              </Link>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            {/* RIGHT — scrolling product cards */}
+            <div className="lg:w-[62%] flex flex-col gap-6">
+
+              {/* Card 1 — Recruiter Dashboard */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#050B2C] uppercase tracking-widest mb-1">Recruiter Dashboard</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">A complete hiring command centre — track all candidates, shortlists, pipeline statuses, and jump into AI match tools instantly.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-recruiter-dashboard.png"
+                    alt="PickYourHire Recruiter Dashboard"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
+              {/* Card 2 — JD↔CV Match */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#D9782D] uppercase tracking-widest mb-1">JD ↔ CV Match — AI Feature</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Paste a JD, filter candidates, and get AI-powered scoring across 7 dimensions with matched skills, missing skills, shortlist reasoning, and concerns.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-jd-cv-results.png"
+                    alt="JD CV Match AI Results"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
+              {/* Card 3 — Search by Project */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#050B2C] uppercase tracking-widest mb-1">Search by Project</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Find candidates based on AI-parsed projects from their resumes. Search any technology and surface candidates who have actually built with it.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-search-by-project.png"
+                    alt="Search Candidates by Project"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
+              {/* Card 4 — Candidate Dashboard */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#D9782D] uppercase tracking-widest mb-1">Candidate Dashboard</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Build a verified profile, browse matched job openings, track your application status, and manage skills — all without mass-applying to irrelevant roles.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-candidate-dashboard.png"
+                    alt="Candidate Dashboard"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      </section>
+      {/* ===== END PRODUCTS SECTION ===== */}
 
-      {referrerDialogOpen && <ReferrerDialog onClose={() => setReferrerDialogOpen(false)} />}
-    </>
+      {/* FAQ */}
+      <section className="py-24 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] mb-4">Frequently asked questions</p>
+            <h2 className="text-4xl font-bold text-[#050B2C]">Everything you need to know</h2>
+          </div>
+          <div className="grid gap-12 md:grid-cols-2">
+            <div className="space-y-8">
+              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">What industries do you serve?</h3><p className="text-gray-600 leading-relaxed">We support organizations across IT, BFSI, Telecom, Manufacturing, Healthcare, E-commerce, Education, Retail, and Professional Services.</p></div>
+              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">How is PickYourHire different from traditional recruitment agencies?</h3><p className="text-gray-600 leading-relaxed">Traditional recruitment often focuses on volume. PickYourHire focuses on trusted referrals and curated profiles, ensuring clients receive fewer but more relevant candidates with better retention potential.</p></div>
+              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">Can referral-based hiring be used for confidential or leadership roles?</h3><p className="text-gray-600 leading-relaxed">Yes. Referral hiring is especially effective for confidential, niche, and senior-level positions, where trust and discretion are critical.</p></div>
+            </div>
+            <div className="space-y-8">
+              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">What is referral-based hiring at PickYourHire?</h3><p className="text-gray-600 leading-relaxed">Referral-based hiring means candidates are sourced through trusted professional networks, industry experts, and verified referrers — rather than mass job portals.</p></div>
+              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">Can startups and small businesses work with you?</h3><p className="text-gray-600 leading-relaxed">Absolutely. We work with startups, SMEs, and large enterprises, offering flexible hiring solutions based on business stage and budget.</p></div>
+              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">Do you provide a replacement guarantee?</h3><p className="text-gray-600 leading-relaxed">Yes. For permanent hiring, we offer a replacement guarantee period, the terms of which are defined in the engagement agreement.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Metrics */}
+      <section className="py-16 px-4 bg-gradient-to-r from-white via-gray-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-12 text-center">
+            <div className="backdrop-blur-md bg-white border border-gray-200 rounded-xl p-8 shadow-sm"><div className="text-5xl font-bold text-[#D9782D] mb-3">50+</div><p className="text-gray-600">Job Listings</p></div>
+            <div className="backdrop-blur-md bg-white border border-gray-200 rounded-xl p-8 shadow-sm"><div className="text-5xl font-bold text-[#D9782D] mb-3">100%</div><p className="text-gray-600">Verified Companies</p></div>
+            <div className="backdrop-blur-md bg-white border border-gray-200 rounded-xl p-8 shadow-sm"><div className="text-5xl font-bold text-[#D9782D] mb-3">500+</div><p className="text-gray-600">Successful Placements</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Jobs */}
+      <section className="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-16">
+            <div>
+              <p className="text-[#D9782D] font-semibold text-sm mb-2">FEATURED</p>
+              <h2 className="text-4xl font-bold text-[#050B2C]">New Opportunities</h2>
+            </div>
+            <Link href="/jobs" className="text-[#050B2C] font-semibold border-b-2 border-[#050B2C]">View All →</Link>
+          </div>
+          <FeaturedJobs />
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 px-4 bg-white border-t border-gray-200">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C] mb-6">Ready to get started?</h2>
+          <p className="text-xl text-gray-600 mb-12">Join thousands of professionals and companies on PickYourHire today.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/jobs" className="bg-[#D9782D] text-white px-8 py-4 rounded-lg font-semibold inline-block hover:bg-[#f49d59]">Browse Jobs</Link>
+            <Link href="/contact" className="bg-transparent text-[#050B2C] px-8 py-4 rounded-lg border-2 border-[#050B2C] font-semibold inline-block hover:bg-gray-100">Get In Touch</Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
