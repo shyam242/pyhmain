@@ -87,14 +87,28 @@ export default function JobsPage() {
   return (
     <div className="bg-white min-h-screen text-[#050B2C]">
       {/* Header Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100 py-24 px-4 pt-32">
-        <div className="absolute inset-x-0 top-12 opacity-40">
-          <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#D9782D]/20 blur-3xl animate-pulse-slow" />
-          <div className="absolute right-0 top-16 h-96 w-96 rounded-full bg-[#7BC74D]/15 blur-3xl animate-pulse-slow" />
-        </div>
-        <div className="relative max-w-7xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#050B2C] mb-4">Explore Opportunities</h1>
-          <p className="text-xl text-gray-600 max-w-3xl">Discover your next career opportunity from our featured positions.</p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#050B2C] via-[#0d1f50] to-[#1a1040] py-28 px-4 pt-36">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#D9782D] rounded-full blur-[160px] opacity-10 pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-700 rounded-full blur-[140px] opacity-10 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex-1">
+            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/70 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block" />
+              Open Positions
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">Explore <span className="text-[#D9782D]">Opportunities</span></h1>
+            <p className="text-lg text-white/60 max-w-xl mb-8">Discover your next career opportunity from our featured positions across industries and roles.</p>
+            <div className="flex flex-wrap gap-3">
+              <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Verified Companies</div>
+              <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Curated Roles</div>
+              <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Fast Response</div>
+            </div>
+          </div>
+          <div className="flex-shrink-0 hidden lg:block">
+            <div className="w-80 h-64 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 opacity-90">
+              <img src="/ss-candidate-dashboard.png" alt="Jobs Dashboard" className="w-full h-full object-cover object-top" />
+            </div>
+          </div>
         </div>
       </section>
 
