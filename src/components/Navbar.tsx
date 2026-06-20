@@ -11,11 +11,7 @@ function ReferrerDialog({ onClose }: { onClose: () => void }) {
     >
       <div className="relative bg-white rounded-2xl border border-gray-200 shadow-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto">
         <div className="h-1 w-full bg-gradient-to-r from-[#D9782D] to-[#f49d59] sticky top-0 z-10" />
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 text-gray-400 hover:text-[#050B2C] transition text-2xl font-bold leading-none z-10"
-          aria-label="Close"
-        >×</button>
+        <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 hover:text-[#050B2C] transition text-2xl font-bold leading-none z-10">×</button>
         <div className="p-6">
           <div className="flex items-center gap-2 mb-1">
             <div className="w-8 h-8 rounded-lg bg-[#D9782D]/10 flex items-center justify-center flex-shrink-0">
@@ -69,7 +65,8 @@ export default function Navbar() {
     <>
       <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl">
         <div className="backdrop-blur-xl bg-white/90 border border-gray-200 shadow-lg rounded-2xl px-6 py-4 flex items-center justify-between">
-          {/* Logo — PICK in navy, YOUR in orange, HIRE in navy */}
+
+          {/* Logo */}
           <Link href="/">
             <h1 className="font-bold text-xl tracking-tight">
               <span className="text-[#050B2C]">PICK</span>
@@ -78,25 +75,39 @@ export default function Navbar() {
             </h1>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8 font-medium relative">
+          {/* Desktop nav — all links aligned flat, no vertical shift */}
+          <nav className="hidden md:flex items-center gap-8 font-medium">
             <button
               onClick={() => setReferrerDialogOpen(true)}
-              className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200 font-medium"
-            >Be a Referrer</button>
+              className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200"
+            >
+              Be a Referrer
+            </button>
 
-            {/* Recruiter dropdown */}
-            <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-              <button className="flex items-center gap-1 text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200 pb-2">
+            {/* Recruiter dropdown — padded bridge prevents gap-jump */}
+            <div
+              className="relative"
+              onMouseEnter={() => setOpen(true)}
+              onMouseLeave={() => setOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">
                 Recruiter
-                <Image src="/caret-down.svg" width={16} height={16} alt="arrow"
-                  className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`} />
+                <Image
+                  src="/caret-down.svg"
+                  width={14}
+                  height={14}
+                  alt=""
+                  className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+                />
               </button>
+              {/* Invisible bridge so mouse can travel from button to menu */}
               {open && (
-                <div className="absolute top-full left-0 -mt-2 pt-2 w-48">
+                <div className="absolute top-full left-0 w-48 pt-3">
                   <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                    <Link href="/talent-pool"
-                      className="block px-5 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors">
+                    <Link
+                      href="/talent-pool"
+                      className="block px-5 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
+                    >
                       Talent Pool
                     </Link>
                   </div>
@@ -106,52 +117,45 @@ export default function Navbar() {
 
             <Link href="/jobs" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Jobs</Link>
             <Link href="/contact" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Contact</Link>
-          </div>
+          </nav>
 
-          {/* Right side */}
+          {/* Right CTA — only "Get In Touch", no "Explore Opportunities" */}
           <div className="flex items-center gap-3">
-            {/* Explore Opportunities — smaller, outlined */}
-            <Link href="/jobs" className="hidden md:inline-block">
-              <button className="text-[#D9782D] border border-[#D9782D] px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-[#D9782D]/5 transition-colors duration-200">
-                Explore Opportunities
-              </button>
-            </Link>
-            {/* Contact Us — smaller, filled */}
             <Link href="/contact" className="hidden md:inline-block">
-              <button className="bg-[#D9782D] text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
-                Contact Us
+              <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
+                Get In Touch
               </button>
             </Link>
 
             <button
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMobileOpen((prev) => !prev)}
-              className="md:hidden p-2 rounded-xl bg-gray-100 border border-gray-300"
+              onClick={() => setMobileOpen((p) => !p)}
+              className="md:hidden p-2 rounded-xl bg-gray-100 border border-gray-200"
             >
-              {mobileOpen ? <span className="text-2xl text-[#050B2C]">×</span>
-                : <Image src="/hamburger.svg" width={24} height={24} alt="menu" />}
+              {mobileOpen
+                ? <span className="text-xl text-[#050B2C] leading-none">×</span>
+                : <Image src="/hamburger.svg" width={22} height={22} alt="menu" />}
             </button>
           </div>
         </div>
 
+        {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden mt-3 rounded-3xl border border-gray-200 bg-white/95 shadow-2xl backdrop-blur-2xl p-5 text-[#050B2C]">
-            <div className="flex flex-col gap-3">
-              <button onClick={() => { setReferrerDialogOpen(true); closeMobile(); }}
-                className="block rounded-2xl px-4 py-3 text-left text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 font-medium transition-colors">
+          <div className="md:hidden mt-3 rounded-3xl border border-gray-200 bg-white/95 shadow-2xl backdrop-blur-2xl p-5">
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={() => { setReferrerDialogOpen(true); closeMobile(); }}
+                className="rounded-xl px-4 py-3 text-left text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 font-medium transition-colors"
+              >
                 Be a Referrer
               </button>
-              <Link href="/jobs" onClick={closeMobile} className="block rounded-2xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Jobs</Link>
-              <Link href="/contact" onClick={closeMobile} className="block rounded-2xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Contact</Link>
-              <div className="rounded-2xl border border-gray-300 overflow-hidden">
-                <Link href="/talent-pool" onClick={closeMobile} className="block px-4 py-3 bg-gray-50 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Talent Pool</Link>
-              </div>
-              <Link href="/jobs" onClick={closeMobile} className="inline-flex items-center justify-center rounded-2xl border border-[#D9782D] text-[#D9782D] px-4 py-2.5 text-sm font-semibold hover:bg-[#D9782D]/5 transition-colors">
-                Explore Opportunities
-              </Link>
-              <Link href="/contact" onClick={closeMobile} className="inline-flex items-center justify-center rounded-2xl bg-[#D9782D] px-4 py-2.5 text-white text-sm font-semibold hover:bg-[#c96c25] transition-colors">
-                Contact Us
+              <Link href="/talent-pool" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Talent Pool</Link>
+              <Link href="/jobs" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Jobs</Link>
+              <Link href="/contact" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">Contact</Link>
+              <Link href="/contact" onClick={closeMobile}
+                className="mt-1 inline-flex items-center justify-center rounded-xl bg-[#D9782D] px-4 py-2.5 text-white text-sm font-semibold hover:bg-[#c96c25] transition-colors">
+                Get In Touch
               </Link>
             </div>
           </div>
