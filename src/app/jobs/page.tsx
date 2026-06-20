@@ -87,32 +87,29 @@ export default function JobsPage() {
   return (
     <div className="bg-white min-h-screen text-[#050B2C]">
       {/* Header Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#050B2C] via-[#0d1f50] to-[#1a1040] py-28 px-4 pt-36">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#050B2C] via-[#0d1f50] to-[#1a1040] py-24 px-4 pt-36">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#D9782D] rounded-full blur-[160px] opacity-10 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-700 rounded-full blur-[140px] opacity-10 pointer-events-none" />
-        <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-          <div className="flex-1">
-            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/70 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block" />
-              Open Positions
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">Explore <span className="text-[#D9782D]">Opportunities</span></h1>
-            <p className="text-lg text-white/60 max-w-xl mb-8">Discover your next career opportunity from our featured positions across industries and roles.</p>
-            <div className="flex flex-wrap gap-3">
-              <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Verified Companies</div>
-              <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Curated Roles</div>
-              <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Fast Response</div>
-            </div>
-          </div>
-          <div className="flex-shrink-0 hidden lg:block">
-            <div className="w-80 h-64 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 opacity-90">
-              <img src="/ss-candidate-dashboard.png" alt="Jobs Dashboard" className="w-full h-full object-cover object-top" />
-            </div>
+        <div className="relative max-w-7xl mx-auto">
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/70 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block" />
+            Open Positions
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Explore <span className="text-[#D9782D]">Opportunities</span>
+          </h1>
+          <p className="text-lg text-white/60 max-w-xl mb-8">
+            Discover your next career opportunity from our featured positions across industries and roles.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Verified Companies</div>
+            <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Curated Roles</div>
+            <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-sm font-medium">✓ Fast Response</div>
           </div>
         </div>
       </section>
 
-      {/* Search and Filter Section */}
+            {/* Search and Filter Section */}
       <section className="bg-white py-8 px-4 border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-4">
