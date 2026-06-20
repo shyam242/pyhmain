@@ -254,7 +254,7 @@ function ServicesInner() {
             PickYourHire Services
           </p>
 
-          <h2 className="text-5xl md:text-6xl font-bold text-[#050B2C] mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C] mb-6">
             One ecosystem with three service pathways.
           </h2>
 
