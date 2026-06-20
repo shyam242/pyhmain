@@ -7,21 +7,31 @@ export default function Home() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-white via-gray-50 to-gray-100 py-24 px-4 pt-36 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-400 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <h1 className="text-7xl md:text-8xl font-bold text-[#050B2C] mb-8 leading-tight">
-            Because the Right Hire Changes <span className="text-[#D9782D]">Everything</span>
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#050B2C] via-[#0d1f50] to-[#1a1040] pt-36 pb-0 px-4">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#D9782D] rounded-full blur-[160px] opacity-15 pointer-events-none" />
+        <div className="absolute top-10 right-0 w-[400px] h-[400px] bg-purple-600 rounded-full blur-[160px] opacity-10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex justify-center mb-6">
+            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block animate-pulse" />
+              AI-Powered Smart Referral Hiring
+            </span>
+          </div>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-6 leading-tight">
+            Because the Right Hire<br />Changes <span className="text-[#D9782D]">Everything</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Connecting exceptional tech professionals with innovative companies worldwide. Discover your next opportunity or build your dream team.
+          <p className="text-lg text-white/60 max-w-2xl mx-auto text-center mb-10 leading-relaxed">
+            Connecting exceptional professionals with innovative companies through trusted referrals and AI-powered candidate matching.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/jobs" className="bg-[#D9782D] text-white px-8 py-4 rounded-lg font-semibold inline-block hover:bg-[#f49d59]">Browse Jobs</Link>
-            <Link href="/contact" className="bg-transparent text-[#050B2C] px-8 py-4 rounded-lg border-2 border-[#050B2C] font-semibold inline-block hover:bg-gray-100">For Companies</Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+            <Link href="/jobs" className="bg-[#D9782D] text-white px-8 py-3.5 rounded-xl font-semibold inline-block hover:bg-[#c96c25] transition-colors shadow-lg shadow-[#D9782D]/30">Browse Jobs</Link>
+            <Link href="/contact" className="bg-white/10 text-white border border-white/20 px-8 py-3.5 rounded-xl font-semibold inline-block hover:bg-white/20 transition-colors backdrop-blur-sm">For Companies</Link>
+          </div>
+          <div className="relative mx-auto max-w-5xl">
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+            <div className="rounded-t-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40">
+              <Image src="/ss-recruiter-dashboard.png" alt="PickYourHire Recruiter Dashboard" width={1200} height={600} className="w-full h-auto block" priority />
+            </div>
           </div>
         </div>
       </section>
@@ -29,7 +39,7 @@ export default function Home() {
       {/* Trusted companies */}
       <section className="py-16 px-4 bg-gradient-to-r from-white via-gray-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <p className="text-center text-gray-600 text-[35px] font-semibold mb-16 tracking-wide">Trusted by the best companies worldwide</p>
+          <p className="text-center text-gray-600 text-2xl font-semibold mb-10 tracking-wide">Trusted by the best companies worldwide</p>
           <div className="backdrop-blur-md bg-white border border-gray-200 rounded-2xl p-12 overflow-hidden shadow-sm">
             <div className="flex overflow-hidden gap-16">
               <div className="flex gap-16 animate-scroll">
@@ -47,7 +57,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] mb-4">Industries We Cater</p>
-            <h2 className="text-5xl md:text-6xl font-bold text-[#050B2C]">Sector expertise that helps you hire faster</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Sector expertise that helps you hire faster</h2>
             <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">From high-growth tech to healthcare and retail, PickYourHire connects candidates with companies in the industries that matter most.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -87,7 +97,7 @@ export default function Home() {
             {/* LEFT — sticky panel */}
             <div className="lg:w-[38%] lg:sticky lg:top-28 lg:self-start">
               <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] text-xs mb-4">Our Products & Platform</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C] leading-tight mb-5">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#050B2C] leading-tight mb-5">
                 Purpose-built tools for modern hiring
               </h2>
               <p className="text-gray-500 leading-relaxed mb-8">
@@ -117,6 +127,24 @@ export default function Home() {
                   <Image
                     src="/ss-recruiter-dashboard.png"
                     alt="PickYourHire Recruiter Dashboard"
+                    width={900}
+                    height={480}
+                    className="w-full h-auto object-top"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+              </div>
+
+              {/* Card 2 — JD↔CV Match */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-6 pb-4">
+                  <p className="text-xs font-semibold text-[#D9782D] uppercase tracking-widest mb-1">JD ↔ CV Match — AI Feature</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Paste a JD, filter candidates, and get AI-powered scoring across 7 dimensions with matched skills, missing skills, shortlist reasoning, and concerns.</p>
+                </div>
+                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
+                  <Image
+                    src="/ss-jd-cv-results.png"
+                    alt="JD CV Match AI Results"
                     width={900}
                     height={480}
                     className="w-full h-auto object-top"
@@ -172,7 +200,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] mb-4">Frequently asked questions</p>
-            <h2 className="text-5xl font-bold text-[#050B2C]">Everything you need to know</h2>
+            <h2 className="text-4xl font-bold text-[#050B2C]">Everything you need to know</h2>
           </div>
           <div className="grid gap-12 md:grid-cols-2">
             <div className="space-y-8">
@@ -206,7 +234,7 @@ export default function Home() {
           <div className="flex items-center justify-between mb-16">
             <div>
               <p className="text-[#D9782D] font-semibold text-sm mb-2">FEATURED</p>
-              <h2 className="text-5xl font-bold text-[#050B2C]">New Opportunities</h2>
+              <h2 className="text-4xl font-bold text-[#050B2C]">New Opportunities</h2>
             </div>
             <Link href="/jobs" className="text-[#050B2C] font-semibold border-b-2 border-[#050B2C]">View All →</Link>
           </div>
@@ -217,7 +245,7 @@ export default function Home() {
       {/* CTA */}
       <section className="py-24 px-4 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-6xl font-bold text-[#050B2C] mb-8">Ready to get started?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C] mb-6">Ready to get started?</h2>
           <p className="text-xl text-gray-600 mb-12">Join thousands of professionals and companies on PickYourHire today.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/jobs" className="bg-[#D9782D] text-white px-8 py-4 rounded-lg font-semibold inline-block hover:bg-[#f49d59]">Browse Jobs</Link>
