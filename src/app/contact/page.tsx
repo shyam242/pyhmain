@@ -115,17 +115,52 @@ export default function ContactPage() {
         </path>
       </svg>
 
-      {/* Main Card */}
-      <div className="relative z-10 w-full max-w-3xl animate-fade-in">
+      {/* Main Layout */}
+      <div className="relative z-10 w-full max-w-6xl animate-fade-in flex flex-col lg:flex-row gap-8 items-start">
+
+        {/* Left Info Panel */}
+        <div className="lg:w-[38%] flex-shrink-0">
+          <div className="rounded-[2rem] bg-gradient-to-br from-[#050B2C] to-[#0d1f50] p-8 text-white h-full relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#D9782D] rounded-full blur-[120px] opacity-20 pointer-events-none" />
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/70 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" />Get In Touch
+              </div>
+              <h2 className="text-3xl font-bold mb-3">Let&apos;s build something amazing together.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">Reach out to discuss hiring solutions, partnerships, or any questions about PickYourHire.</p>
+              <div className="space-y-4 mb-8">
+                {[
+                  { icon: "✉", label: "Email", value: "contact@pickyourhire.com" },
+                  { icon: "🕐", label: "Hours", value: "Mon–Sat, 10AM–7PM IST" },
+                  { icon: "💼", label: "LinkedIn", value: "PickYourHire" },
+                ].map(item => (
+                  <div key={item.label} className="flex items-start gap-3">
+                    <span className="text-lg">{item.icon}</span>
+                    <div>
+                      <p className="text-white/40 text-xs uppercase tracking-widest">{item.label}</p>
+                      <p className="text-white text-sm font-medium">{item.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                <img src="/ss-jd-cv-results.png" alt="Platform preview" className="w-full h-auto block opacity-80" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Form */}
+        <div className="flex-1">
         <div className="relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-[0_20px_80px_rgba(5,11,44,0.08)] p-8 md:p-12">
 
           {/* Shine Effect */}
           <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br from-white to-transparent opacity-60" />
 
           {/* Heading */}
-          <div className="mb-10 text-center relative z-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Contact Us</h1>
-            <p className="mt-3 text-gray-600">Let's build something amazing together.</p>
+          <div className="mb-10 relative z-10">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#050B2C]">Send us a message</h1>
+            <p className="mt-2 text-gray-500 text-sm">We typically respond within 1 business day.</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
 
@@ -234,6 +269,8 @@ export default function ContactPage() {
               </span>
             </LoadingButton>
           </form>
+        </div>
+        </div>
         </div>
       </div>
     </div>
