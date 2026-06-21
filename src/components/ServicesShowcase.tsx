@@ -248,21 +248,27 @@ function ServicesInner() {
             },
           }}
         />
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-[#D9782D] uppercase tracking-[0.35em] text-sm font-semibold mb-4">
-            PickYourHire Services
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C] mb-6">
-            One ecosystem with three service pathways.
-          </h2>
-
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore candidate, recruiter, and referrer experiences with a
-            service showcase designed to keep every interaction clear, fast,
-            and outcome-focused.
-          </p>
+        {/* Hero image card — Recrivio style */}
+        <div className="rounded-3xl bg-white border border-gray-200 shadow-sm overflow-hidden mb-14">
+          <div className="flex flex-col lg:flex-row min-h-[360px]">
+            <div className="flex-1 p-10 md:p-14 flex flex-col justify-center">
+              <p className="text-[#D9782D] uppercase tracking-[0.35em] text-xs font-semibold mb-4">PickYourHire Services</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#050B2C] mb-3 leading-tight">
+                One ecosystem with three<br />service pathways.
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-md">
+                Explore candidate, recruiter, and referrer experiences with a service showcase designed to keep every interaction clear, fast, and outcome-focused.
+              </p>
+              <a href="/contact"
+                className="inline-flex items-center gap-2 bg-white border-2 border-gray-200 text-[#050B2C] font-semibold px-5 py-2.5 rounded-xl hover:border-[#D9782D]/40 hover:text-[#D9782D] transition w-fit shadow-sm text-sm">
+                Learn more ↗
+              </a>
+            </div>
+            <div className="lg:w-[55%] relative min-h-[280px] overflow-hidden">
+              <img src="/hiring-team.png" alt="PickYourHire services" className="w-full h-full object-cover object-center" />
+              <div className="absolute inset-0 hidden lg:block" style={{background: "linear-gradient(105deg, white 0%, white 8%, transparent 30%)"}} />
+            </div>
+          </div>
         </div>
 
         {/* Tabs */}
