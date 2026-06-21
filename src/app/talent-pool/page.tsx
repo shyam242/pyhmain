@@ -149,27 +149,40 @@ export default function TalentPoolPage() {
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
+      {/* ── CTA BANNER — wide panoramic image style ── */}
       <section className="py-6 px-4 pb-20 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl bg-gradient-to-br from-[#050B2C] to-[#0d1f50] overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#D9782D] rounded-full blur-[140px] opacity-15 pointer-events-none" />
-            <div className="flex flex-col lg:flex-row items-center">
-              <div className="flex-1 p-10 md:p-14 relative z-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                  Let&apos;s build the future of work — together.
-                </h2>
-                <p className="text-white/60 leading-relaxed mb-8 max-w-lg">
-                  Join the companies who trust PickYourHire to build winning teams through smart referrals and AI-powered hiring.
-                </p>
+          <div className="rounded-3xl overflow-hidden relative min-h-[220px] shadow-xl">
+            {/* Full-bleed team photo */}
+            <Image
+              src="/hiring-team.png"
+              alt="Build the future together"
+              fill
+              className="object-cover object-center"
+            />
+            {/* Left gradient overlay so text is readable */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050B2C]/95 via-[#050B2C]/70 to-[#050B2C]/10" />
+            {/* Orange glow top-left */}
+            <div className="absolute top-0 left-0 w-64 h-64 bg-[#D9782D] rounded-full blur-[120px] opacity-20 pointer-events-none" />
+
+            {/* Content */}
+            <div className="relative z-10 flex flex-col justify-center px-10 md:px-16 py-14 max-w-2xl">
+              <p className="text-[#D9782D] text-xs font-semibold uppercase tracking-widest mb-3">Join Us</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">
+                Let&apos;s build the future of work — together.
+              </h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
+                Join the companies who trust PickYourHire to build winning teams through smart referrals and AI-powered hiring.
+              </p>
+              <div className="flex flex-wrap gap-3">
                 <Link href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-7 py-3 rounded-xl transition shadow-lg shadow-[#D9782D]/30">
+                  className="inline-flex items-center gap-2 bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-7 py-3 rounded-xl transition shadow-lg shadow-[#D9782D]/30 text-sm">
                   Get Started →
                 </Link>
-              </div>
-              <div className="lg:w-[42%] relative min-h-[260px] w-full overflow-hidden">
-                <Image src="/hiring-team.png" alt="Build the future together" fill className="object-cover object-top opacity-30 lg:opacity-50" />
-                <div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(105deg, #050B2C 0%, transparent 40%)" }} />
+                <Link href="/jobs"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-7 py-3 rounded-xl transition text-sm backdrop-blur-sm">
+                  Browse Jobs
+                </Link>
               </div>
             </div>
           </div>
