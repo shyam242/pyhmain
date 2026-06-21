@@ -15,13 +15,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
 
-            {/* ── LEFT TEXT ── */}
-            <div className="flex-1 lg:pr-8">
-              {/* AI badge */}
-              <div className="inline-flex items-center gap-2 bg-white/80 border border-[#D9782D]/20 text-[#050B2C] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-7 shadow-sm backdrop-blur-sm">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                AI-Powered Smart Referral Hiring
-              </div>
+          
 
               <h1 className="text-5xl md:text-6xl font-bold text-[#050B2C] leading-[1.1] mb-6">
                 Because the Right Hire<br />
@@ -54,7 +48,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-sm text-gray-500">
-                  Join <span className="font-semibold text-[#050B2C]">10,000+</span> professionals already hired smarter
+                  Join <span className="font-semibold text-[#050B2C]">3000+</span> professionals
                 </p>
               </div>
             </div>
@@ -110,7 +104,7 @@ export default function Home() {
                   </div>
                   <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Trusted Referrals</p>
                 </div>
-                <p className="text-xl font-bold text-[#050B2C]">+250</p>
+                <p className="text-xl font-bold text-[#050B2C]">+50</p>
               </div>
 
               {/* Floating card — Hire Faster (bottom right) */}
@@ -214,24 +208,6 @@ export default function Home() {
                   <Image
                     src="/ss-recruiter-dashboard.png"
                     alt="PickYourHire Recruiter Dashboard"
-                    width={900}
-                    height={480}
-                    className="w-full h-auto object-top"
-                    style={{ display: 'block' }}
-                  />
-                </div>
-              </div>
-
-              {/* Card 2 — JD↔CV Match */}
-              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <div className="p-6 pb-4">
-                  <p className="text-xs font-semibold text-[#D9782D] uppercase tracking-widest mb-1">JD ↔ CV Match — AI Feature</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">Paste a JD, filter candidates, and get AI-powered scoring across 7 dimensions with matched skills, missing skills, shortlist reasoning, and concerns.</p>
-                </div>
-                <div className="mx-4 mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50">
-                  <Image
-                    src="/ss-jd-cv-results.png"
-                    alt="JD CV Match AI Results"
                     width={900}
                     height={480}
                     className="w-full h-auto object-top"
