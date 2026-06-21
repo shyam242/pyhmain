@@ -28,11 +28,11 @@ export default function Home() {
 
               {/* CTA buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                <Link href="/jobs"
+                <Link href="https://portal.pickyourhire.com/signin"
                   className="inline-flex items-center justify-center gap-2 bg-[#D9782D] text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-[#c96c25] transition shadow-lg shadow-[#D9782D]/25">
                   I&apos;m a Candidate →
                 </Link>
-                <Link href="/contact"
+                <Link href="https://portal.pickyourhire.com/"
                   className="inline-flex items-center justify-center gap-2 bg-white text-[#050B2C] border-2 border-[#050B2C]/12 px-7 py-3.5 rounded-xl font-semibold hover:border-[#050B2C]/25 hover:bg-gray-50 transition">
                   I&apos;m a Company →
                 </Link>
