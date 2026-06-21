@@ -179,10 +179,6 @@ export default function TalentPoolPage() {
                   className="inline-flex items-center gap-2 bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-7 py-3 rounded-xl transition shadow-lg shadow-[#D9782D]/30 text-sm">
                   Get Started →
                 </Link>
-                <Link href="/jobs"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-7 py-3 rounded-xl transition text-sm backdrop-blur-sm">
-                  Browse Jobs
-                </Link>
               </div>
             </div>
           </div>
