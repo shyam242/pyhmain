@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-32 pb-4 px-4 flex items-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-32 pb-0 px-4 flex items-center">
         {/* Background orbs */}
         <div className="absolute top-10 right-10 w-[420px] h-[420px] bg-purple-300 rounded-full blur-[160px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#D9782D] rounded-full blur-[140px] opacity-10 pointer-events-none" />
@@ -60,18 +60,18 @@ export default function Home() {
             </div>
 
             {/* ── RIGHT — Professional image + floating stat cards ── */}
-            <div className="flex-1 relative flex items-end justify-center min-h-[520px] lg:min-h-[580px]">
+            <div className="flex-1 relative flex items-end justify-center min-h-[460px] lg:min-h-[520px]">
 
               {/* Background circle */}
-              <div className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-white/50 border border-white/80 shadow-inner" />
+              <div className="absolute bottom-0 right-0 w-[380px] h-[380px] rounded-full bg-white/50 border border-white/80 shadow-inner" />
 
               {/* Professional photo */}
-              <div className="relative z-10 h-[500px] lg:h-[560px] w-full flex items-end justify-center">
+              <div className="relative z-10 h-[440px] lg:h-[500px] w-full flex items-end justify-center">
                 <Image
                   src="/hero-professionals.png"
                   alt="PickYourHire professionals"
-                  width={520}
-                  height={560}
+                  width={480}
+                  height={500}
                   className="object-contain object-bottom h-full w-auto drop-shadow-2xl"
                   priority
                 />
@@ -126,21 +126,46 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Floating panel — Recruiter Dashboard preview (Recrivio-style) */}
+              <div className="hidden sm:block absolute left-0 lg:-left-16 bottom-4 lg:bottom-8 z-0 w-[220px] lg:w-[290px] -rotate-6 rounded-2xl border border-gray-200 bg-white shadow-2xl overflow-hidden">
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-gray-50 border-b border-gray-100">
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                </div>
+                <div className="relative w-full h-[130px] lg:h-[175px]">
+                  <Image
+                    src="/ss-recruiter-dashboard.png"
+                    alt="PickYourHire Recruiter Dashboard"
+                    fill
+                    className="object-cover object-left-top"
+                  />
+                </div>
+              </div>
+
+              {/* Floating label — Recruiter Dashboard tagline */}
+              <div className="hidden sm:block absolute left-2 lg:-left-10 bottom-[-10px] lg:bottom-[-16px] z-20 bg-[#050B2C] text-white rounded-2xl shadow-xl px-4 py-3 max-w-[180px]">
+                <p className="text-[9px] text-[#D9782D] font-bold uppercase tracking-widest mb-1">Recruiter Dashboard</p>
+                <p className="text-xs font-semibold leading-snug">Hire Smarter. Track Faster.</p>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
 
       {/* Trusted companies marquee */}
-      <section className="py-10 px-4 bg-white border-t border-gray-100">
+      <section className="pt-6 pb-16 lg:pb-20 px-4 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
-          <p className="text-center text-gray-400 text-[10px] font-semibold uppercase tracking-[0.3em] mb-5">Trusted by leading companies</p>
-          <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 py-4 px-8">
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
-            <div className="flex gap-14 animate-scroll">
+          <p className="text-center text-gray-400 text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] mb-8">Trusted by leading companies</p>
+          <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 shadow-sm py-8 sm:py-10 px-4 sm:px-10">
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div className="flex gap-5 sm:gap-6 animate-scroll">
               {["KPMG","Satiate Solutions","Meddbot","Coflux Sciences","Superprocure","M3S Support","Steps AI","Motion Matics","SEP","Manage my Lawsuits","Speed Engineering Solutions","KPMG","Satiate Solutions","Meddbot","Coflux Sciences","Superprocure","M3S Support","Steps AI","Motion Matics","SEP","Manage my Lawsuits","Speed Engineering Solutions"].map((c, i) => (
-                <div key={i} className="text-gray-500 font-semibold text-sm whitespace-nowrap min-w-max hover:text-[#D9782D] transition-colors">{c}</div>
+                <div key={i} className="flex items-center justify-center bg-white rounded-2xl border border-gray-200 shadow-sm px-6 sm:px-8 py-4 sm:py-5 min-w-max hover:border-[#D9782D]/40 hover:shadow-md transition">
+                  <span className="text-gray-600 font-bold text-base sm:text-lg whitespace-nowrap hover:text-[#D9782D] transition-colors">{c}</span>
+                </div>
               ))}
             </div>
           </div>
