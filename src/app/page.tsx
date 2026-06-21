@@ -15,7 +15,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
 
-          
+            <div className="flex-1 lg:pr-8">
 
               <h1 className="text-5xl md:text-6xl font-bold text-[#050B2C] leading-[1.1] mb-6">
                 Because the Right Hire<br />
