@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-28 pb-6 px-4 min-h-[92vh] flex items-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-32 pb-4 px-4 flex items-center">
         {/* Background orbs */}
         <div className="absolute top-10 right-10 w-[420px] h-[420px] bg-purple-300 rounded-full blur-[160px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#D9782D] rounded-full blur-[140px] opacity-10 pointer-events-none" />
@@ -131,54 +131,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats strip + Trusted companies */}
-      <section className="py-5 px-4 bg-white border-t border-gray-100">
+      {/* Trusted companies marquee */}
+      <section className="py-10 px-4 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto">
-          {/* Stats row inline with company logos */}
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 px-8 py-5 flex flex-wrap items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-[#D9782D]/10 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-              </div>
-              <div><p className="text-xl font-bold text-[#050B2C]">10,000+</p><p className="text-xs text-gray-500">Professionals</p></div>
+          <p className="text-center text-gray-400 text-[10px] font-semibold uppercase tracking-[0.3em] mb-5">Trusted by leading companies</p>
+          <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 py-4 px-8">
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div className="flex gap-14 animate-scroll">
+              {["KPMG","Satiate Solutions","Meddbot","Coflux Sciences","Superprocure","M3S Support","Steps AI","Motion Matics","SEP","Manage my Lawsuits","Speed Engineering Solutions","KPMG","Satiate Solutions","Meddbot","Coflux Sciences","Superprocure","M3S Support","Steps AI","Motion Matics","SEP","Manage my Lawsuits","Speed Engineering Solutions"].map((c, i) => (
+                <div key={i} className="text-gray-500 font-semibold text-sm whitespace-nowrap min-w-max hover:text-[#D9782D] transition-colors">{c}</div>
+              ))}
             </div>
-            <div className="w-px h-10 bg-gray-200 hidden sm:block" />
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-              </div>
-              <div><p className="text-xl font-bold text-[#050B2C]">2,000+</p><p className="text-xs text-gray-500">Companies</p></div>
-            </div>
-            <div className="w-px h-10 bg-gray-200 hidden sm:block" />
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div><p className="text-xl font-bold text-[#050B2C]">95%</p><p className="text-xs text-gray-500">Successful Matches</p></div>
-            </div>
-            <div className="w-px h-10 bg-gray-200 hidden md:block" />
-            <div className="hidden md:block">
-              <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest mb-2">Trusted by innovative companies</p>
-              <div className="flex items-center gap-5">
-                {["KPMG", "Superprocure", "Meddbot", "Steps AI", "Coflux"].map((c) => (
-                  <span key={c} className="text-sm font-bold text-gray-400">{c}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Feature pills */}
-          <div className="flex flex-wrap justify-center gap-3 mt-5">
-            {[
-              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, label: "Smart AI Matching" },
-              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>, label: "Verified Referrals" },
-              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>, label: "Quality Candidates" },
-              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>, label: "Secure & Private" },
-            ].map((p) => (
-              <div key={p.label} className="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-4 py-2 rounded-full shadow-sm">
-                {p.icon}{p.label}
-              </div>
-            ))}
           </div>
         </div>
       </section>
