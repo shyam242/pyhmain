@@ -7,94 +7,181 @@ export default function Home() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f8f9fb] to-gray-100 pt-36 pb-0 px-4">
-        {/* Subtle gradient orbs */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#D9782D] rounded-full blur-[200px] opacity-[0.06] pointer-events-none" />
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-blue-400 rounded-full blur-[180px] opacity-[0.06] pointer-events-none" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-28 pb-6 px-4 min-h-[92vh] flex items-center">
+        {/* Background orbs */}
+        <div className="absolute top-10 right-10 w-[420px] h-[420px] bg-purple-300 rounded-full blur-[160px] opacity-20 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#D9782D] rounded-full blur-[140px] opacity-10 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          {/* AI badge */}
-          <div className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-2 bg-[#050B2C]/5 border border-[#050B2C]/10 text-[#050B2C] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D] inline-block animate-pulse" />
-              AI-Powered Smart Referral Hiring
-            </span>
-          </div>
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#050B2C] mb-6 leading-tight">
-            Because the Right Hire<br />Changes <span className="text-[#D9782D]">Everything</span>
-          </h1>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Connecting exceptional professionals with innovative companies through trusted referrals and AI-powered candidate matching.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
-            <Link href="/jobs" className="bg-[#D9782D] text-white px-8 py-3.5 rounded-xl font-semibold inline-block hover:bg-[#c96c25] transition-colors shadow-lg shadow-[#D9782D]/20">
-              Browse Jobs
-            </Link>
-            <Link href="/contact" className="bg-white text-[#050B2C] border-2 border-[#050B2C]/15 px-8 py-3.5 rounded-xl font-semibold inline-block hover:bg-gray-50 hover:border-[#050B2C]/30 transition-colors">
-              For Companies
-            </Link>
-          </div>
+            {/* ── LEFT TEXT ── */}
+            <div className="flex-1 lg:pr-8">
+              {/* AI badge */}
+              <div className="inline-flex items-center gap-2 bg-white/80 border border-[#D9782D]/20 text-[#050B2C] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-7 shadow-sm backdrop-blur-sm">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                AI-Powered Smart Referral Hiring
+              </div>
 
-          {/* Dashboard hero image — fades into section below */}
-          <div className="relative mx-auto max-w-5xl">
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-gray-100 to-transparent z-10 pointer-events-none" />
-            <div className="rounded-t-2xl overflow-hidden border border-gray-200 shadow-2xl shadow-black/10">
-              <Image
-                src="/ss-recruiter-dashboard.png"
-                alt="PickYourHire Recruiter Dashboard"
-                width={1200}
-                height={600}
-                className="w-full h-auto block"
-                priority
-              />
+              <h1 className="text-5xl md:text-6xl font-bold text-[#050B2C] leading-[1.1] mb-6">
+                Because the Right Hire<br />
+                Changes <span className="text-[#D9782D]">Everything</span>
+              </h1>
+
+              <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-lg">
+                We connect exceptional professionals with innovative companies through trusted referrals and AI-powered candidate matching.
+              </p>
+
+              {/* CTA buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                <Link href="/jobs"
+                  className="inline-flex items-center justify-center gap-2 bg-[#D9782D] text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-[#c96c25] transition shadow-lg shadow-[#D9782D]/25">
+                  I&apos;m a Candidate →
+                </Link>
+                <Link href="/contact"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-[#050B2C] border-2 border-[#050B2C]/12 px-7 py-3.5 rounded-xl font-semibold hover:border-[#050B2C]/25 hover:bg-gray-50 transition">
+                  I&apos;m a Company →
+                </Link>
+              </div>
+
+              {/* Social proof */}
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {["bg-orange-400","bg-blue-500","bg-emerald-500","bg-purple-500","bg-rose-400"].map((c,i) => (
+                    <div key={i} className={`w-8 h-8 rounded-full ${c} border-2 border-white flex items-center justify-center text-white text-xs font-bold`}>
+                      {String.fromCharCode(65+i)}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-500">
+                  Join <span className="font-semibold text-[#050B2C]">10,000+</span> professionals already hired smarter
+                </p>
+              </div>
+            </div>
+
+            {/* ── RIGHT — Professional image + floating stat cards ── */}
+            <div className="flex-1 relative flex items-end justify-center min-h-[520px] lg:min-h-[580px]">
+
+              {/* Background circle */}
+              <div className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-white/50 border border-white/80 shadow-inner" />
+
+              {/* Professional photo */}
+              <div className="relative z-10 h-[500px] lg:h-[560px] w-full flex items-end justify-center">
+                <Image
+                  src="/hero-professionals.png"
+                  alt="PickYourHire professionals"
+                  width={520}
+                  height={560}
+                  className="object-contain object-bottom h-full w-auto drop-shadow-2xl"
+                  priority
+                />
+              </div>
+
+              {/* Floating card — AI Match Score (top left) */}
+              <div className="absolute top-12 left-2 lg:-left-6 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3 min-w-[148px]">
+                <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest mb-1">AI Match Score</p>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-[#050B2C]">98%</span>
+                  <span className="text-emerald-500 text-sm font-semibold flex items-center gap-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    High
+                  </span>
+                </div>
+              </div>
+
+              {/* Floating card — Verified Talent (top right) */}
+              <div className="absolute top-8 right-0 lg:-right-4 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider leading-none">Verified Talent</p>
+                    <p className="text-xs font-bold text-emerald-600 mt-0.5">Trusted & Verified</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating card — Trusted Referrals (mid left) */}
+              <div className="absolute top-[44%] left-0 lg:-left-8 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3 min-w-[148px]">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-6 h-6 rounded-lg bg-[#D9782D]/10 flex items-center justify-center">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                  </div>
+                  <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Trusted Referrals</p>
+                </div>
+                <p className="text-xl font-bold text-[#050B2C]">+250</p>
+              </div>
+
+              {/* Floating card — Hire Faster (bottom right) */}
+              <div className="absolute bottom-16 right-0 lg:-right-2 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider leading-none">Hire Faster</p>
+                    <p className="text-xs font-bold text-[#050B2C] mt-0.5">Save 40% Time</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats + Trusted companies */}
-      <section className="py-14 px-4 bg-white border-t border-gray-100">
+      {/* Stats strip + Trusted companies */}
+      <section className="py-5 px-4 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto">
-          {/* Quick stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
+          {/* Stats row inline with company logos */}
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 px-8 py-5 flex flex-wrap items-center justify-between gap-6">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-[#D9782D]/10 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div><p className="text-xl font-bold text-[#050B2C]">10,000+</p><p className="text-xs text-gray-500">Professionals</p></div>
+            </div>
+            <div className="w-px h-10 bg-gray-200 hidden sm:block" />
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              </div>
+              <div><p className="text-xl font-bold text-[#050B2C]">2,000+</p><p className="text-xs text-gray-500">Companies</p></div>
+            </div>
+            <div className="w-px h-10 bg-gray-200 hidden sm:block" />
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div><p className="text-xl font-bold text-[#050B2C]">95%</p><p className="text-xs text-gray-500">Successful Matches</p></div>
+            </div>
+            <div className="w-px h-10 bg-gray-200 hidden md:block" />
+            <div className="hidden md:block">
+              <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest mb-2">Trusted by innovative companies</p>
+              <div className="flex items-center gap-5">
+                {["KPMG", "Superprocure", "Meddbot", "Steps AI", "Coflux"].map((c) => (
+                  <span key={c} className="text-sm font-bold text-gray-400">{c}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Feature pills */}
+          <div className="flex flex-wrap justify-center gap-3 mt-5">
             {[
-              { value: "500+", label: "Successful Placements", icon: "🎯" },
-              { value: "293+", label: "Active Candidates", icon: "👥" },
-              { value: "50+", label: "Verified Companies", icon: "🏢" },
-              { value: "10+", label: "Industries Served", icon: "🌐" },
-            ].map((s) => (
-              <div key={s.label} className="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center hover:border-[#D9782D]/30 hover:shadow-sm transition">
-                <div className="text-2xl mb-1">{s.icon}</div>
-                <p className="text-3xl font-bold text-[#D9782D] mb-1">{s.value}</p>
-                <p className="text-gray-500 text-sm">{s.label}</p>
+              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, label: "Smart AI Matching" },
+              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>, label: "Verified Referrals" },
+              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>, label: "Quality Candidates" },
+              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>, label: "Secure & Private" },
+            ].map((p) => (
+              <div key={p.label} className="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-4 py-2 rounded-full shadow-sm">
+                {p.icon}{p.label}
               </div>
             ))}
           </div>
-
-          {/* Marquee */}
-          <p className="text-center text-gray-400 text-xs font-semibold uppercase tracking-[0.3em] mb-6">Trusted by leading companies</p>
-          <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 py-5 px-8">
-            {/* Fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
-            <div className="flex overflow-hidden gap-14">
-              <div className="flex gap-14 animate-scroll shrink-0">
-                {["KPMG","Satiate Solutions","Meddbot","Coflux Sciences","Superprocure","M3S Support","Steps AI","Motion Matics","SEP","Manage my Lawsuits","Speed Engineering Solutions"].map((c, i) => (
-                  <div key={i} className="text-gray-500 font-semibold text-base whitespace-nowrap min-w-max hover:text-[#D9782D] transition-colors">{c}</div>
-                ))}
-              </div>
-              <div className="flex gap-14 animate-scroll shrink-0" aria-hidden>
-                {["KPMG","Satiate Solutions","Meddbot","Coflux Sciences","Superprocure","M3S Support","Steps AI","Motion Matics","SEP","Manage my Lawsuits","Speed Engineering Solutions"].map((c, i) => (
-                  <div key={i} className="text-gray-500 font-semibold text-base whitespace-nowrap min-w-max">{c}</div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
-
-
 
       <ServicesShowcase />
 
