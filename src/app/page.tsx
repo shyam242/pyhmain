@@ -321,6 +321,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Jobs */}
+      <section className="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-16">
+            <div>
+              <p className="text-[#D9782D] font-semibold text-sm mb-2">FEATURED</p>
+              <h2 className="text-4xl font-bold text-[#050B2C]">New Opportunities</h2>
+            </div>
+            <Link href="/jobs" className="text-[#050B2C] font-semibold border-b-2 border-[#050B2C]">View All →</Link>
+          </div>
+          <FeaturedJobs />
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-24 px-4 bg-[#fdf9f6]">
         <div className="max-w-6xl mx-auto">
@@ -398,20 +412,6 @@ export default function Home() {
       </section>
 
 
-
-      {/* Featured Jobs */}
-      <section className="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-16">
-            <div>
-              <p className="text-[#D9782D] font-semibold text-sm mb-2">FEATURED</p>
-              <h2 className="text-4xl font-bold text-[#050B2C]">New Opportunities</h2>
-            </div>
-            <Link href="/jobs" className="text-[#050B2C] font-semibold border-b-2 border-[#050B2C]">View All →</Link>
-          </div>
-          <FeaturedJobs />
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="py-24 px-4 bg-white border-t border-gray-200">
