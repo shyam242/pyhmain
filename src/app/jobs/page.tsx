@@ -88,10 +88,10 @@ export default function JobsPage() {
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-400 rounded-full blur-[160px] opacity-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row items-stretch gap-0 lg:gap-0">
+          <div className="flex flex-col lg:flex-row items-center">
 
-            {/* Left text */}
-            <div className="flex-1 flex flex-col justify-center py-12 lg:py-16 pr-0 lg:pr-12">
+            {/* LEFT — text, takes 50% */}
+            <div className="w-full lg:w-1/2 py-12 lg:py-20 pr-0 lg:pr-16">
               <span className="inline-flex items-center gap-2 bg-[#D9782D]/10 border border-[#D9782D]/20 text-[#D9782D] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 w-fit">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" />
                 Open Positions
@@ -102,7 +102,6 @@ export default function JobsPage() {
               <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-lg">
                 Discover your next career opportunity from our featured positions across industries and roles.
               </p>
-              {/* 3 badges */}
               <div className="flex flex-wrap gap-5">
                 {[
                   { label: "Verified Companies", sub: "Trusted & verified", color: "#3b82f6", icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></> },
@@ -122,16 +121,18 @@ export default function JobsPage() {
               </div>
             </div>
 
-            {/* Right illustration — flush to right edge, fills full height */}
-            <div className="flex-1 relative flex items-end justify-end min-h-[420px] lg:min-h-[500px]">
+            {/* RIGHT — illustration, takes 50%, flush bottom */}
+            <div className="w-full lg:w-1/2 flex items-end justify-center lg:justify-end h-[420px] lg:h-[500px] relative">
               <Image
                 src="/jobs-illustration.png"
                 alt="Find the right job"
-                fill
-                className="object-contain object-right-bottom"
+                width={700}
+                height={500}
+                className="w-full h-full object-contain object-bottom"
                 priority
               />
             </div>
+
           </div>
         </div>
       </section>
