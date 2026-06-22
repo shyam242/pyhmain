@@ -82,17 +82,17 @@ export default function JobsPage() {
     <div className="min-h-screen bg-white text-[#050B2C]">
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-32 pb-0 px-4 min-h-[520px] flex flex-col justify-center" style={{ background: "linear-gradient(135deg, #f0f2ff 0%, #f5f0ff 50%, #ede8ff 100%)" }}>
+      <section className="relative overflow-hidden pt-28 px-4" style={{ background: "linear-gradient(135deg, #f0f2ff 0%, #f5f0ff 50%, #ede8ff 100%)" }}>
         {/* Background blobs */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#D9782D] rounded-full blur-[180px] opacity-10 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-400 rounded-full blur-[160px] opacity-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
+          <div className="flex flex-col lg:flex-row items-stretch gap-0 lg:gap-0">
 
             {/* Left text */}
-            <div className="flex-1">
-              <span className="inline-flex items-center gap-2 bg-[#D9782D]/10 border border-[#D9782D]/20 text-[#D9782D] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+            <div className="flex-1 flex flex-col justify-center py-12 lg:py-16 pr-0 lg:pr-12">
+              <span className="inline-flex items-center gap-2 bg-[#D9782D]/10 border border-[#D9782D]/20 text-[#D9782D] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 w-fit">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" />
                 Open Positions
               </span>
@@ -103,15 +103,15 @@ export default function JobsPage() {
                 Discover your next career opportunity from our featured positions across industries and roles.
               </p>
               {/* 3 badges */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-5">
                 {[
                   { label: "Verified Companies", sub: "Trusted & verified", color: "#3b82f6", icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></> },
                   { label: "Curated Roles", sub: "Handpicked jobs", color: "#D9782D", icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></> },
                   { label: "Fast Response", sub: "Quick interview calls", color: "#10b981", icon: <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></> },
                 ].map(({ label, sub, color, icon }) => (
                   <div key={label} className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${color}18` }}>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${color}18` }}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
                     </div>
                     <div>
                       <p className="text-xs font-bold text-[#050B2C]">{label}</p>
@@ -122,17 +122,15 @@ export default function JobsPage() {
               </div>
             </div>
 
-            {/* Right illustration */}
-            <div className="flex-1 flex items-center justify-end">
-              <div className="relative w-full h-[340px] md:h-[420px]">
-                <Image
-                  src="/jobs-illustration.png"
-                  alt="Find the right job"
-                  fill
-                  className="object-contain object-right-bottom"
-                  priority
-                />
-              </div>
+            {/* Right illustration — flush to right edge, fills full height */}
+            <div className="flex-1 relative flex items-end justify-end min-h-[420px] lg:min-h-[500px]">
+              <Image
+                src="/jobs-illustration.png"
+                alt="Find the right job"
+                fill
+                className="object-contain object-right-bottom"
+                priority
+              />
             </div>
           </div>
         </div>
