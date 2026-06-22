@@ -182,7 +182,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link href="/referrer"
+              <Link href="https://portal.pickyourhire.com/signin"
                 className="bg-[#D9782D] hover:bg-[#c96c25] text-white text-xs font-bold px-5 py-2.5 rounded-xl transition whitespace-nowrap shadow-lg shadow-[#D9782D]/30">
                 Be a Referrer →
               </Link>
