@@ -189,17 +189,17 @@ export default function JobDetailsPage() {
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-[#050B2C] mb-2">Ready to Apply?</h3>
                 <p className="text-gray-600 mb-6">
-                  Click the button below to apply on LinkedIn for this exciting opportunity.
+                  Click the button below to apply on Portal for this exciting opportunity.
                 </p>
               </div>
 
               <a
-                href="https://www.linkedin.com/company/pickyourhire"
+                href="https://portal.pickyourhire.com/signin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-[#D9782D] hover:bg-[#f49d59] text-white py-4 rounded-3xl font-semibold text-center block transition shadow-lg shadow-[#D9782D]/20"
               >
-                Apply Now on LinkedIn
+                Apply Now
               </a>
 
               <div className="border-t border-gray-200 pt-6">
