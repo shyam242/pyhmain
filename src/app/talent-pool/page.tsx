@@ -172,7 +172,7 @@ export default function TalentPoolPage() {
               <div className="grid grid-cols-2 gap-3">
                 {/* Large top-left */}
                 <div className="relative rounded-2xl overflow-hidden h-52 col-span-1 row-span-2">
-                  <Image src="/hiring-team.png" alt="Team hiring" fill className="object-cover" />
+                  <Image src="/hiring-team2.png" alt="Team hiring" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050B2C]/30 to-transparent" />
                   <div className="absolute bottom-3 left-3 bg-white rounded-xl px-3 py-1.5 shadow">
                     <p className="text-xs font-bold text-[#D9782D]">Find the Right Talent.</p>
