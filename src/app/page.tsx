@@ -148,6 +148,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Referral Bonus Banner ── */}
+      <section className="px-4 py-4 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#050B2C] via-[#0d1f50] to-[#050B2C] px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Glow accents */}
+            <div className="absolute left-0 top-0 w-40 h-40 bg-[#D9782D] rounded-full blur-[80px] opacity-20 pointer-events-none" />
+            <div className="absolute right-0 bottom-0 w-40 h-40 bg-[#D9782D] rounded-full blur-[80px] opacity-10 pointer-events-none" />
+            {/* Left — icon + text */}
+            <div className="relative z-10 flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#D9782D]/20 border border-[#D9782D]/30 flex items-center justify-center flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                </svg>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-[#D9782D] text-xs font-bold uppercase tracking-widest">Referral Program</span>
+                  <span className="bg-[#D9782D] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Live</span>
+                </div>
+                <p className="text-white font-bold text-sm">
+                  Refer Now! Help us find great talent and <span className="text-[#D9782D]">earn referral bonuses</span> for successful placements.
+                </p>
+              </div>
+            </div>
+            {/* Right — perks + CTA */}
+            <div className="relative z-10 flex items-center gap-4 flex-shrink-0">
+              <div className="hidden md:flex items-center gap-3">
+                {["Earn Bonuses", "Grow Network", "Fast Payouts"].map((p) => (
+                  <div key={p} className="flex items-center gap-1.5 text-white/60 text-xs">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#D9782D" strokeWidth="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+                    {p}
+                  </div>
+                ))}
+              </div>
+              <Link href="/referrer"
+                className="bg-[#D9782D] hover:bg-[#c96c25] text-white text-xs font-bold px-5 py-2.5 rounded-xl transition whitespace-nowrap shadow-lg shadow-[#D9782D]/30">
+                Be a Referrer →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Trusted companies marquee */}
       <section className="pt-6 pb-16 lg:pb-20 px-4 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -321,20 +364,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Jobs */}
-      <section className="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-16">
-            <div>
-              <p className="text-[#D9782D] font-semibold text-sm mb-2">FEATURED</p>
-              <h2 className="text-4xl font-bold text-[#050B2C]">New Opportunities</h2>
-            </div>
-            <Link href="/jobs" className="text-[#050B2C] font-semibold border-b-2 border-[#050B2C]">View All →</Link>
-          </div>
-          <FeaturedJobs />
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="py-24 px-4 bg-[#fdf9f6]">
         <div className="max-w-6xl mx-auto">
@@ -412,6 +441,20 @@ export default function Home() {
       </section>
 
 
+
+      {/* Featured Jobs */}
+      <section className="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-16">
+            <div>
+              <p className="text-[#D9782D] font-semibold text-sm mb-2">FEATURED</p>
+              <h2 className="text-4xl font-bold text-[#050B2C]">New Opportunities</h2>
+            </div>
+            <Link href="/jobs" className="text-[#050B2C] font-semibold border-b-2 border-[#050B2C]">View All →</Link>
+          </div>
+          <FeaturedJobs />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-24 px-4 bg-white border-t border-gray-200">
