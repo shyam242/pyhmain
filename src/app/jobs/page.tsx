@@ -82,13 +82,13 @@ export default function JobsPage() {
     <div className="min-h-screen bg-white text-[#050B2C]">
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-32 pb-10 px-4" style={{ background: "linear-gradient(135deg, #f0f2ff 0%, #f5f0ff 50%, #ede8ff 100%)" }}>
+      <section className="relative overflow-hidden pt-32 pb-0 px-4 min-h-[520px] flex flex-col justify-center" style={{ background: "linear-gradient(135deg, #f0f2ff 0%, #f5f0ff 50%, #ede8ff 100%)" }}>
         {/* Background blobs */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#D9782D] rounded-full blur-[180px] opacity-10 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-400 rounded-full blur-[160px] opacity-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-10">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
 
             {/* Left text */}
             <div className="flex-1">
@@ -123,13 +123,14 @@ export default function JobsPage() {
             </div>
 
             {/* Right illustration */}
-            <div className="flex-1 flex items-center justify-center">
-              <div className="relative w-full max-w-[420px] h-[280px]">
+            <div className="flex-1 flex items-center justify-end">
+              <div className="relative w-full h-[340px] md:h-[420px]">
                 <Image
                   src="/jobs-illustration.png"
                   alt="Find the right job"
                   fill
-                  className="object-contain"
+                  className="object-contain object-right-bottom"
+                  priority
                 />
               </div>
             </div>
