@@ -28,11 +28,11 @@ export default function Home() {
 
               {/* CTA buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                <Link href="https://portal.pickyourhire.com/signin"
+                <Link href="/jobs"
                   className="inline-flex items-center justify-center gap-2 bg-[#D9782D] text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-[#c96c25] transition shadow-lg shadow-[#D9782D]/25">
                   I&apos;m a Candidate →
                 </Link>
-                <Link href="https://portal.pickyourhire.com/"
+                <Link href="/contact"
                   className="inline-flex items-center justify-center gap-2 bg-white text-[#050B2C] border-2 border-[#050B2C]/12 px-7 py-3.5 rounded-xl font-semibold hover:border-[#050B2C]/25 hover:bg-gray-50 transition">
                   I&apos;m a Company →
                 </Link>
@@ -258,33 +258,63 @@ export default function Home() {
       </section>
       {/* ===== END PRODUCTS SECTION ===== */}
 
-      {/* Industries — 10 cards */}
+      {/* Industries — photo-card grid */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] mb-4">Industries We Cater</p>
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="h-px w-10 bg-[#D9782D]/40" />
+              <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] text-xs">Industries We Cater</p>
+              <span className="h-px w-10 bg-[#D9782D]/40" />
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Sector expertise that helps you hire faster</h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">From high-growth tech to healthcare and retail, PickYourHire connects candidates with companies in the industries that matter most.</p>
+            <p className="mt-4 text-base text-gray-500 max-w-2xl mx-auto">From high-growth tech to healthcare and retail, PickYourHire connects candidates with companies in the industries that matter most.</p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+
+          {/* Row 1 — 4 cards with bg images */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
             {[
-              { title: "IT / ITES Industry", desc: "Trusted talent for software, cloud, digital transformation, product engineering, and technology services.", icon: <><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></> },
-              { title: "Healthcare & Pharma", desc: "Skilled professionals for clinical operations, medical devices, biotech, pharma manufacturing, and healthcare IT.", icon: <><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></> },
-              { title: "Telecom / Semiconductor", desc: "Engineering and operations specialists for telecom, semiconductor design, embedded systems, and network infrastructure.", icon: <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></> },
-              { title: "FMCG & Retail", desc: "Hiring support across merchandising, sales, supply chain, retail operations, and customer experience functions.", icon: <><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></> },
-              { title: "Distribution & Logistics", desc: "Talent for supply chain, last-mile delivery, fleet management, warehouse operations, and distribution networks.", icon: <><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></> },
-              { title: "Retail Sales", desc: "Sales associates, store managers, visual merchandisers, and retail leaders who drive revenue and customer loyalty.", icon: <><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></> },
-              { title: "Marketing & Growth", desc: "Brand strategists, digital marketers, performance specialists, and growth leaders for consumer and B2B brands.", icon: <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 5.27 5.27l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></> },
-              { title: "B2B Sales", desc: "Account executives, enterprise sales managers, pre-sales consultants, and business development professionals.", icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></> },
-              { title: "Operations & Strategy", desc: "COOs, operations managers, process improvement leads, and project management professionals across sectors.", icon: <><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></> },
-              { title: "Warehouse Management", desc: "Warehouse supervisors, inventory managers, WMS operators, and fulfillment center leads for modern supply chains.", icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></> },
-            ].map(({ title, desc, icon }) => (
-              <div key={title} className="rounded-3xl bg-gray-50 border border-gray-200 p-8 shadow-sm hover:shadow-md hover:border-[#D9782D]/30 transition group">
-                <div className="w-10 h-10 rounded-xl bg-[#D9782D]/10 flex items-center justify-center mb-5 group-hover:bg-[#D9782D]/20 transition">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+              { title: "IT / ITES Industry", desc: "Trusted talent for software, cloud, digital transformation, product engineering, and technology services.", accent: "#7C3AED", icon: <><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></> },
+              { title: "Healthcare & Pharma", desc: "Skilled professionals for clinical operations, medical devices, biotech, pharma manufacturing, and healthcare IT.", accent: "#0D9488", icon: <><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></> },
+              { title: "Telecom / Semiconductor", desc: "Engineering and operations specialists for telecom, semiconductor design, embedded systems, and network infrastructure.", accent: "#2563EB", icon: <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></> },
+              { title: "FMCG & Retail", desc: "Hiring support across merchandising, sales, supply chain, retail operations, and customer experience functions.", accent: "#DB2777", icon: <><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></> },
+            ].map(({ title, desc, accent, icon }) => (
+              <div key={title} className="rounded-2xl border-t-4 bg-white shadow-sm hover:shadow-md transition overflow-hidden group" style={{ borderColor: accent }}>
+                {/* Gradient image placeholder */}
+                <div className="h-36 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${accent}22 0%, ${accent}44 100%)` }}>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                  </div>
+                  <div className="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center shadow-sm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-[#050B2C] mb-3">{title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm">{desc}</p>
+                <div className="p-5">
+                  <h3 className="text-base font-bold text-[#050B2C] mb-1.5">{title}</h3>
+                  <div className="w-8 h-0.5 mb-3 rounded-full" style={{ background: accent }} />
+                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2 — 6 cards, simpler */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+            {[
+              { title: "Distribution & Logistics", desc: "Talent for supply chain, last-mile delivery, fleet management, and warehouse operations.", accent: "#0EA5E9", icon: <><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></> },
+              { title: "Retail Sales", desc: "Sales associates, store managers, visual merchandisers, and retail leaders.", accent: "#F59E0B", icon: <><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></> },
+              { title: "Marketing & Growth", desc: "Brand strategists, digital marketers, performance specialists, and growth leaders.", accent: "#10B981", icon: <><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></> },
+              { title: "B2B Sales", desc: "Account executives, enterprise sales managers, and pre-sales consultants.", accent: "#D9782D", icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></> },
+              { title: "Operations & Strategy", desc: "COOs, operations managers, process improvement leads, and project managers.", accent: "#8B5CF6", icon: <><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></> },
+              { title: "Warehouse Management", desc: "Warehouse supervisors, inventory managers, WMS operators, and fulfillment leads.", accent: "#EF4444", icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></> },
+            ].map(({ title, desc, accent, icon }) => (
+              <div key={title} className="rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition p-5 group">
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-4" style={{ background: `${accent}18` }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                </div>
+                <h3 className="text-sm font-bold text-[#050B2C] mb-1.5 leading-snug">{title}</h3>
+                <div className="w-6 h-0.5 mb-2 rounded-full" style={{ background: accent }} />
+                <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -292,23 +322,77 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] mb-4">Frequently asked questions</p>
-            <h2 className="text-4xl font-bold text-[#050B2C]">Everything you need to know</h2>
+      <section className="py-24 px-4 bg-[#fdf9f6]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 text-[#D9782D] font-semibold uppercase tracking-[0.3em] text-xs mb-5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Frequently Asked Questions
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Everything you need to know</h2>
+            <div className="w-16 h-1 bg-[#D9782D] rounded-full mx-auto mt-5" />
           </div>
-          <div className="grid gap-12 md:grid-cols-2">
-            <div className="space-y-8">
-              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">What industries do you serve?</h3><p className="text-gray-600 leading-relaxed">We support organizations across IT, BFSI, Telecom, Manufacturing, Healthcare, E-commerce, Education, Retail, and Professional Services.</p></div>
-              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">How is PickYourHire different from traditional recruitment agencies?</h3><p className="text-gray-600 leading-relaxed">Traditional recruitment often focuses on volume. PickYourHire focuses on trusted referrals and curated profiles, ensuring clients receive fewer but more relevant candidates with better retention potential.</p></div>
-              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">Can referral-based hiring be used for confidential or leadership roles?</h3><p className="text-gray-600 leading-relaxed">Yes. Referral hiring is especially effective for confidential, niche, and senior-level positions, where trust and discretion are critical.</p></div>
+
+          {/* 3×2 card grid */}
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            {[
+              {
+                q: "What industries do you serve?",
+                a: "We support organizations across IT, BFSI, Telecom, Manufacturing, Healthcare, E-commerce, Education, Retail, and Professional Services.",
+                icon: <><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 2v4M16 2v4M2 10h20"/></>
+              },
+              {
+                q: "What is referral-based hiring at PickYourHire?",
+                a: "Referral-based hiring means candidates are sourced through trusted professional networks, industry experts, and verified referrers — rather than mass job portals.",
+                icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>
+              },
+              {
+                q: "How is PickYourHire different from traditional recruitment agencies?",
+                a: "Traditional recruitment often focuses on volume. PickYourHire focuses on trusted referrals and curated profiles, ensuring clients receive fewer but more relevant candidates with better retention potential.",
+                icon: <><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>
+              },
+              {
+                q: "Can startups and small businesses work with you?",
+                a: "Absolutely. We work with startups, SMEs, and large enterprises, offering flexible hiring solutions based on business stage and budget.",
+                icon: <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 5.27 5.27l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></>
+              },
+              {
+                q: "Can referral-based hiring be used for confidential or leadership roles?",
+                a: "Yes. Referral hiring is especially effective for confidential, niche, and senior-level positions, where trust and discretion are critical.",
+                icon: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></>
+              },
+              {
+                q: "Do you provide a replacement guarantee?",
+                a: "Yes. For permanent hiring, we offer a replacement guarantee period, the terms of which are defined in the engagement agreement.",
+                icon: <><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></>
+              },
+            ].map(({ q, a, icon }) => (
+              <div key={q} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition p-7 flex gap-5">
+                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#D9782D]/10 flex items-center justify-center">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#050B2C] mb-2 leading-snug">{q}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Need more info banner */}
+          <div className="bg-[#fff5ec] rounded-2xl border border-[#D9782D]/20 px-8 py-5 flex flex-col sm:flex-row items-center gap-4 justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-11 h-11 rounded-full bg-[#D9782D] flex items-center justify-center flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 5.27 5.27l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <p className="font-bold text-[#050B2C]">Need more information?</p>
+                <p className="text-gray-500 text-sm">Our team is here to help you find the right hiring solution for your needs.</p>
+              </div>
             </div>
-            <div className="space-y-8">
-              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">What is referral-based hiring at PickYourHire?</h3><p className="text-gray-600 leading-relaxed">Referral-based hiring means candidates are sourced through trusted professional networks, industry experts, and verified referrers — rather than mass job portals.</p></div>
-              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">Can startups and small businesses work with you?</h3><p className="text-gray-600 leading-relaxed">Absolutely. We work with startups, SMEs, and large enterprises, offering flexible hiring solutions based on business stage and budget.</p></div>
-              <div><h3 className="text-xl font-semibold text-[#050B2C] mb-3">Do you provide a replacement guarantee?</h3><p className="text-gray-600 leading-relaxed">Yes. For permanent hiring, we offer a replacement guarantee period, the terms of which are defined in the engagement agreement.</p></div>
-            </div>
+            <Link href="/contact" className="flex-shrink-0 inline-flex items-center gap-2 bg-[#D9782D] text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-[#c96c25] transition shadow-md text-sm whitespace-nowrap">
+              → Contact Us
+            </Link>
           </div>
         </div>
       </section>
