@@ -217,7 +217,6 @@ function IndustriesSection() {
 }
 
 export default function Home() {
-export default function Home() {
   return (
     <div className="bg-white min-h-screen">
 
