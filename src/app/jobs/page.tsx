@@ -81,60 +81,150 @@ export default function JobsPage() {
   return (
     <div className="min-h-screen bg-white text-[#050B2C]">
 
-      {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-28 px-4" style={{ background: "linear-gradient(135deg, #f0f2ff 0%, #f5f0ff 50%, #ede8ff 100%)" }}>
-        {/* Background blobs */}
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#D9782D] rounded-full blur-[180px] opacity-10 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-400 rounded-full blur-[160px] opacity-10 pointer-events-none" />
+      {/* ── HERO — hiring-team2.png bg + floating candidate cards ── */}
+      <section className="relative overflow-hidden" style={{ height: "580px" }}>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row items-center">
+        {/* Full-bleed background photo */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hiring-team2.png"
+            alt="Hiring team"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* White fade from left so text stays readable */}
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 25%, rgba(255,255,255,0.7) 42%, rgba(255,255,255,0.1) 60%, rgba(255,255,255,0) 75%)"
+          }} />
+          {/* Subtle top fade for navbar breathing room */}
+          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/80 to-transparent" />
+        </div>
 
-            {/* LEFT — text, takes 50% */}
-            <div className="w-full lg:w-1/2 py-12 lg:py-20 pr-0 lg:pr-16">
-              <span className="inline-flex items-center gap-2 bg-[#D9782D]/10 border border-[#D9782D]/20 text-[#D9782D] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 w-fit">
+        {/* Dot grid decoration top-left */}
+        <div className="absolute top-20 left-6 grid grid-cols-5 gap-1.5 opacity-20 z-10">
+          {Array.from({ length: 25 }).map((_, i) => (
+            <div key={i} className="w-1 h-1 rounded-full bg-[#050B2C]" />
+          ))}
+        </div>
+
+        {/* Left text */}
+        <div className="absolute inset-0 z-10 flex items-center">
+          <div className="max-w-7xl mx-auto w-full px-6">
+            <div className="max-w-[420px]">
+              <span className="inline-flex items-center gap-2 bg-[#D9782D]/10 border border-[#D9782D]/20 text-[#D9782D] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" />
                 Open Positions
               </span>
-              <h1 className="text-5xl md:text-6xl font-extrabold text-[#050B2C] leading-[1.1] mb-5">
-                Explore <span className="text-[#D9782D]">Opportunities</span>
+              <h1 className="text-5xl md:text-6xl font-extrabold text-[#050B2C] leading-[1.1] mb-4">
+                Explore<br /><span className="text-[#D9782D]">Opportunities</span>
               </h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-lg">
+              <p className="text-gray-600 text-base leading-relaxed mb-8 max-w-sm">
                 Discover your next career opportunity from our featured positions across industries and roles.
               </p>
               <div className="flex flex-wrap gap-5">
                 {[
-                  { label: "Verified Companies", sub: "Trusted & verified", color: "#3b82f6", icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></> },
+                  { label: "Verified Companies", sub: "Trusted & verified", color: "#3b82f6", icon: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></> },
                   { label: "Curated Roles", sub: "Handpicked jobs", color: "#D9782D", icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></> },
                   { label: "Fast Response", sub: "Quick interview calls", color: "#10b981", icon: <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></> },
                 ].map(({ label, sub, color, icon }) => (
                   <div key={label} className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${color}18` }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${color}18` }}>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
                     </div>
                     <div>
                       <p className="text-xs font-bold text-[#050B2C]">{label}</p>
-                      <p className="text-[10px] text-gray-400">{sub}</p>
+                      <p className="text-[10px] text-gray-500">{sub}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* RIGHT — illustration, takes 50%, flush bottom */}
-            <div className="w-full lg:w-1/2 flex items-end justify-center lg:justify-end h-[420px] lg:h-[500px] relative">
-              <Image
-                src="/jobs-illustration.png"
-                alt="Find the right job"
-                width={700}
-                height={500}
-                className="w-full h-full object-contain object-bottom"
-                priority
-              />
-            </div>
-
           </div>
         </div>
+
+        {/* Floating candidate cards */}
+        {/* Card 1 — Rohan Mehta, top-center */}
+        <div className="absolute top-[10%] left-[38%] z-20 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-4" style={{ width: 220 }}>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">RM</div>
+              <div>
+                <p className="text-sm font-bold text-[#050B2C] leading-tight">Rohan Mehta</p>
+                <p className="text-[11px] font-semibold text-[#D9782D]">Full Stack Developer</p>
+              </div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div className="space-y-1 mb-3">
+            <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              5+ Years Experience
+            </div>
+            <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Bangalore, India
+            </div>
+          </div>
+          <div className="flex gap-1.5 flex-wrap">
+            {["React", "Node.js", "AWS"].map(s => <span key={s} className="text-[9px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{s}</span>)}
+          </div>
+        </div>
+
+        {/* Card 2 — Ananya Singh, middle */}
+        <div className="absolute top-[35%] left-[55%] z-20 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-4" style={{ width: 210 }}>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">AS</div>
+              <div>
+                <p className="text-sm font-bold text-[#050B2C] leading-tight">Ananya Singh</p>
+                <p className="text-[11px] font-semibold text-[#8b5cf6]">UI/UX Designer</p>
+              </div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div className="space-y-1 mb-3">
+            <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              4+ Years Experience
+            </div>
+            <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Mumbai, India
+            </div>
+          </div>
+          <div className="flex gap-1.5 flex-wrap">
+            {["Figma", "Sketch", "Adobe XD"].map(s => <span key={s} className="text-[9px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{s}</span>)}
+          </div>
+        </div>
+
+        {/* Card 3 — Arjun Patel, top-right */}
+        <div className="absolute top-[8%] right-[2%] z-20 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-4" style={{ width: 220 }}>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">AP</div>
+              <div>
+                <p className="text-sm font-bold text-[#050B2C] leading-tight">Arjun Patel</p>
+                <p className="text-[11px] font-semibold text-[#0d9488]">Backend Engineer</p>
+              </div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div className="space-y-1 mb-3">
+            <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              5+ Years Experience
+            </div>
+            <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Pune, India
+            </div>
+          </div>
+          <div className="flex gap-1.5 flex-wrap">
+            {["Python", "Django", "PostgreSQL"].map(s => <span key={s} className="text-[9px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{s}</span>)}
+          </div>
+        </div>
+
       </section>
 
       {/* ── SEARCH BAR ── */}
