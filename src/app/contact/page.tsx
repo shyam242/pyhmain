@@ -189,11 +189,11 @@ export default function ContactPage() {
                   {
                     icon: <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>,
                     icon2: <polyline points="22,6 12,13 2,6"/>,
-                    text: "hello@pickyourhire.com",
+                    text: "contact@pickyourhire.com",
                   },
                   {
                     icon: <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 5.27 5.27l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>,
-                    text: "+91 XXXXX XXXXX",
+                    text: "+91 99369 22504",
                   },
                   {
                     icon: <circle cx="12" cy="12" r="10"/>,
