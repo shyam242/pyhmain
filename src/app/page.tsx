@@ -6,6 +6,9 @@ import { useState } from "react";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import FeaturedJobs from "@/components/FeaturedJobs";
 
+/* ─────────────────────────────────────────────
+   Industry data
+───────────────────────────────────────────── */
 const TOP_INDUSTRIES = [
   {
     title: "IT / ITES Industry",
@@ -217,11 +220,12 @@ function IndustriesSection() {
 }
 
 export default function Home() {
+export default function Home() {
   return (
     <div className="bg-white min-h-screen">
 
       {/* ── CXO REFERRAL BANNER — just below navbar ── */}
-      <div className="w-full relative overflow-hidden px-4 py-3" style={{ background: "linear-gradient(135deg, #1e0d6b 0%, #2d1b8e 45%, #1a1060 100%)" }}>
+      <div className="w-full relative overflow-hidden px-4 py-3" style={{ background: "linear-gradient(135deg, #1e0d6b 0%, #2d1b8e 45%, #1a1060 100%)", marginTop: "88px" }}>
         {/* Glow orbs */}
         <div className="absolute -left-8 top-0 w-40 h-40 bg-violet-700 rounded-full blur-[70px] opacity-30 pointer-events-none" />
         <div className="absolute right-20 -bottom-6 w-36 h-36 bg-indigo-400 rounded-full blur-[70px] opacity-20 pointer-events-none" />
@@ -273,7 +277,7 @@ export default function Home() {
       </div>
 
       {/* ── HERO — original "Because the Right Hire Changes Everything" ── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-20 pb-0 px-4 flex items-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-0 pb-0 px-4 flex items-center">
         {/* Background orbs */}
         <div className="absolute top-10 right-10 w-[420px] h-[420px] bg-purple-300 rounded-full blur-[160px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#D9782D] rounded-full blur-[140px] opacity-10 pointer-events-none" />
