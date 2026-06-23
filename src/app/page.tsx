@@ -145,43 +145,75 @@ export default function Home() {
   return (
     <div className="bg-white min-h-screen">
 
-      {/* ── HERO — "Explore Opportunities" with team photo ── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-28 pb-0 px-4">
+      {/* ── CXO REFERRAL BANNER — just below navbar ── */}
+      <div className="w-full relative overflow-hidden px-4 py-3" style={{ background: "linear-gradient(135deg, #1e0d6b 0%, #2d1b8e 45%, #1a1060 100%)" }}>
+        {/* Glow orbs */}
+        <div className="absolute -left-8 top-0 w-40 h-40 bg-violet-700 rounded-full blur-[70px] opacity-30 pointer-events-none" />
+        <div className="absolute right-20 -bottom-6 w-36 h-36 bg-indigo-400 rounded-full blur-[70px] opacity-20 pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          {/* Left — icon + text */}
+          <div className="relative z-10 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <p className="text-white font-bold text-sm sm:text-base leading-snug">
+              Referrals Welcome from <span className="text-white">Freshers</span> to{" "}
+              <span className="text-[#fb923c] font-extrabold">CXO &amp; VP Level!</span>
+            </p>
+            <p className="hidden md:block text-white/55 text-xs ml-2">
+              You can refer anyone. Every successful hire brings success — and rewards!
+            </p>
+          </div>
+
+          {/* Middle — perks */}
+          <div className="relative z-10 hidden lg:flex items-center gap-4">
+            {[
+              { icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>, label: "Refer Anyone, Any Level" },
+              { icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></>, label: "Earn Attractive Rewards" },
+              { icon: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></>, label: "Trusted & Verified" },
+            ].map(({ icon, label }) => (
+              <div key={label} className="flex items-center gap-1.5 text-white/70 text-xs">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                <span className="font-medium whitespace-nowrap">{label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Right — CTA */}
+          <div className="relative z-10 flex-shrink-0">
+            <Link
+              href="https://portal.pickyourhire.com/signin"
+              className="inline-flex items-center gap-1.5 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-bold px-5 py-2 rounded-xl transition-all shadow-lg shadow-orange-500/30 text-sm whitespace-nowrap"
+            >
+              Refer Now →
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* ── HERO — original "Because the Right Hire Changes Everything" ── */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f2ff] via-[#f5f0ff] to-[#ede8ff] pt-20 pb-0 px-4 flex items-center">
         {/* Background orbs */}
         <div className="absolute top-10 right-10 w-[420px] h-[420px] bg-purple-300 rounded-full blur-[160px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#D9782D] rounded-full blur-[140px] opacity-10 pointer-events-none" />
-        {/* Dot pattern top-left */}
-        <div className="absolute top-20 left-8 opacity-30 pointer-events-none">
-          {[0,1,2].map(row => (
-            <div key={row} className="flex gap-3 mb-3">
-              {[0,1,2].map(col => (
-                <div key={col} className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" />
-              ))}
-            </div>
-          ))}
-        </div>
-        {/* Dot pattern bottom-left */}
-        <div className="absolute bottom-20 left-8 opacity-20 pointer-events-none">
-          {[0,1,2].map(row => (
-            <div key={row} className="flex gap-3 mb-3">
-              {[0,1,2].map(col => (
-                <div key={col} className="w-1.5 h-1.5 rounded-full bg-[#D9782D]" />
-              ))}
-            </div>
-          ))}
-        </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
 
-            {/* LEFT — text panel */}
-            <div className="flex-1 lg:pr-8 lg:max-w-[44%] pb-10 lg:pb-16">
-              <h1 className="text-5xl md:text-6xl font-extrabold text-[#050B2C] leading-[1.1] mb-5">
-                Explore<br />
-                <span className="text-[#D9782D]">Opportunities</span>
+            <div className="flex-1 lg:pr-8">
+              <h1 className="text-5xl md:text-6xl font-bold text-[#050B2C] leading-[1.1] mb-6">
+                Because the Right Hire<br />
+                Changes <span className="text-[#D9782D]">Everything</span>
               </h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-md">
-                Discover your next career opportunity from our featured positions across industries and roles.
+
+              <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-lg">
+                We connect exceptional professionals with innovative companies through trusted referrals and AI-powered candidate matching.
               </p>
 
               {/* CTA buttons */}
@@ -196,175 +228,153 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Trust badges */}
-              <div className="flex flex-wrap items-center gap-6">
-                {[
-                  { icon: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></>, label: "Verified Companies", sub: "Trusted & verified", color: "#7C3AED" },
-                  { icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>, label: "Curated Roles", sub: "Handpicked jobs", color: "#D9782D" },
-                  { icon: <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></>, label: "Fast Response", sub: "Quick interview calls", color: "#0D9488" },
-                ].map(({ icon, label, sub, color }) => (
-                  <div key={label} className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${color}18` }}>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+              {/* Social proof */}
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {["bg-orange-400","bg-blue-500","bg-emerald-500","bg-purple-500","bg-rose-400"].map((c,i) => (
+                    <div key={i} className={`w-8 h-8 rounded-full ${c} border-2 border-white flex items-center justify-center text-white text-xs font-bold`}>
+                      {String.fromCharCode(65+i)}
                     </div>
-                    <div>
-                      <p className="text-xs font-bold text-[#050B2C]">{label}</p>
-                      <p className="text-[11px] text-gray-400">{sub}</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <p className="text-sm text-gray-500">
+                  Join <span className="font-semibold text-[#050B2C]">3000+</span> professionals
+                </p>
               </div>
             </div>
 
-            {/* RIGHT — hero image with floating cards */}
-            <div className="flex-1 relative flex items-end justify-center min-h-[420px] lg:min-h-[500px] lg:max-w-[56%]">
+            {/* RIGHT — Professional image + floating stat cards */}
+            <div className="flex-1 relative flex items-end justify-center min-h-[460px] lg:min-h-[520px]">
 
-              {/* Floating card — Rohan Mehta */}
-              <div className="absolute top-6 left-[4%] z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-3.5 py-3 min-w-[165px]">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-300 to-orange-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">RM</div>
-                  <div>
-                    <p className="text-xs font-bold text-[#050B2C] leading-none">Rohan Mehta</p>
-                    <p className="text-[10px] text-[#D9782D] font-semibold">Full Stack Developer</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 text-[10px] text-gray-400 mb-1">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  5+ Years Experience
-                </div>
-                <div className="flex items-center gap-1 text-[10px] text-gray-400 mb-2">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Bangalore, India
-                </div>
-                <div className="flex gap-1 flex-wrap">
-                  {["React","Node.js","AWS"].map(t => (
-                    <span key={t} className="text-[9px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-medium">{t}</span>
-                  ))}
-                </div>
-              </div>
+              {/* Background circle */}
+              <div className="absolute bottom-0 right-0 w-[380px] h-[380px] rounded-full bg-white/50 border border-white/80 shadow-inner" />
 
-              {/* Floating card — Ananya Singh (mid) */}
-              <div className="absolute top-[28%] left-[28%] z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-3.5 py-3 min-w-[155px]">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-300 to-pink-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">AS</div>
-                  <div>
-                    <p className="text-xs font-bold text-[#050B2C] leading-none">Ananya Singh</p>
-                    <p className="text-[10px] text-[#0D9488] font-semibold">UI/UX Designer</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 text-[10px] text-gray-400 mb-1">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  4+ Years Experience
-                </div>
-                <div className="flex items-center gap-1 text-[10px] text-gray-400 mb-2">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Mumbai, India
-                </div>
-                <div className="flex gap-1 flex-wrap">
-                  {["Figma","Sketch","Adobe XD"].map(t => (
-                    <span key={t} className="text-[9px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-medium">{t}</span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Floating card — Arjun Patel (top right) */}
-              <div className="absolute top-4 right-[2%] z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-3.5 py-3 min-w-[165px]">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">AP</div>
-                  <div>
-                    <p className="text-xs font-bold text-[#050B2C] leading-none">Arjun Patel</p>
-                    <p className="text-[10px] text-[#D9782D] font-semibold">Backend Engineer</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 text-[10px] text-gray-400 mb-1">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  5+ Years Experience
-                </div>
-                <div className="flex items-center gap-1 text-[10px] text-gray-400 mb-2">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Pune, India
-                </div>
-                <div className="flex gap-1 flex-wrap">
-                  {["Python","Django","PostgreSQL"].map(t => (
-                    <span key={t} className="text-[9px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-medium">{t}</span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Hero image — office team */}
-              <div className="relative z-10 h-[420px] lg:h-[500px] w-full flex items-end justify-center">
+              {/* Professional photo */}
+              <div className="relative z-10 h-[440px] lg:h-[500px] w-full flex items-end justify-center">
                 <Image
-                  src="/hero-team.png"
-                  alt="PickYourHire professionals collaborating"
-                  width={800}
-                  height={520}
+                  src="/hero-professionals.png"
+                  alt="PickYourHire professionals"
+                  width={480}
+                  height={500}
                   className="object-contain object-bottom h-full w-auto drop-shadow-2xl"
                   priority
                 />
               </div>
-            </div>
 
+              {/* Floating card — AI Match Score (top left) */}
+              <div className="absolute top-12 left-2 lg:-left-6 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3 min-w-[148px]">
+                <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest mb-1">AI Match Score</p>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-[#050B2C]">98%</span>
+                  <span className="text-emerald-500 text-sm font-semibold flex items-center gap-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    High
+                  </span>
+                </div>
+              </div>
+
+              {/* Floating card — Verified Talent (top right) */}
+              <div className="absolute top-8 right-0 lg:-right-4 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider leading-none">Verified Talent</p>
+                    <p className="text-xs font-bold text-emerald-600 mt-0.5">Trusted & Verified</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating card — Trusted Referrals (mid left) */}
+              <div className="absolute top-[44%] left-0 lg:-left-8 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3 min-w-[148px]">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-6 h-6 rounded-lg bg-[#D9782D]/10 flex items-center justify-center">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                  </div>
+                  <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Trusted Referrals</p>
+                </div>
+                <p className="text-xl font-bold text-[#050B2C]">+50</p>
+              </div>
+
+              {/* Floating card — Hire Faster (bottom right) */}
+              <div className="absolute bottom-16 right-0 lg:-right-2 z-20 bg-white rounded-2xl shadow-xl border border-gray-100 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider leading-none">Hire Faster</p>
+                    <p className="text-xs font-bold text-[#050B2C] mt-0.5">Save 40% Time</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating panel — Recruiter Dashboard preview */}
+              <div className="hidden sm:block absolute left-0 lg:-left-16 bottom-4 lg:bottom-8 z-0 w-[220px] lg:w-[290px] -rotate-6 rounded-2xl border border-gray-200 bg-white shadow-2xl overflow-hidden">
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-gray-50 border-b border-gray-100">
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                </div>
+                <div className="relative w-full h-[130px] lg:h-[175px]">
+                  <Image
+                    src="/ss-recruiter-dashboard.png"
+                    alt="PickYourHire Recruiter Dashboard"
+                    fill
+                    className="object-cover object-left-top"
+                  />
+                </div>
+              </div>
+
+              {/* Floating label — Recruiter Dashboard tagline */}
+              <div className="hidden sm:block absolute left-2 lg:-left-10 bottom-[-10px] lg:bottom-[-16px] z-20 bg-[#050B2C] text-white rounded-2xl shadow-xl px-4 py-3 max-w-[180px]">
+                <p className="text-[9px] text-[#D9782D] font-bold uppercase tracking-widest mb-1">Recruiter Dashboard</p>
+                <p className="text-xs font-semibold leading-snug">Hire Smarter. Track Faster.</p>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── REFERRAL BANNER — Freshers to CXO & VP Level ── */}
+      {/* ── REFERRAL BONUS BANNER (original orange) ── */}
       <section className="px-4 py-4 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
-          <div
-            className="relative overflow-hidden rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
-            style={{ background: "linear-gradient(135deg, #1e0d6b 0%, #2d1b8e 45%, #1a1060 100%)" }}
-          >
-            {/* Glow orbs */}
-            <div className="absolute -left-8 top-0 w-52 h-52 bg-violet-700 rounded-full blur-[90px] opacity-30 pointer-events-none" />
-            <div className="absolute right-32 -bottom-10 w-44 h-44 bg-indigo-400 rounded-full blur-[80px] opacity-20 pointer-events-none" />
-            <div className="absolute right-0 top-0 w-32 h-32 bg-purple-900 rounded-full blur-[60px] opacity-30 pointer-events-none" />
-
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#050B2C] via-[#0d1f50] to-[#050B2C] px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Glow accents */}
+            <div className="absolute left-0 top-0 w-40 h-40 bg-[#D9782D] rounded-full blur-[80px] opacity-20 pointer-events-none" />
+            <div className="absolute right-0 bottom-0 w-40 h-40 bg-[#D9782D] rounded-full blur-[80px] opacity-10 pointer-events-none" />
             {/* Left — icon + text */}
             <div className="relative z-10 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              <div className="w-10 h-10 rounded-xl bg-[#D9782D]/20 border border-[#D9782D]/30 flex items-center justify-center flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
                 </svg>
               </div>
               <div>
-                <p className="text-white font-extrabold text-base sm:text-lg leading-snug">
-                  Referrals Welcome from{" "}
-                  <span className="text-white">Freshers</span> to{" "}
-                  <span className="text-[#fb923c] font-extrabold">CXO &amp; VP Level!</span>
-                </p>
-                <p className="text-white/60 text-xs sm:text-sm mt-0.5">
-                  You can refer anyone. Every successful hire brings success — and rewards!
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-[#D9782D] text-xs font-bold uppercase tracking-widest">Referral Program</span>
+                  <span className="bg-[#D9782D] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Live</span>
+                </div>
+                <p className="text-white font-bold text-sm">
+                  Refer Now! Help us find great talent and <span className="text-[#D9782D]">earn referral bonuses</span> for successful placements.
                 </p>
               </div>
             </div>
-
-            {/* Middle — perks */}
-            <div className="relative z-10 hidden md:flex items-center gap-5">
-              {[
-                { icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>, label: "Refer Anyone, Any Level" },
-                { icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></>, label: "Earn Attractive Rewards" },
-                { icon: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></>, label: "Trusted & Verified" },
-              ].map(({ icon, label }) => (
-                <div key={label} className="flex items-center gap-2 text-white/70 text-xs">
-                  <div className="w-7 h-7 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+            {/* Right — perks + CTA */}
+            <div className="relative z-10 flex items-center gap-4 flex-shrink-0">
+              <div className="hidden md:flex items-center gap-3">
+                {["Earn Bonuses", "Grow Network", "Fast Payouts"].map((p) => (
+                  <div key={p} className="flex items-center gap-1.5 text-white/60 text-xs">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#D9782D" strokeWidth="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+                    {p}
                   </div>
-                  <span className="font-medium whitespace-nowrap">{label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Right — CTA */}
-            <div className="relative z-10 flex-shrink-0">
-              <Link
-                href="https://portal.pickyourhire.com/signin"
-                className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-orange-500/30 text-sm whitespace-nowrap"
-              >
-                Refer Now →
+                ))}
+              </div>
+              <Link href="https://portal.pickyourhire.com/signin"
+                className="bg-[#D9782D] hover:bg-[#c96c25] text-white text-xs font-bold px-5 py-2.5 rounded-xl transition whitespace-nowrap shadow-lg shadow-[#D9782D]/30">
+                Be a Referrer →
               </Link>
             </div>
           </div>
