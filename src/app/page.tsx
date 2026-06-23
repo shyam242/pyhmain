@@ -222,7 +222,7 @@ export default function Home() {
       {/* ── CXO REFERRAL BANNER — just below navbar ── */}
       <div className="w-full relative overflow-hidden px-4 py-3" style={{ background: "linear-gradient(135deg, #1e0d6b 0%, #2d1b8e 45%, #1a1060 100%)", marginTop: "88px" }}>
         {/* Glow orbs */}
-        <div className="absolute -left-8 top-0 w-40 h-40 bg-violet-700 rounded-full blur-[70px] opacity-30 pointer-events-none" />
+        <div className="absolute -left-8 top--5 w-40 h-40 bg-violet-700 rounded-full blur-[70px] opacity-30 pointer-events-none" />
         <div className="absolute right-20 -bottom-6 w-36 h-36 bg-indigo-400 rounded-full blur-[70px] opacity-20 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
