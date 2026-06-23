@@ -6,10 +6,6 @@ import { useState } from "react";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import FeaturedJobs from "@/components/FeaturedJobs";
 
-/* ─────────────────────────────────────────────
-   Industry data — top 4 are expandable
-   Bottom 6 are FMCG sub-parts
-───────────────────────────────────────────── */
 const TOP_INDUSTRIES = [
   {
     title: "IT / ITES Industry",
@@ -19,10 +15,10 @@ const TOP_INDUSTRIES = [
     subCategories: [
       { name: "Software Development & Engineering", roles: "Full Stack Developers, Frontend Developers, Backend Developers, Mobile App Developers, Software Engineers, Solution Architects, and Technical Leads." },
       { name: "AI, Data Science & Analytics", roles: "AI Engineers, Machine Learning Engineers, Data Scientists, Data Analysts, Business Intelligence Analysts, Data Engineers, and Generative AI Specialists." },
-      { name: "Cloud, DevOps & Cybersecurity", roles: "Cloud Engineers, DevOps Engineers, Site Reliability Engineers (SREs), Security Analysts, Cybersecurity Specialists, Cloud Architects, and Infrastructure Engineers." },
+      { name: "Cloud, DevOps & Cybersecurity", roles: "Cloud Engineers, DevOps Engineers, SREs, Security Analysts, Cybersecurity Specialists, Cloud Architects, and Infrastructure Engineers." },
       { name: "IT Infrastructure & Technical Support", roles: "System Administrators, Network Engineers, IT Support Specialists, Service Desk Engineers, Infrastructure Managers, Technical Support Engineers, and IT Operations Professionals." },
-      { name: "Business Process & Digital Services (ITES)", roles: "Customer Support Executives, Technical Support Associates, Process Associates, Business Analysts, Customer Success Managers, Service Delivery Managers, Operations Executives, and Shared Services Professionals." },
-      { name: "Product, ERP & Technology Consulting", roles: "Product Managers, Business Analysts, SAP Consultants, ERP Consultants, Functional Consultants, Implementation Specialists, Pre-Sales Consultants, and Solution Consultants." },
+      { name: "Business Process & Digital Services (ITES)", roles: "Customer Support Executives, Technical Support Associates, Business Analysts, Customer Success Managers, Service Delivery Managers, Operations Executives, and Shared Services Professionals." },
+      { name: "Product, ERP & Technology Consulting", roles: "Product Managers, Business Analysts, SAP Consultants, ERP Consultants, Functional Consultants, Pre-Sales Consultants, and Solution Consultants." },
     ],
   },
   {
@@ -31,11 +27,11 @@ const TOP_INDUSTRIES = [
     accent: "#0D9488",
     icon: <><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></>,
     subCategories: [
-      { name: "Healthcare Services & Hospital Operations", roles: "Hospital Administrators, Healthcare Operations Managers, Nursing Supervisors, Patient Care Coordinators, Medical Officers, Healthcare Quality Managers, and Hospital Support Professionals." },
-      { name: "Pharmaceutical & Life Sciences", roles: "Research Scientists, Formulation Scientists, Regulatory Affairs Specialists, Quality Assurance Executives, Quality Control Analysts, Production Managers, and Manufacturing Professionals." },
-      { name: "Clinical Research & Drug Safety", roles: "Clinical Research Associates (CRAs), Clinical Trial Managers, Pharmacovigilance Specialists, Medical Writers, Clinical Data Managers, Drug Safety Associates, and Regulatory Coordinators." },
-      { name: "Medical Devices & Diagnostics", roles: "Biomedical Engineers, Product Specialists, Application Specialists, Service Engineers, Validation Engineers, Diagnostic Experts, and Technical Support Professionals." },
-      { name: "Pharma Sales, Marketing & Commercial Excellence", roles: "Medical Representatives, Area Sales Managers, Regional Sales Managers, Product Managers, Key Account Managers, Business Development Managers, and Healthcare Marketing Specialists." },
+      { name: "Healthcare Services & Hospital Operations", roles: "Hospital Administrators, Healthcare Operations Managers, Nursing Supervisors, Patient Care Coordinators, Medical Officers, and Healthcare Quality Managers." },
+      { name: "Pharmaceutical & Life Sciences", roles: "Research Scientists, Formulation Scientists, Regulatory Affairs Specialists, Quality Assurance Executives, Quality Control Analysts, and Production Managers." },
+      { name: "Clinical Research & Drug Safety", roles: "Clinical Research Associates (CRAs), Clinical Trial Managers, Pharmacovigilance Specialists, Medical Writers, Clinical Data Managers, and Drug Safety Associates." },
+      { name: "Medical Devices & Diagnostics", roles: "Biomedical Engineers, Product Specialists, Application Specialists, Service Engineers, Validation Engineers, and Diagnostic Experts." },
+      { name: "Pharma Sales, Marketing & Commercial Excellence", roles: "Medical Representatives, Area Sales Managers, Regional Sales Managers, Product Managers, Key Account Managers, and Healthcare Marketing Specialists." },
     ],
   },
   {
@@ -48,7 +44,7 @@ const TOP_INDUSTRIES = [
       { name: "Semiconductor Design & Development", roles: "VLSI Design Engineers, ASIC Design Engineers, RTL Design Engineers, FPGA Engineers, Physical Design Engineers, Design Verification Engineers, and DFT Engineers." },
       { name: "Embedded Systems & Firmware Engineering", roles: "Embedded Software Engineers, Firmware Engineers, Device Driver Developers, RTOS Engineers, IoT Developers, Hardware-Software Integration Engineers, and Embedded Systems Architects." },
       { name: "Chip Manufacturing & Testing", roles: "Process Engineers, Product Engineers, Validation Engineers, Test Engineers, Yield Engineers, Failure Analysis Engineers, and Semiconductor Manufacturing Professionals." },
-      { name: "Technical Sales & Field Applications", roles: "Field Application Engineers (FAEs), Technical Sales Engineers, Solutions Consultants, Product Specialists, Customer Success Engineers, Application Engineers, and Pre-Sales Consultants." },
+      { name: "Technical Sales & Field Applications", roles: "Field Application Engineers (FAEs), Technical Sales Engineers, Solutions Consultants, Customer Success Engineers, Application Engineers, and Pre-Sales Consultants." },
     ],
   },
   {
@@ -67,80 +63,160 @@ const TOP_INDUSTRIES = [
   },
 ];
 
-/* ─────────────────────────────────────────────
-   Expandable Industry Card
-───────────────────────────────────────────── */
-function IndustryCard({
-  title, desc, accent, icon, subCategories,
-}: {
-  title: string;
-  desc: string;
-  accent: string;
-  icon: React.ReactNode;
-  subCategories: { name: string; roles: string }[];
-}) {
+/* Sub-category accordion card */
+function SubCategoryCard({ sub, accent }: { sub: { name: string; roles: string }; accent: string }) {
   const [open, setOpen] = useState(false);
-
   return (
     <div
-      className="rounded-2xl border-t-4 bg-white shadow-sm transition-all overflow-hidden cursor-pointer select-none"
-      style={{ borderColor: accent, boxShadow: open ? `0 8px 32px ${accent}22` : undefined }}
+      className="rounded-xl border bg-white overflow-hidden cursor-pointer hover:shadow-sm transition-all"
+      style={{ borderColor: open ? `${accent}50` : "#e5e7eb" }}
       onClick={() => setOpen((v) => !v)}
     >
-      {/* Gradient header */}
-      <div className="h-36 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${accent}22 0%, ${accent}44 100%)` }}>
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
-          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+      <div className="flex items-center justify-between px-4 py-3.5 gap-3">
+        <div className="flex items-center gap-2.5 flex-1 min-w-0">
+          <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: accent }} />
+          <p className="text-sm font-semibold text-[#050B2C] leading-snug">{sub.name}</p>
         </div>
-        <div className="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center shadow-sm">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
-        </div>
-        {/* Expand/collapse chevron */}
         <div
-          className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white/90 shadow-sm flex items-center justify-center transition-transform duration-300"
-          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+          className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200"
+          style={{ background: open ? `${accent}15` : "#f3f4f6", transform: open ? "rotate(180deg)" : "none" }}
         >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={open ? accent : "#9ca3af"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
       </div>
-
-      {/* Card body */}
-      <div className="p-5">
-        <h3 className="text-base font-bold text-[#050B2C] mb-1.5">{title}</h3>
-        <div className="w-8 h-0.5 mb-3 rounded-full" style={{ background: accent }} />
-        <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
-        {!open && (
-          <p className="mt-3 text-xs font-semibold flex items-center gap-1" style={{ color: accent }}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            View sub-categories
-          </p>
-        )}
-      </div>
-
-      {/* Expanded sub-categories */}
       {open && (
-        <div className="border-t px-5 pb-5 pt-4 space-y-3" style={{ borderColor: `${accent}30` }}>
-          {subCategories.map((sub) => (
-            <div key={sub.name} className="rounded-xl p-3.5" style={{ background: `${accent}08` }}>
-              <p className="text-xs font-bold mb-1" style={{ color: accent }}>{sub.name}</p>
-              <p className="text-xs text-gray-500 leading-relaxed">{sub.roles}</p>
-            </div>
-          ))}
-          <p className="text-xs font-semibold flex items-center gap-1 pt-1" style={{ color: accent }}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            Click to collapse
-          </p>
+        <div className="px-4 pb-4 pt-2 border-t" style={{ borderColor: `${accent}20`, background: `${accent}06` }}>
+          <p className="text-xs text-gray-600 leading-relaxed">{sub.roles}</p>
         </div>
       )}
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Main Page
-───────────────────────────────────────────── */
+/* Full industries section — cards on top, panel below */
+function IndustriesSection() {
+  const [active, setActive] = useState<string | null>(null);
+  const activeInd = TOP_INDUSTRIES.find((i) => i.title === active) ?? null;
+
+  return (
+    <section className="py-24 px-4 bg-white">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="h-px w-10 bg-[#D9782D]/40" />
+            <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] text-xs">Industries We Cater</p>
+            <span className="h-px w-10 bg-[#D9782D]/40" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Sector expertise that helps you hire faster</h2>
+          <p className="mt-4 text-base text-gray-500 max-w-2xl mx-auto">
+            From high-growth tech to healthcare and retail, PickYourHire connects candidates with companies in the industries that matter most.{" "}
+            <span className="font-semibold text-[#050B2C]">Click any card to explore roles.</span>
+          </p>
+        </div>
+
+        {/* 4 cards — full width, no expand inside card */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {TOP_INDUSTRIES.map(({ title, desc, accent, icon }) => {
+            const isActive = active === title;
+            return (
+              <button
+                key={title}
+                onClick={() => setActive(isActive ? null : title)}
+                className="text-left rounded-2xl border-t-4 bg-white overflow-hidden focus:outline-none transition-all duration-200"
+                style={{
+                  borderTopColor: accent,
+                  boxShadow: isActive
+                    ? `0 4px 24px ${accent}25, 0 0 0 2px ${accent}30`
+                    : "0 1px 4px rgba(0,0,0,0.06)",
+                  transform: isActive ? "translateY(-3px)" : "none",
+                }}
+              >
+                {/* Gradient header */}
+                <div
+                  className="h-36 relative overflow-hidden"
+                  style={{ background: `linear-gradient(135deg, ${accent}15 0%, ${accent}30 100%)` }}
+                >
+                  {/* Big faint icon */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="0.7" strokeLinecap="round" strokeLinejoin="round" className="opacity-20">{icon}</svg>
+                  </div>
+                  {/* Small icon badge */}
+                  <div className="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+                  </div>
+                  {/* Chevron */}
+                  <div
+                    className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white shadow-sm flex items-center justify-center transition-transform duration-300"
+                    style={{ transform: isActive ? "rotate(180deg)" : "none" }}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+                {/* Body */}
+                <div className="p-5">
+                  <h3 className="text-base font-bold text-[#050B2C] mb-1.5">{title}</h3>
+                  <div className="w-8 h-0.5 mb-3 rounded-full" style={{ background: accent }} />
+                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                  <p className="mt-3 text-xs font-semibold flex items-center gap-1.5 transition-all" style={{ color: accent, opacity: isActive ? 0 : 1 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                    Explore roles
+                  </p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Full-width expanded panel — below all cards, never inside */}
+        {activeInd && (
+          <div
+            className="mt-5 rounded-2xl border overflow-hidden"
+            style={{ borderColor: `${activeInd.accent}30` }}
+          >
+            {/* Panel header bar */}
+            <div
+              className="flex items-center justify-between px-6 py-4"
+              style={{
+                background: `linear-gradient(135deg, ${activeInd.accent}10, ${activeInd.accent}05)`,
+                borderBottom: `1px solid ${activeInd.accent}20`,
+              }}
+            >
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm"
+                  style={{ background: `${activeInd.accent}18` }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={activeInd.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{activeInd.icon}</svg>
+                </div>
+                <div>
+                  <p className="font-bold text-[#050B2C]">{activeInd.title}</p>
+                  <p className="text-xs text-gray-400">{activeInd.subCategories.length} specialisations — click any to expand roles</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setActive(null)}
+                className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition flex-shrink-0"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+
+            {/* Sub-category grid */}
+            <div className="bg-gray-50/50 p-5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+              {activeInd.subCategories.map((sub) => (
+                <SubCategoryCard key={sub.name} sub={sub} accent={activeInd.accent} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+export default function Home() {
 export default function Home() {
   return (
     <div className="bg-white min-h-screen">
@@ -441,28 +517,7 @@ export default function Home() {
       </section>
 
       {/* ── Industries We Cater ── */}
-      <section className="py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="h-px w-10 bg-[#D9782D]/40" />
-              <p className="text-[#D9782D] font-semibold uppercase tracking-[0.3em] text-xs">Industries We Cater</p>
-              <span className="h-px w-10 bg-[#D9782D]/40" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#050B2C]">Sector expertise that helps you hire faster</h2>
-            <p className="mt-4 text-base text-gray-500 max-w-2xl mx-auto">
-              From high-growth tech to healthcare and retail, PickYourHire connects candidates with companies in the industries that matter most. Click any card to explore roles.
-            </p>
-          </div>
-
-          {/* Top 4 — expandable */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-            {TOP_INDUSTRIES.map((ind) => (
-              <IndustryCard key={ind.title} {...ind} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <IndustriesSection />
 
       {/* ── FAQ ── */}
       <section className="py-24 px-4 bg-[#fdf9f6]">
