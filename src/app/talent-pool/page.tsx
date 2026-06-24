@@ -92,7 +92,7 @@ export default function TalentPoolPage() {
             <div className="flex-1 self-end flex items-end justify-center lg:justify-end">
               <div className="relative w-full h-[420px] lg:h-[560px]">
                 <Image
-                  src="/hiring.jpeg"
+                  src="/talent-pool.png"
                   alt="Talent Pool"
                   fill
                   className="object-contain object-bottom"
