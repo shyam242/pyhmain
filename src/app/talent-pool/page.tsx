@@ -135,7 +135,7 @@ export default function TalentPoolPage() {
             {/* Single clean image */}
             <div className="lg:w-[48%] rounded-3xl overflow-hidden shadow-xl">
               <Image
-                src="/hiring-team2.png"
+                src="/hiring.png"
                 alt="Hiring team"
                 width={700}
                 height={480}
