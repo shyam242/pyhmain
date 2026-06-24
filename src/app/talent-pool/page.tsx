@@ -212,7 +212,7 @@ export default function TalentPoolPage() {
       {/* ── CTA BANNER ── */}
       <section className="bg-[#050B2C] py-16 px-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative">
-          <div className="absolute left-0 top-0 w-72 h-72 bg-[#D9782D] rounded-full blur-[130px] opacity-10 pointer-events-none" />
+          <div className="abstalent=poololute left-0 top-0 w-72 h-72 bg-[#D9782D] rounded-full blur-[130px] opacity-10 pointer-events-none" />
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
               Build Your Team with the <span className="text-[#D9782D]">Right Talent.</span>
@@ -223,9 +223,9 @@ export default function TalentPoolPage() {
           </div>
           <div className="flex flex-wrap gap-3 flex-shrink-0 relative z-10">
             <Link href="/contact" className="bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-7 py-3 rounded-xl transition shadow-lg shadow-[#D9782D]/30 text-sm">
-              Explore Talent →
+              Explore Talent.
             </Link>
-            <Link href="/contact" className="bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold px-7 py-3 rounded-xl transition text-sm">
+            <Link href="/s" className="bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold px-7 py-3 rounded-xl transition text-sm">
               Talk To Us
             </Link>
           </div>
