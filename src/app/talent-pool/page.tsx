@@ -59,7 +59,7 @@ export default function TalentPoolPage() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3 mb-10">
-                <Link href="/contact"
+                <Link href="https://portal.pickyourhire.com/signin"
                   className="inline-flex items-center gap-2 bg-[#D9782D] text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-[#c96c25] transition shadow-lg shadow-[#D9782D]/25 text-sm">
                   Explore Talent →
                 </Link>
