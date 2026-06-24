@@ -5,10 +5,6 @@ import Image from "next/image";
 import { useState } from "react";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import FeaturedJobs from "@/components/FeaturedJobs";
-
-/* ─────────────────────────────────────────────
-   Industry data
-───────────────────────────────────────────── */
 const TOP_INDUSTRIES = [
   {
     title: "IT / ITES Industry",
@@ -218,8 +214,6 @@ function IndustriesSection() {
     </section>
   );
 }
-
-export default function Home() {
 export default function Home() {
   return (
     <div className="bg-white min-h-screen">
