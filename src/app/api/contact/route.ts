@@ -5,13 +5,15 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, phone, subject, message } = await request.json();
 
-    // Validate required fields
-    if (!name || !email || !subject || !message) {
+    // Validate required fields (message is optional, matching the form UI)
+    if (!name || !email || !subject) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
+
+    const safeMessage = message?.trim() || "Not provided";
 
     // Check environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
@@ -44,11 +46,9 @@ export async function POST(request: NextRequest) {
         <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
         <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <p>${safeMessage.replace(/\n/g, "<br>")}</p>
       `,
     };
-
-    console.log("Admin email options:", adminMailOptions);
 
     // Email to user (confirmation)
     const userMailOptions = {
@@ -63,20 +63,31 @@ export async function POST(request: NextRequest) {
         <p><strong>Your Submission:</strong></p>
         <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <p>${safeMessage.replace(/\n/g, "<br>")}</p>
         <hr>
         <p>Best regards,<br>PickYourHire Team</p>
       `,
     };
 
-    // Send both emails
+    // Send admin notification — this is the critical email, so any failure
+    // here genuinely should surface as an error to the user.
     console.log("Sending admin email to:", adminMailOptions.to);
     await transporter.sendMail(adminMailOptions);
     console.log("Admin email sent successfully");
 
-    console.log("Sending user confirmation email to:", userMailOptions.to);
-    await transporter.sendMail(userMailOptions);
-    console.log("User email sent successfully");
+    // Send user confirmation — best effort. If this fails (e.g. the user
+    // mistyped their email, or Gmail rate-limits a second send), we still
+    // want to report success since the admin was already notified.
+    try {
+      console.log("Sending user confirmation email to:", userMailOptions.to);
+      await transporter.sendMail(userMailOptions);
+      console.log("User email sent successfully");
+    } catch (confirmationError) {
+      console.error(
+        "User confirmation email failed (non-fatal):",
+        confirmationError
+      );
+    }
 
     return NextResponse.json(
       { message: "Email sent successfully" },
