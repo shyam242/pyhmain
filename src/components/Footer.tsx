@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-gray-500">© 2026 PickYourHire. All rights reserved.</p>
+          <p className="text-sm text-gray-500">© 2026 PYH Consultants. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="text-sm text-gray-500 hover:text-[#D9782D] transition-colors">Privacy Policy</Link>
             <a href="https://wa.me/919936922504" target="_blank" rel="noopener noreferrer"
