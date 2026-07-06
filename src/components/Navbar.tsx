@@ -106,7 +106,7 @@ export default function Navbar() {
   return (
     <>
       <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl">
-        <div className="backdrop-blur-xl bg-white/90 border border-gray-200 shadow-lg rounded-2xl px-6 py-4 flex items-center justify-between">
+        <div className="relative backdrop-blur-xl bg-white/90 border border-gray-200 shadow-lg rounded-2xl px-6 py-4 flex items-center justify-between">
 
           {/* Logo */}
           <Link href="/">
@@ -117,7 +117,51 @@ export default function Navbar() {
             </h1>
           </Link>
 
-          {/* Desktop nav — all links aligned flat, no vertical shift */}
+          {/* Centered desktop nav — 4 links in the middle of the bar */}
+          <nav className="hidden md:flex items-center gap-8 font-medium absolute left-1/2 -translate-x-1/2">
+            <button
+              onClick={() => setReferrerDialogOpen(true)}
+              className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200"
+            >
+              Be a Referrer
+            </button>
+
+            {/* Recruiter dropdown — padded bridge prevents gap-jump */}
+            <div
+              className="relative"
+              onMouseEnter={() => setOpen(true)}
+              onMouseLeave={() => setOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">
+                Recruiter
+                <Image
+                  src="/caret-down.svg"
+                  width={14}
+                  height={14}
+                  alt=""
+                  className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+                />
+              </button>
+              {/* Invisible bridge so mouse can travel from button to menu */}
+              {open && (
+                <div className="absolute top-full left-0 w-48 pt-3">
+                  <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <Link
+                      href="/talent-pool"
+                      className="block px-5 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
+                    >
+                      Talent Pool
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Link href="/jobs" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Jobs</Link>
+            <Link href="/contact" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Contact</Link>
+          </nav>
+
+          {/* Right side — Sign In + Get In Touch */}
           <div className="flex items-center gap-3">
             <Link href="https://portal.pickyourhire.com/signin" className="hidden md:inline-block">
               <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
@@ -125,70 +169,24 @@ export default function Navbar() {
               </button>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-8 font-medium">
-              <button
-                onClick={() => setReferrerDialogOpen(true)}
-                className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200"
-              >
-                Be a Referrer
+            <Link href="/contact" className="hidden md:inline-block">
+              <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
+                Get In Touch
               </button>
+            </Link>
 
-              {/* Recruiter dropdown — padded bridge prevents gap-jump */}
-              <div
-                className="relative"
-                onMouseEnter={() => setOpen(true)}
-                onMouseLeave={() => setOpen(false)}
-              >
-                <button className="flex items-center gap-1 text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">
-                  Recruiter
-                  <Image
-                    src="/caret-down.svg"
-                    width={14}
-                    height={14}
-                    alt=""
-                    className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {/* Invisible bridge so mouse can travel from button to menu */}
-                {open && (
-                  <div className="absolute top-full left-0 w-48 pt-3">
-                    <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                      <Link
-                        href="/talent-pool"
-                        className="block px-5 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
-                      >
-                        Talent Pool
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <Link href="/jobs" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Jobs</Link>
-              <Link href="/contact" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Contact</Link>
-            </nav>
-
-            {/* Right CTA — only "Get In Touch", no "Explore Opportunities" */}
-            <div className="flex items-center gap-3">
-              <Link href="/contact" className="hidden md:inline-block">
-                <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
-                  Get In Touch
-                </button>
-              </Link>
-
-              <button
-                type="button"
-                aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                onClick={() => setMobileOpen((p) => !p)}
-                className="md:hidden p-2 rounded-xl bg-gray-100 border border-gray-200"
-              >
-                {mobileOpen ? (
-                  <span className="text-xl text-[#050B2C] leading-none">×</span>
-                ) : (
-                  <Image src="/hamburger.svg" width={22} height={22} alt="menu" />
-                )}
-              </button>
-            </div>
+            <button
+              type="button"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileOpen((p) => !p)}
+              className="md:hidden p-2 rounded-xl bg-gray-100 border border-gray-200"
+            >
+              {mobileOpen ? (
+                <span className="text-xl text-[#050B2C] leading-none">×</span>
+              ) : (
+                <Image src="/hamburger.svg" width={22} height={22} alt="menu" />
+              )}
+            </button>
           </div>
         </div>
 
