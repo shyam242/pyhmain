@@ -117,11 +117,18 @@ export default function Navbar() {
             </h1>
           </Link>
 
-          {/* Centered desktop nav — 4 links in the middle of the bar */}
+          {/* Centered desktop nav — Sign In + 4 links in the middle of the bar */}
           <nav className="hidden md:flex items-center gap-8 font-medium absolute left-1/2 -translate-x-1/2">
+            <Link
+              href="https://portal.pickyourhire.com/signin"
+              className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200 cursor-pointer"
+            >
+              Sign In
+            </Link>
+
             <button
               onClick={() => setReferrerDialogOpen(true)}
-              className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200"
+              className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200 cursor-pointer"
             >
               Be a Referrer
             </button>
@@ -132,7 +139,7 @@ export default function Navbar() {
               onMouseEnter={() => setOpen(true)}
               onMouseLeave={() => setOpen(false)}
             >
-              <button className="flex items-center gap-1 text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">
+              <button className="flex items-center gap-1 text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200 cursor-pointer">
                 Recruiter
                 <Image
                   src="/caret-down.svg"
@@ -157,20 +164,14 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link href="/jobs" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Jobs</Link>
-            <Link href="/contact" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200">Contact</Link>
+            <Link href="/jobs" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200 cursor-pointer">Jobs</Link>
+            <Link href="/contact" className="text-[#050B2C] hover:text-[#D9782D] transition-colors duration-200 cursor-pointer">Contact</Link>
           </nav>
 
-          {/* Right side — Sign In + Get In Touch */}
+          {/* Right side — Get In Touch */}
           <div className="flex items-center gap-3">
-            <Link href="https://portal.pickyourhire.com/signin" className="hidden md:inline-block">
-              <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
-                Sign In
-              </button>
-            </Link>
-
             <Link href="/contact" className="hidden md:inline-block">
-              <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
+              <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20 cursor-pointer">
                 Get In Touch
               </button>
             </Link>
@@ -194,6 +195,9 @@ export default function Navbar() {
         {mobileOpen && (
           <div className="md:hidden mt-3 rounded-3xl border border-gray-200 bg-white/95 shadow-2xl backdrop-blur-2xl p-5">
             <div className="flex flex-col gap-2">
+              <Link href="https://portal.pickyourhire.com/signin" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">
+                Sign In
+              </Link>
               <button
                 onClick={() => { setReferrerDialogOpen(true); closeMobile(); }}
                 className="rounded-xl px-4 py-3 text-left text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 font-medium transition-colors"
