@@ -76,6 +76,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav — all links aligned flat, no vertical shift */}
+         <div className="flex items-center gap-3">
+            <Link href="https://portal.pickyourhire.com/signin" className="hidden md:inline-block">
+              <button className="bg-[#D9782D] text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-[#c96c25] transition-colors duration-200 shadow-sm shadow-[#D9782D]/20">
+                Sign In
+              </button>
+            </Link>
           <nav className="hidden md:flex items-center gap-8 font-medium">
             <button
               onClick={() => setReferrerDialogOpen(true)}
