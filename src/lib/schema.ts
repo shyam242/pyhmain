@@ -24,6 +24,25 @@ export async function initializeDatabase() {
       );
     `);
 
+    // external_id links a row back to its source job in the PickYourHire portal,
+    // so the sync endpoint (/api/jobs/sync) can update or remove the right row
+    // instead of creating duplicates. UNIQUE is required for the ON CONFLICT
+    // upsert used by that endpoint. Added via IF NOT EXISTS so it's safe to run
+    // against a database that already has the jobs table from before this change.
+    await pool.query(`
+      ALTER TABLE jobs ADD COLUMN IF NOT EXISTS external_id INTEGER;
+    `);
+    await pool.query(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM pg_constraint WHERE conname = 'jobs_external_id_key'
+        ) THEN
+          ALTER TABLE jobs ADD CONSTRAINT jobs_external_id_key UNIQUE (external_id);
+        END IF;
+      END $$;
+    `);
+
     console.log("Database schema initialized successfully!");
   } catch (error) {
     console.error("Error initializing database:", error);
