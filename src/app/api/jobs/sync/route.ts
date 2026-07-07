@@ -54,6 +54,7 @@ export async function POST(request: NextRequest) {
     if (action === "delete") {
       const result = await query("DELETE FROM jobs WHERE external_id = $1", [job.external_id]);
       return NextResponse.json({ message: "Job removed", deleted: (result.rowCount ?? 0) > 0 });
+    }
 
     if (action === "upsert") {
       if (!job.title || !job.department || !job.location) {
