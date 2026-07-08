@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     // This email is sent to both shyamkumar997755@gmail.com and pickyourhire@gmail.com for all contact form and mock interview submissions
     const adminMailOptions = {
       from: process.env.EMAIL_USER,
-      to: ["shyamkumar997755@gmail.com", "pickyourhire@gmail.com"],
+      to: ["shyamkumar997755@gmail.com", "technicalteam@pickyourhire@gmail.com"],
       subject: `New Contact Form Submission: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
