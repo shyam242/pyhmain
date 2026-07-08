@@ -4,24 +4,38 @@ import Image from "next/image";
 const functions = [
   {
     label: "Technology",
+    color: "#7C3AED",
     icon: <><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></>,
     roles: ["Full Stack Engineers", "DevOps", "Data Scientists"],
   },
   {
     label: "Sales",
+    color: "#2563EB",
     icon: <><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></>,
     roles: ["Sales Executives", "Business Development", "Enterprise Sales", "Account Managers"],
   },
   {
     label: "Operations",
+    color: "#0D9488",
     icon: <><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></>,
     roles: ["Supply Chain", "Procurement", "Plant Operators"],
   },
   {
     label: "Leadership",
+    color: "#D9782D",
     icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>,
     roles: ["CXO", "VP", "+ Directors"],
   },
+];
+
+/* Hero illustration: each function gets a node position + a sample role, so
+   the illustration previews the real "Explore Talent" grid below rather than
+   showing generic stock headshots. */
+const heroNodes = [
+  { ...functions[0], example: "Full Stack Engineer", top: "14%", left: "6%" },
+  { ...functions[1], example: "Enterprise Sales", top: "10%", left: "60%" },
+  { ...functions[2], example: "Supply Chain Lead", top: "66%", left: "4%" },
+  { ...functions[3], example: "VP / Director", top: "70%", left: "62%" },
 ];
 
 const whyUs = [
@@ -89,15 +103,82 @@ export default function TalentPoolPage() {
               </div>
             </div>
 
-            {/* RIGHT — image, tightly framed, no floating whitespace */}
-            <div className="relative rounded-2xl overflow-hidden h-[300px] lg:h-[380px]">
-              <Image
-                src="/talent-pool.png"
-                alt="Talent Pool"
-                fill
-                className="object-cover"
-                priority
+            {/* RIGHT — custom talent-network illustration (no stock photo, fully responsive) */}
+            <div className="relative rounded-2xl overflow-hidden h-[320px] sm:h-[380px] lg:h-[440px] bg-gradient-to-br from-[#eceef5] to-[#e2e5ef]">
+
+              {/* dot-grid texture */}
+              <div
+                className="absolute inset-0 opacity-70"
+                style={{
+                  backgroundImage: "radial-gradient(rgba(5,11,44,0.10) 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
               />
+
+              {/* soft color blobs, one per category, anchored near its node */}
+              {heroNodes.map((n) => (
+                <div
+                  key={`blob-${n.label}`}
+                  className="absolute w-32 h-32 rounded-full blur-3xl opacity-20 pointer-events-none"
+                  style={{ background: n.color, top: n.top, left: n.left }}
+                />
+              ))}
+
+              {/* connecting lines from center to each node */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                {heroNodes.map((n) => (
+                  <line
+                    key={`line-${n.label}`}
+                    x1="50" y1="50"
+                    x2={`${parseFloat(n.left) + 8}`} y2={`${parseFloat(n.top) + 6}`}
+                    stroke={n.color}
+                    strokeOpacity="0.3"
+                    strokeWidth="0.5"
+                    strokeDasharray="2 2"
+                    vectorEffect="non-scaling-stroke"
+                    className="animate-dash-flow"
+                  />
+                ))}
+              </svg>
+
+              {/* center node */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="relative flex items-center justify-center">
+                  <div className="absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full animate-pulse-ring-accent" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#050B2C] flex flex-col items-center justify-center text-white shadow-lg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9782D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span className="text-[10px] sm:text-xs font-bold mt-1">25K+</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* satellite nodes — one per talent function, gently floating */}
+              {heroNodes.map((n, i) => (
+                <div
+                  key={n.label}
+                  className="absolute animate-float-y"
+                  style={{ top: n.top, left: n.left, animationDelay: `${i * 0.6}s` }}
+                >
+                  <div
+                    className="bg-white rounded-xl shadow-md px-2.5 py-2 sm:px-3 sm:py-2.5 flex items-center gap-2 border max-w-[140px] sm:max-w-[160px]"
+                    style={{ borderColor: `${n.color}30` }}
+                  >
+                    <div
+                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: `${n.color}18` }}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={n.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{n.icon}</svg>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[11px] sm:text-xs font-bold text-[#050B2C] leading-tight truncate">{n.label}</p>
+                      <p className="text-[9px] sm:text-[10px] text-gray-500 leading-tight truncate">{n.example}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
             </div>
 
           </div>
@@ -161,8 +242,15 @@ export default function TalentPoolPage() {
       </section>
 
       {/* ── CTA BANNER ── */}
-      <section className="bg-[#050B2C] py-14 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="relative bg-[#050B2C] py-14 px-4 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.06] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(#fff 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
               Build your team with the <span className="text-[#D9782D]">right talent.</span>
