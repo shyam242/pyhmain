@@ -109,7 +109,8 @@ export default function Navbar() {
         <div className="relative backdrop-blur-xl bg-white/90 border border-gray-200 shadow-lg rounded-2xl px-6 py-4 flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/">
+          <Link href="/" className="flex items-center gap-2.5">
+            <img src="/logo.svg" alt="PickYourHire logo" className="h-9 w-9 rounded-lg" />
             <h1 className="font-bold text-xl tracking-tight">
               <span className="text-[#050B2C]">PICK</span>
               <span className="text-[#D9782D]">YOUR</span>
