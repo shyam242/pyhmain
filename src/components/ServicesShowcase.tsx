@@ -123,6 +123,26 @@ const serviceGroups: ServiceGroup[] = [
           "Hands-on technical screening before interviews",
         ],
       },
+      {
+        title: "Fake Experience Check",
+        description:
+          "Upload a batch of resumes and let our AI flag fabricated experience, inconsistent timelines, and inflated claims before you spend time interviewing.",
+        bullets: [
+          "AI-powered authenticity scoring for every resume, with a clear Low / Medium / High risk rating",
+          "Automatic detection of employment gaps, overlapping roles, and suspicious claims with supporting evidence",
+          "Batch-check up to 20 resumes at once against an optional job description for context",
+        ],
+      },
+      {
+        title: "Candidate Report Generation",
+        description:
+          "Generate polished, shareable candidate evaluation reports in seconds, matched against a job or pasted JD text so hiring managers get consistent, decision-ready summaries.",
+        bullets: [
+          "One-click report generation for single candidates or full shortlists",
+          "JD-matched scoring with strengths, gaps, and fit summary for each candidate",
+          "Downloadable reports with full generation history for later reference",
+        ],
+      },
     ],
   },
   {
