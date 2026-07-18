@@ -7,11 +7,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <h2 className="text-xl font-bold mb-3 tracking-tight">
-              <span className="text-white">PICK</span>
-              <span className="text-[#D9782D]">YOUR</span>
-              <span className="text-white">HIRE</span>
-            </h2>
+            <div className="flex items-center gap-2.5 mb-3">
+              <img src="/logo.svg" alt="PickYourHire logo" className="h-9 w-9 rounded-lg" />
+              <h2 className="text-xl font-bold tracking-tight">
+                <span className="text-white">PICK</span>
+                <span className="text-[#D9782D]">YOUR</span>
+                <span className="text-white">HIRE</span>
+              </h2>
+            </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-5">
               Connecting top talent with innovative companies through trusted referrals and AI-powered matching.
             </p>
