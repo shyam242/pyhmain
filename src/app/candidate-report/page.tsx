@@ -197,7 +197,7 @@ export default function CandidateReportPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3 flex-shrink-0">
-            <Link href="/contact" className="bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-6 py-3 rounded-lg transition text-sm shadow-lg shadow-[#D9782D]/20">
+            <Link href="https://portal.pickyourhire.com/signin" className="bg-[#D9782D] hover:bg-[#c96c25] text-white font-semibold px-6 py-3 rounded-lg transition text-sm shadow-lg shadow-[#D9782D]/20">
               Generate Reports →
             </Link>
             <Link href="/fake-experience-check" className="bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold px-6 py-3 rounded-lg transition text-sm">
