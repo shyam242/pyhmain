@@ -152,13 +152,40 @@ export default function Navbar() {
               </button>
               {/* Invisible bridge so mouse can travel from button to menu */}
               {open && (
-                <div className="absolute top-full left-0 w-48 pt-3">
-                  <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                <div className="absolute top-full left-0 w-64 pt-3">
+                  <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden py-1.5">
                     <Link
                       href="/talent-pool"
-                      className="block px-5 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
                     >
+                      <span className="w-8 h-8 rounded-lg bg-[#050B2C]/5 flex items-center justify-center flex-shrink-0">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                      </span>
                       Talent Pool
+                    </Link>
+                    <Link
+                      href="/candidate-report"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-[#050B2C]/5 flex items-center justify-center flex-shrink-0">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        Candidate Report
+                        <span className="text-[9px] font-bold bg-[#D9782D]/10 text-[#D9782D] px-1.5 py-[1px] rounded">AI</span>
+                      </span>
+                    </Link>
+                    <Link
+                      href="/fake-experience-check"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-[#050B2C] hover:bg-[#D9782D]/5 hover:text-[#D9782D] transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-[#050B2C]/5 flex items-center justify-center flex-shrink-0">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        Fake Experience Check
+                        <span className="text-[9px] font-bold bg-[#D9782D]/10 text-[#D9782D] px-1.5 py-[1px] rounded">AI</span>
+                      </span>
                     </Link>
                   </div>
                 </div>
@@ -207,6 +234,14 @@ export default function Navbar() {
               </button>
               <Link href="/talent-pool" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">
                 Talent Pool
+              </Link>
+              <Link href="/candidate-report" onClick={closeMobile} className="flex items-center gap-2 rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">
+                Candidate Report
+                <span className="text-[9px] font-bold bg-[#D9782D]/10 text-[#D9782D] px-1.5 py-[1px] rounded">AI</span>
+              </Link>
+              <Link href="/fake-experience-check" onClick={closeMobile} className="flex items-center gap-2 rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">
+                Fake Experience Check
+                <span className="text-[9px] font-bold bg-[#D9782D]/10 text-[#D9782D] px-1.5 py-[1px] rounded">AI</span>
               </Link>
               <Link href="/jobs" onClick={closeMobile} className="rounded-xl px-4 py-3 text-[#050B2C] hover:text-[#D9782D] hover:bg-orange-50 transition-colors">
                 Jobs
